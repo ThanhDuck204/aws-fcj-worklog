@@ -21,12 +21,8 @@
 <div class="ghContributors">
   {{ $url := .Get 0 }}
   {{ $data := slice }}
-  {{ with try (resources.GetRemote $url) }}
-    {{ with .Err }}
-      {{ errorf "ghcontributors: failed to fetch %q: %s" $url . }}
-    {{ else with .Value }}
-      {{ $data = . | transform.Unmarshal }}
-    {{ end }}
+  {{ with resources.GetRemote $url }}
+    {{ $data = . | transform.Unmarshal }}
   {{ end }}
   {{ range $data }}
   <div>
