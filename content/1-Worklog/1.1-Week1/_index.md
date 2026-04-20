@@ -5,9 +5,7 @@ weight: 1
 chapter: false
 pre: " <b> 1.1. </b> "
 ---
-{{% notice warning %}} 
-⚠️ **Note:** The following information is for reference purposes only. Please **do not copy verbatim** for your own report, including this warning.
-{{% /notice %}}
+
 
 
 ### Week 1 Objectives:
@@ -16,42 +14,27 @@ pre: " <b> 1.1. </b> "
 * Understand basic AWS services, how to use the console & CLI.
 
 ### Tasks to be carried out this week:
-| Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | - Get acquainted with FCJ members <br> - Read and take note of internship unit rules and regulations                                                                                                   | 08/11/2025 | 08/11/2025      |
-| 3   | - Learn about AWS and its types of services <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                              | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Create AWS Free Tier account <br> - Learn about AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Create AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + How to use AWS CLI | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Learn basic EC2: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - SSH connection methods to EC2 <br> - Learn about Elastic IP   <br>                            | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Practice:** <br>&emsp; + Launch an EC2 instance <br>&emsp; + Connect via SSH <br>&emsp; + Attach an EBS volume                                                                                     | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| Day | Task | Start Date | Completion Date | Reference Material |
+| --- | ---- | ---------- | --------------- | ------------------ |
+| 2 | - Get acquainted with FCJ members and find a study group <br> - Read and note internship rules and regulations <br> - Learn about Cloud Computing & AWS Global Infrastructure: <br>&emsp; + Cloud Computing: on-demand delivery of IT resources, pay-as-you-go <br>&emsp; + Benefits: Cost Optimization, Automation & AI, Flexibility, Scale globally <br>&emsp; + AWS Data Center, Availability Zone (AZ), Region, Edge Locations <br> - Create an AWS Free Tier account: <br>&emsp; + Register for an AWS account <br>&emsp; + Add a Visa card to receive 100 AWS credits | 20/04/2026 | 20/04/2026 | <https://cloudjourney.awsstudygroup.com/> <br> <https://www.youtube.com/watch?v=qVCF7UjYC5s&t=854s> <br> <https://000001.awsstudygroup.com/> |
+
 
 
 ### Week 1 Achievements:
 
-* Understood what AWS is and mastered the basic service groups: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+* **Understood Cloud Computing and AWS Global Infrastructure:**
+  * Cloud Computing: on-demand delivery of IT resources with pay-as-you-go pricing.
+  * Benefits: Cost Optimization, Automation & AI, Flexibility, Scale globally.
+  * AWS Data Center: each data center contains tens of thousands of servers using dedicated AWS devices.
+  * **Availability Zone (AZ):** fault isolation — failure in one AZ does not affect another.
+    * AWS recommends deploying on a minimum of **2 AZs**. Vietnamese customers mostly use **Singapore** AZ — a full outage is virtually unheard of.
+    * In practice: cost constraints may justify 1 AZ, but a backup plan to another AZ is mandatory.
+  * **Region:** minimum 3 AZs, 25+ Regions globally — SEA has 3: **Singapore, Malaysia, Thailand**.
+  * **Edge Locations:** CloudFront (CDN), WAF, Route 53.
 
-* Successfully created and configured an AWS Free Tier account.
+* **Successfully created and configured an AWS Free Tier account, added a Visa card, and received 100 AWS credits.**
 
-* Became familiar with the AWS Management Console and learned how to find, access, and use services via the web interface.
 
-* Installed and configured AWS CLI on the computer, including:
-  * Access Key
-  * Secret Key
-  * Default Region
-  * ...
 
-* Used AWS CLI to perform basic operations such as:
-
-  * Check account & configuration information
-  * Retrieve the list of regions
-  * View EC2 service
-  * Create and manage key pairs
-  * Check information about running services
-  * ...
-
-* Acquired the ability to connect between the web interface and CLI to manage AWS resources in parallel.
 * ...
+

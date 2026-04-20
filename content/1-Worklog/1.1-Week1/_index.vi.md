@@ -5,9 +5,7 @@ weight: 1
 chapter: false
 pre: " <b> 1.1. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
+
 
 
 ### Mục tiêu tuần 1:
@@ -16,44 +14,27 @@ pre: " <b> 1.1. </b> "
 * Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
 
 ### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
+| --- | --------- | ------------ | --------------- | -------------- |
+| 2 | - Làm quen thành viên FCJ, tìm nhóm học tập để kết nối <br> - Đọc và ghi chú nội quy, quy định tại đơn vị thực tập <br> - Tìm hiểu Cloud Computing & AWS Global Infrastructure: <br>&emsp; + Cloud Computing: on-demand, pay-as-you-go <br>&emsp; + Lợi ích: Cost Optimization, Automation & AI, Flexibility, Scale globally <br>&emsp; + AWS Data Center, Availability Zone (AZ), Region, Edge Locations <br> - Tạo tài khoản AWS Free Tier: <br>&emsp; + Đăng ký tài khoản AWS <br>&emsp; + Thêm thẻ Visa để nhận 100 credit từ AWS | 20/04/2026 | 20/04/2026 | <https://cloudjourney.awsstudygroup.com/> <br> <https://www.youtube.com/watch?v=qVCF7UjYC5s&t=854s> <br> <https://000001.awsstudygroup.com/> |
+
 
 
 ### Kết quả đạt được tuần 1:
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+* **Hiểu Cloud Computing và hạ tầng AWS toàn cầu:**
+  * Cloud Computing: on-demand delivery of IT resources với pay-as-you-go pricing.
+  * Lợi ích: Cost Optimization, Automation & AI, Flexibility, Scale globally.
+  * AWS Data Center: mỗi data center chứa hàng chục nghìn server, dùng thiết bị chuyên dụng.
+  * **Availability Zone (AZ):** fault isolation — lỗi 1 AZ không ảnh hưởng AZ khác.
+    * AWS khuyến khích tối thiểu **2 AZ**. KH Việt Nam thường dùng AZ **Singapore**, hầu như chưa bao giờ bị down hoàn toàn.
+    * Thực tế: nếu bị ràng buộc chi phí có thể dùng 1 AZ, nhưng cần có kế hoạch backup sang AZ khác.
+  * **Region:** tối thiểu 3 AZ, hơn 25 Region toàn cầu — ĐNA có: **Singapore, Malaysia, Thailand**.
+  * **Edge Locations:** CloudFront (CDN), WAF, Route 53.
 
-* Đã tạo và cấu hình AWS Free Tier account thành công.
+* **Tạo và cấu hình thành công tài khoản AWS Free Tier, thêm thẻ Visa và nhận được 100 credit.**
 
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
 
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
 
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
 * ...
-
 
