@@ -1,0 +1,10 @@
+{{- $destination := .Destination -}}
+{{- $isExternal := or
+    (hasPrefix $destination "http://")
+    (hasPrefix $destination "https://")
+    (hasPrefix $destination "//")
+    (hasPrefix $destination "data:")
+    (hasPrefix $destination "mailto:") -}}
+{{- $normalized := strings.TrimPrefix "/" $destination -}}
+{{- $src := cond $isExternal $destination ($normalized | relURL) -}}
+<img src="{{ $src }}" alt="{{ .Text }}"{{ with .Title }} title="{{ . }}"{{ end }}>
