@@ -151,10 +151,10 @@ pre: " <b> 1.1. </b> "
 
 ### Một số hình ảnh thực hành:
 
-![Setup](/images/Worklog-weak1/Setup%20with%20Virtual%20MFA%20Device.png)
+![Setup](/images/Worklog-weak1/setup-virtual-mfa-device.png)
 
-![Create](/images/Worklog-weak1/Create%20admin%20group%20and%20admin%20user.png)
+![Create](/images/Worklog-weak1/create-admin-group-and-admin-user.png)
 
-![Done Budget](/images/Worklog-weak1/done%20all%20lab%20budget.png)
+![Done Budget](/images/Worklog-weak1/done-all-lab-budget.png)
 
-![Done All](/images/Worklog-weak1/done%20all%205%20lab%20get%20100%20credit%20aws.png)
+![Done All](/images/Worklog-weak1/done-all-5-labs-get-100-credit-aws.png)
