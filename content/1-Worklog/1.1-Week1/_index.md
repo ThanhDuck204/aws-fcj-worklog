@@ -6,150 +6,89 @@ chapter: false
 pre: " <b> 1.1. </b> "
 ---
 
-### Week 1 Objectives:
+## Week 1 Objectives
 
 * Get acquainted with the internship environment and the members of First Cloud Journey.
 * Understand the basic concepts of Cloud Computing and AWS.
-* Learn how to use the AWS Console and CLI, and become familiar with major AWS services.
-* Grasp the principles of security and cost management when using AWS.
-* Understand how AWS guides system design through the Well-Architected Framework.
+* Learn how to use the AWS Console and CLI, and become familiar with core services.
+* Grasp the principles of security and cost management on AWS.
+* Understand system design strategies through the AWS Well-Architected Framework.
 
 ---
 
-### Tasks to be carried out this week:
+## Tasks Carried Out
 
-| Day | Task | Start Date | Completion Date | Reference Material |
-| --- | ---- | ---------- | --------------- | ------------------ |
-| 2 | - Get acquainted with FCJ members and find a study group for discussion <br> - Read the rules and regulations of the internship unit <br> - Learn about Cloud Computing and AWS Global Infrastructure <br>&emsp; + Cloud Computing (on-demand, pay-as-you-go) <br>&emsp; + Benefits: cost optimization, flexibility, easy scalability <br>&emsp; + AWS consists of Regions, AZs, and Edge Locations <br> - Learn the overview of the Well-Architected Framework (6 pillars) <br> - Create an AWS Free Tier account and add a Visa card | 20/04/2026 | 20/04/2026 | https://cloudjourney.awsstudygroup.com/ <br> https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html |
-| 3 | - Learn about the AWS Management Console <br>&emsp; + Do not use the Root User for daily tasks <br>&emsp; + Sign in with an IAM User <br> - Learn about AWS CLI and SDK <br>&emsp; + Configure Access Key and Secret Key <br>&emsp; + Understand how the CLI works <br> - Learn about AWS Support plans and how to create a support case | 21/04/2026 | 21/04/2026 | https://cloudjourney.awsstudygroup.com/ <br> https://www.youtube.com/watch?v=95quNuhvMT0 |
-| 4 | - Set up AWS account security <br>&emsp; + Enable MFA for the Root User <br>&emsp; + Create an Admin Group and an Admin User <br>&emsp; + Assign the AdministratorAccess permission <br>&emsp; + Verify IAM sign-in <br> - Learn how to handle account authentication errors and contact support when needed | 22/04/2026 | 22/04/2026 | https://www.youtube.com/watch?v=1dG5xutGbr4 <br> https://www.youtube.com/watch?v=b9pK1oG534Q <br> https://www.youtube.com/watch?v=69iKhwI7k2Y |
-| 5 | - Read documentation and practice comprehensive labs <br>&emsp; + VPC, Subnet, Route Table <br>&emsp; + Security Group <br>&emsp; + EC2 and IAM <br>&emsp; + RDS and AWS Budgets <br> - Practice the corresponding labs <br> - Perform full resource cleanup after completion | 23/04/2026 | 23/04/2026 | https://cloudjourney.awsstudygroup.com/ <br> https://000007.awsstudygroup.com/vi/3-usage-budget/ |
-| 6 | - Learn how an application connects to a database in the cloud <br> - Practice the Database lab <br>&emsp; + Connect to the database <br>&emsp; + Insert data <br>&emsp; + Query data <br> - Install and explore Kiro <br> - **Study the theory of Module 02 - Networking & Security (VPC, Subnet, SG, NACL)** | 24/04/2026 | 24/04/2026 | https://cloudjourney.awsstudygroup.com/ <br> https://www.youtube.com/watch?v=uAQCm4sm_1c |
-
----
-
-### Week 1 Achievements:
+| Day | Task | Start Date | Completion Date | Reference Materials |
+| --- | ---- | ---------- | --------------- | ------------------- |
+| 2 | Studied Cloud Computing, AWS Global Infrastructure, and the Well-Architected Framework. | 20/04/2026 | 20/04/2026 | https://cloudjourney.awsstudygroup.com/ <br> https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html |
+| 3 | Explored the AWS Management Console, CLI, SDK, and AWS Support case creation. | 21/04/2026 | 21/04/2026 | https://cloudjourney.awsstudygroup.com/ <br> https://www.youtube.com/watch?v=95quNuhvMT0 |
+| 4 | Configured AWS account security (MFA, IAM User/Group) and resolved authentication issues. | 22/04/2026 | 22/04/2026 | https://www.youtube.com/watch?v=1dG5xutGbr4 <br> https://www.youtube.com/watch?v=b9pK1oG534Q <br> https://www.youtube.com/watch?v=69iKhwI7k2Y |
+| 5 | Completed comprehensive labs (VPC, SG, EC2, RDS) and implemented AWS Budgets. | 23/04/2026 | 23/04/2026 | https://cloudjourney.awsstudygroup.com/ <br> https://000007.awsstudygroup.com/vi/3-usage-budget/ |
+| 6 | Practiced Database connectivity/queries, utilized Kiro, and started Module 02 theory. | 24/04/2026 | 24/04/2026 | https://cloudjourney.awsstudygroup.com/ <br> https://www.youtube.com/watch?v=uAQCm4sm_1c |
 
 ---
 
-* **Built a solid foundation in Cloud Computing and AWS:**
-  * Clearly understood the difference between the **On-Premise** model and **Cloud Computing**, especially the cloud's advantages in scalability and cost optimization.
-  * Grasped the nature of the **on-demand** and **pay-as-you-go** model, and recognized that uncontrolled resource usage can lead to unexpected costs.
-  * Understood AWS global infrastructure:
-    * **Region**: the main deployment area
-    * **Availability Zone (AZ)**: ensures high availability
-    * **Edge Location**: helps reduce latency for content delivery
-  * Took the first steps in choosing a suitable AWS Region for users in Vietnam, with Singapore as the preferred option for balancing latency and cost.
+## Knowledge & Skills Gained
+
+### 1. Cloud Computing & AWS Foundations
+
+* **Understood Core Concepts**: Grasped the advantages of the Cloud Computing model (on-demand, pay-as-you-go) compared to traditional On-Premise models in terms of scalability and cost.
+* **Studied Global Infrastructure**: Comprehended the architecture of Regions, Availability Zones (AZs), and Edge Locations to optimize latency and ensure high availability.
+* **Researched Design Frameworks**: Mastered the 6 core pillars of the AWS Well-Architected Framework to design scalable, fault-tolerant, and cost-effective systems.
+
+### 2. Account Management & Security
+
+* **Understood Basic Security Principles**: Learned and applied the Shared Responsibility Model and the Principle of Least Privilege.
+* **Practiced IAM Management**: Recognized the risks of using the Root User, enabled MFA, created IAM Users/Groups, and assigned appropriate administrative permissions for daily operations.
+
+### 3. Cost Optimization & Operations
+
+* **Researched Cost Management**: Identified common causes of unexpected billing charges and practiced setting up automated alerts via **AWS Budgets**.
+* **Practiced Cleanup Workflows**: Cultivated the habit of reviewing and tearing down unused resources after completing labs to prevent unnecessary charges.
+* **Understood Support Procedures**: Learned about the available AWS Support plans and the process of opening a Support Case for authentication issues.
+
+### 4. Networking & Database Overview
+
+* **Studied Basic VPC Architecture**: Gained initial familiarity with Public/Private Subnets, Internet Gateways, NAT Gateways, and Route Tables.
+* **Understood Network Security Mechanisms**: Differentiated between Security Groups (Stateful, instance-level protection) and Network ACLs (Stateless, subnet-level protection).
+* **Explored RDS Services**: Understood how to provision a managed relational database on the cloud and securely connect it to an EC2 application.
 
 ---
 
-* **Understood system design thinking through the AWS Well-Architected Framework:**
-  * Grasped the 6 core pillars and the role of each one in building systems:
-    * Operational Excellence
-    * Security
-    * Reliability
-    * Performance Efficiency
-    * Cost Optimization
-    * Sustainability
-  * Understood that system design is not only about making things run, but also about ensuring:
-    * Scalability
-    * Fault tolerance
-    * Cost-aware design
-  * Recognized the importance of:
-    * **Decoupling systems** instead of designing them as monoliths
-    * Prioritizing **Managed Services** to reduce operational effort
-    * Avoiding over-provisioning resources and using Auto Scaling when appropriate
+## Lab & Practical Experience
+
+### 1. Basic Infrastructure & Security Lab
+
+* **Practiced**: Successfully set up the AWS account, designed a standard IAM User/Group structure, and configured Virtual MFA for the Root User.
+* **Configured**: Established spending limits and budget alerts utilizing AWS Budgets.
+* **Achieved**: Gained a firm grasp of navigating the AWS Console, effectively preparing the environment for advanced hands-on labs.
+
+### 2. Network & Database Architecture Lab
+
+* **Practiced**: Deployed a miniature network architecture including a VPC, subnet partitioning, and Security Group configurations for web servers.
+* **Configured**: Provisioned a basic EC2 instance alongside an RDS instance, successfully establishing database connectivity from the application layer.
+* **Achieved**: Completed the first 5 foundational labs and utilized the Kiro tool to automate system review and resource cleanup.
 
 ---
 
-* **Developed an AWS cost management mindset:**
-  * Clearly recognized the risks of the pay-as-you-go model when resources are not properly controlled.
-  * Identified common causes of unnecessary costs:
-    * Forgetting to stop EC2 instances
-    * Not deleting RDS instances or snapshots
-    * Using resources outside the Free Tier limits
-  * Practiced using **AWS Budgets** to:
-    * Set cost alert thresholds
-    * Monitor usage over time
-  * Formed the habit of:
-    * **Always cleaning up resources after completing a lab**
-    * Reviewing active resources before ending a working session
-  * Started using **Kiro** to support:
-    * Creating a resource review checklist
-    * Partially automating the cost-control review process
+## Difficulties Encountered & Solutions
+
+* **Navigating the AWS Console**: The sheer volume of services initially made locating specific menus (like IAM or Billing) time-consuming.
+  * *Solution*: Adapted by frequently utilizing the Global Search bar and pinning frequently used services to the navigation header.
+* **Controlling Unintended Costs**: While provisioning RDS and EC2 instances, there was concern about incurring unexpected charges due to forgotten resources or exceeding Free Tier limits.
+  * *Solution*: Proactively configured AWS Budgets on the first day and developed a strict habit of using the Kiro tool to scan for "orphaned" resources before logging out.
 
 ---
 
-* **Grasped the basic security principles in AWS:**
-  * Clearly understood the risk of using the **Root User** and why it should not be used for daily work.
-  * Completed the following:
-    * Enabled **MFA** for the Root User
-    * Created an **IAM User** and an **IAM Group**
-    * Assigned permissions through the Group instead of assigning them directly to the User
-  * Understood and applied the **Principle of Least Privilege** when granting access.
-  * Recognized that security in the cloud is based on the **Shared Responsibility Model** between AWS and the user.
+## Lessons Learned
+
+* **Security is the Top Priority**: Never utilizing the Root User for daily tasks and strictly enforcing MFA are fundamental, non-negotiable principles when operating in AWS.
+* **Automated Cost Control**: AWS charges based on a pay-as-you-go model, meaning relying on memory to shut down instances is risky; it must be paired with AWS Budgets and systematic cleanup protocols.
+* **Mastering Network Fundamentals**: Whether deploying EC2 or RDS, everything operates within a VPC. Therefore, a deep understanding of network flows (Subnets, Security Groups) is a prerequisite for working with any other AWS service.
 
 ---
 
-* **Understood how AWS Support works and how to handle basic incidents:**
-  * Learned the available AWS Support plans and the scope of each one.
-  * Learned how to create a **Support Case** when needed.
-  * Gained the ability to handle some basic issues related to authentication and access permissions.
-
----
-
-* **Became familiar with AWS Console, CLI, and SDK:**
-  * Used the AWS Management Console to create and manage resources.
-  * Configured AWS CLI and understood how it interacts with AWS through APIs.
-  * Ran several basic commands to work with resources.
-  * Understood the role of the **AWS SDK** in integrating AWS services into real applications.
-
----
-
-* **Completed the labs and understood the relationships between AWS services:**
-  * Deployed a basic architecture including:
-    * **VPC**: set up the network
-    * **Subnet**: split public and private areas
-    * **EC2**: deploy compute resources
-    * **RDS**: manage the database
-  * Understood the relationships between these components:
-    * EC2 runs inside a Subnet that belongs to a VPC
-    * Security Groups control access to instances
-    * RDS connects to the application through the network layer
-  * Practiced:
-    * Connecting to the database
-    * Inserting and querying data
-  * After finishing the labs, performed full cleanup of all resources to avoid unnecessary charges.
-
----
-
-* **Built a strong understanding of Module 02 - Networking & Security (highlight of the week):**
-  * Understood how to build network architecture in AWS through VPC.
-  * Clearly distinguished:
-    * **Public Subnet**: can access the Internet
-    * **Private Subnet**: cannot access the Internet directly
-  * Grasped the role of key components:
-    * **Internet Gateway (IGW)**: connects the VPC to the Internet
-    * **NAT Gateway**: allows outbound Internet access from a Private Subnet
-    * **Route Table**: controls traffic routing
-    * **VPC Endpoint**: provides private connectivity to AWS services
-  * Clearly understood the security mechanisms:
-    * **Security Group (Stateful)**: controls traffic at the instance level
-    * **NACL (Stateless)**: controls traffic at the subnet level
-  * Analyzed traffic flow:
-    * Public EC2 <-> Internet
-    * Private EC2 -> NAT -> Internet
-  * Became familiar with scaling and multi-network models:
-    * **VPC Peering**
-    * **Transit Gateway**
-  * Recognized that network design is a critical foundation for ensuring:
-    * System security
-    * Scalability
-    * Application stability
-
----
-
-### Practice Images:
+## Lab Screenshots
 
 ![Setup](/images/Worklog-weak1/setup-virtual-mfa-device.png)
 

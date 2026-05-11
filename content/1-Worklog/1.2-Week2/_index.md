@@ -8,165 +8,79 @@ pre: " <b> 1.2. </b> "
 
 ## Week 2 Objectives
 
-* Continue studying Module 02 – Networking & Security on AWS  
-* Understand network connectivity methods (VPN, Direct Connect)  
-* Understand the mechanism of Elastic Load Balancing (ELB)  
-* Get familiar with the basic network architecture in AWS VPC  
+* Complete Module 02 – Networking & Security on AWS.
+* Understand hybrid network connectivity methods (VPN, Direct Connect).
+* Deeply grasp the mechanics of Elastic Load Balancing (ELB) and Route 53 Resolver.
+* Design and deploy multi-region network architectures (VPC Peering, Transit Gateway).
 
 ---
 
 ## Tasks Carried Out
 
-| Day | Task | Date |
-|-----|------|------|
-| 2 | Studied Networking & Security, learned about VPN, Direct Connect, ELB, and VPC architecture | 27/04 |
-| 3 | Practiced VPC: Subnet, Route Table, Internet Gateway, Network ACL | 28/04 |
-| 4 | Set up Hybrid DNS with Route 53, configured Security Groups, connected to RDGW | 29/04 |
-| 5 | Practiced VPC Peering, Network ACL, CloudFormation, EC2 | 30/04 |
-| 6 | Studied & deployed Transit Gateway, completed Module 02 | 02/05 |
+| Day | Task | Start Date | Completion Date | Reference Materials |
+| --- | ---- | ---------- | --------------- | ------------------- |
+| 2 | Studied Networking & Security, learned about VPN, Direct Connect, ELB, and VPC architecture. | 27/04/2026 | 27/04/2026 | https://000003.awsstudygroup.com/ |
+| 3 | Practiced VPC: Subnet, Route Table, Internet Gateway, Network ACL. | 28/04/2026 | 28/04/2026 | https://000003.awsstudygroup.com/ |
+| 4 | Set up Hybrid DNS with Route 53, configured Security Groups, connected to RDGW. | 29/04/2026 | 29/04/2026 | https://000010.awsstudygroup.com/ |
+| 5 | Practiced VPC Peering, Network ACL, CloudFormation, EC2. | 30/04/2026 | 30/04/2026 | https://000019.awsstudygroup.com/ |
+| 6 | Studied & deployed Transit Gateway, completed Module 02. | 02/05/2026 | 02/05/2026 | https://000020.awsstudygroup.com/ |
 
 ---
 
 ## Knowledge & Skills Gained
 
-### 1. Network Connectivity in AWS
+### 1. In-depth VPC Architecture & Security
 
-* Understood how to connect On-Premise environments to AWS  
-* Learned about:
-  * VPN Site-to-Site (connect on-premise systems to VPC)
-  * VPN Client-to-Site (remote user access)
-* Distinguished between:
-  * VPN: low cost, flexible  
-  * Direct Connect: stable, low latency  
+* **Mastered VPC Network Architecture**: Thoroughly understood real-world traffic flows routing through Route Tables, Internet Gateways (for Public Subnets), and NAT Gateways (for Private Subnets).
+* **Studied Multi-layered Security**: Coordinated Security Groups (instance-level control) with Network ACLs (subnet-level control), clearly distinguishing between Default NACLs (allow all) and Custom NACLs.
+* **Researched Network Monitoring**: Learned to utilize VPC Flow Logs to monitor access logs (ACCEPT/REJECT), supporting robust debugging and security auditing.
 
----
+### 2. Enterprise Network Connectivity Services
 
-### 2. Elastic Load Balancing (ELB)
+* **Analyzed Hybrid Connectivity Models**: Differentiated the practical applications of Site-to-Site VPN (cost-effective) and Direct Connect (stable, high-bandwidth) when integrating On-Premise environments with AWS.
+* **Studied Load Distribution (ELB)**: Understood the traffic sharing mechanisms of ALB (Layer 7), NLB (Layer 4 high performance), and features such as Health Checks and Sticky Sessions.
+* **Researched Hybrid DNS Systems**: Grasped the mechanics of AWS Route 53 Resolver (Inbound/Outbound Endpoints) to synchronize DNS resolution between physical Data Centers and the Cloud environment.
 
-* Understood its role in distributing traffic to increase system availability  
-* Learned about Health Check mechanism and Sticky Session  
-* Distinguished the types:
-  * ALB (HTTP/HTTPS – Layer 7)  
-  * NLB (TCP/TLS – high performance)  
-  * CLB (legacy)  
-  * GWLB (security appliances)  
+### 3. Scaling Wide Area Networks
+
+* **Understood Basic VPC Connectivity**: Learned to configure VPC Peering to link two VPCs across the internal AWS network, acknowledging its limitation of lacking transitive routing support.
+* **Analyzed AWS Transit Gateway**: Identified the Transit Gateway as a central Cloud Router (Hub & Spoke), simplifying management when connecting dozens of VPCs compared to complex Peering meshes.
+* **Explored Infrastructure as Code (IaC)**: Familiarized with CloudFormation to rapidly deploy bulk resources (VPCs, Subnets, Route Tables) via pre-defined templates.
 
 ---
 
-### 3. AWS VPC Network Architecture
+## Lab & Practical Experience
 
-* Understood the main components:
-  * Subnet (Public / Private)
-  * Route Table
-  * Internet Gateway (IGW)
-  * NAT Gateway
-  * Security Group (Stateful)  
+### 1. Multi-tier VPC Architecture Lab
 
-* Deployed a VPC model with:
-  * 2 Public Subnets  
-  * 2 Private Subnets  
-  * Distributed across multiple Availability Zones  
+* **Practiced**: Successfully deployed a comprehensive VPC environment encompassing 2 Public Subnets and 2 Private Subnets spanning multiple Availability Zones.
+* **Configured**: Established precise Route Tables ensuring EC2 instances in Private Subnets can securely access the Internet via NAT Gateways while blocking unauthorized inbound access.
+* **Achieved**: Validated configurations via successful ping tests, solidifying a robust network foundation suitable for real-world applications.
 
----
+### 2. Hybrid DNS & Transit Gateway Lab
 
-### 4. Network ACL (NACL)
-
-* Understood Stateless mechanism  
-* Must configure both Inbound & Outbound rules  
-* Distinguished:
-  * Default NACL (Allow all)
-  * Custom NACL (Deny all)
+* **Practiced**: Configured Outbound/Inbound Endpoints for Route 53 Resolver and established DNS query routing rules bridging On-Premise and AWS environments.
+* **Configured**: Leveraged CloudFormation to rapidly spin up 4 VPCs, subsequently configuring a Transit Gateway and associated Route Tables to interconnect the entire network system.
+* **Achieved**: Successfully executed cross-network `nslookup` commands and ensured seamless ping connectivity between EC2 instances across disparate VPCs via the Transit Gateway.
 
 ---
 
-### 5. Hybrid DNS (Route 53 Resolver)
+## Difficulties Encountered & Solutions
 
-* Understood the hybrid DNS model combining AWS and On-Premise  
-* Practiced:
-  * Outbound Endpoint (AWS → On-prem)
-  * Inbound Endpoint (On-prem → AWS)
-  * Resolver Rules  
-
-* Verified successfully using:
-  * nslookup  
-  * Resolve-DnsName  
-
----
-
-### 6. Security & Monitoring
-
-* Configured Security Groups:
-  * Public / Private / VPC Endpoint  
-* Understood multi-layer security model:
-  * Security Group + NACL  
-
-* Used VPC Flow Logs:
-  * Monitor traffic (ACCEPT / REJECT)
-  * Useful for debugging and security auditing  
-
----
-
-### 7. VPC Peering
-
-* Connected 2 VPCs over the private AWS network  
-* No traffic goes through the Internet  
-* Understood limitations:
-  * Does not support transitive peering  
-
----
-
-### 8. AWS Transit Gateway
-
-* Understood its role as a central cloud router (hub)  
-* Compared:
-  * VPC Peering → complex when managing many VPCs  
-  * Transit Gateway → simple, easy to scale  
-
-* Practiced:
-  * Connected 4 VPCs through a single Transit Gateway  
-  * Configured Route Tables  
-  * Verified connectivity between all VPCs successfully  
-
----
-
-### 9. CloudFormation
-
-* Used templates to automatically provision infrastructure  
-* Quickly deployed:
-  * VPC
-  * Subnet
-  * EC2
-  * Transit Gateway  
-
----
-
-## Lab Results
-
-* Successfully built a complete multi-tier VPC system  
-* Set up Hybrid DNS and verified it working  
-* Connected VPCs using both Peering and Transit Gateway  
-* Verified:
-  * Ping between VPCs succeeded  
-  * Internet access from private subnets succeeded  
-* Completed more than 10 hands-on labs  
-
----
-
-## Challenges Encountered
-
-* Difficult to understand the Route 53 Resolver traffic flow at first  
-* Confused between Security Group (Stateful) and NACL (Stateless)  
-* Misconfigured Route Table caused VPC-to-VPC ping to fail  
-* NAT Gateway can incur costs if not monitored carefully  
+* **Connectivity Failures due to Route Table Misconfigurations**: During the Transit Gateway lab, omitting the return route declarations in the subnet Route Tables resulted in continuous ping timeouts.
+  * *Solution*: Reassessed the traffic flow and explicitly added routes pointing the destination VPC CIDRs back to the Transit Gateway Attachments.
+* **Stateful vs. Stateless Confusion**: Initial Custom NACL configurations failed because only the Inbound ports were opened, neglecting the Outbound return path (Ephemeral ports), which blocked traffic.
+  * *Solution*: Deepened understanding of the Stateless nature of NACLs and adjusted rules to open the ephemeral port range (1024-65535) for outbound responses.
+* **Complexity of Route 53 Resolver Flows**: The abstract concepts of Forwarding Rules and Endpoints were initially challenging to grasp when simulating a Hybrid environment.
+  * *Solution*: Carefully studied the DNS resolution process provided in the theory video to clearly visualize the query logs and pathways before configuring them directly in the AWS Console.
 
 ---
 
 ## Lessons Learned
 
-* Always draw a network diagram before configuring  
-* Understanding traffic flow matters more than memorizing theory  
-* Always check Route Table first when there is a connectivity issue  
-* Monitor AWS costs when using managed services  
+* **Understanding the Architecture is Mandatory Before Deployment**: For Networking services, carefully studying the overall network structure provided in the tutorials is non-negotiable. Without understanding the architecture, it is extremely easy to make critical errors in CIDR and Route Table configurations.
+* **Master Flows over Memorizing Theory**: In AWS networking, understanding the exact path of a packet (Packet Flow) from Instance -> SG -> NACL -> Route Table -> IGW/TGW is far more valuable than memorizing service definitions.
+* **Controlling NAT Gateway Cost Risks**: NAT Gateways incur costs based on processing volume and uptime. It is imperative to enforce strict cleanup routines immediately after completing labs involving this service.
 
 ---
 

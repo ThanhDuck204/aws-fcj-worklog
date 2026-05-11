@@ -6,150 +6,89 @@ chapter: false
 pre: " <b> 1.1. </b> "
 ---
 
-### Mục tiêu tuần 1:
+## Mục tiêu tuần 1
 
 * Làm quen với môi trường thực tập và các thành viên trong First Cloud Journey.
 * Hiểu được các khái niệm cơ bản về Cloud Computing và AWS.
 * Biết cách sử dụng AWS Console, CLI và làm quen với các dịch vụ chính.
 * Nắm được các nguyên tắc bảo mật và quản lý chi phí khi sử dụng AWS.
-* Hiểu được cách AWS định hướng thiết kế hệ thống thông qua Well-Architected Framework.
+* Hiểu định hướng thiết kế hệ thống thông qua Well-Architected Framework.
 
 ---
 
-### Các công việc cần triển khai trong tuần này:
+## Công việc đã thực hiện
 
 | Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
 | --- | --------- | ------------ | --------------- | -------------- |
-| 2 | - Làm quen với các thành viên FCJ, tìm nhóm học tập để trao đổi <br> - Đọc nội quy, quy định của đơn vị thực tập <br> - Tìm hiểu Cloud Computing và AWS Global Infrastructure <br>&emsp; + Cloud Computing (on-demand, pay-as-you-go) <br>&emsp; + Lợi ích: tối ưu chi phí, linh hoạt, dễ mở rộng <br>&emsp; + AWS gồm Region, AZ, Edge Location <br> - Tìm hiểu tổng quan Well-Architected Framework (6 trụ cột) <br> - Tạo tài khoản AWS Free Tier và thêm thẻ Visa | 20/04/2026 | 20/04/2026 | https://cloudjourney.awsstudygroup.com/ <br> https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html |
-| 3 | - Tìm hiểu AWS Management Console <br>&emsp; + Không sử dụng Root User cho công việc hằng ngày <br>&emsp; + Đăng nhập bằng IAM User <br> - Tìm hiểu AWS CLI và SDK <br>&emsp; + Cấu hình Access Key, Secret Key <br>&emsp; + Hiểu cách CLI hoạt động <br> - Tìm hiểu các gói AWS Support và cách tạo support case | 21/04/2026 | 21/04/2026 | https://cloudjourney.awsstudygroup.com/ <br> https://www.youtube.com/watch?v=95quNuhvMT0 |
-| 4 | - Thiết lập bảo mật tài khoản AWS <br>&emsp; + Bật MFA cho Root User <br>&emsp; + Tạo Admin Group và Admin User <br>&emsp; + Gán quyền AdministratorAccess <br>&emsp; + Kiểm tra đăng nhập IAM <br> - Tìm hiểu cách xử lý lỗi xác thực tài khoản và liên hệ support khi cần | 22/04/2026 | 22/04/2026 | https://www.youtube.com/watch?v=1dG5xutGbr4 <br> https://www.youtube.com/watch?v=b9pK1oG534Q <br> https://www.youtube.com/watch?v=69iKhwI7k2Y |
-| 5 | - Đọc tài liệu và thực hành lab tổng hợp <br>&emsp; + VPC, Subnet, Route Table <br>&emsp; + Security Group <br>&emsp; + EC2 và IAM <br>&emsp; + RDS và AWS Budgets <br> - Thực hành các lab tương ứng <br> - Thực hiện cleanup toàn bộ tài nguyên sau khi hoàn thành | 23/04/2026 | 23/04/2026 | https://cloudjourney.awsstudygroup.com/ <br> https://000007.awsstudygroup.com/vi/3-usage-budget/ |
-| 6 | - Tìm hiểu cách ứng dụng kết nối với database trên cloud <br> - Thực hành lab Database <br>&emsp; + Kết nối database <br>&emsp; + Thêm dữ liệu <br>&emsp; + Truy vấn dữ liệu <br> - Cài đặt và tìm hiểu Kiro <br> - **Tìm hiểu lý thuyết Module 02 – Networking & Security (VPC, Subnet, SG, NACL)** | 24/04/2026 | 24/04/2026 | https://cloudjourney.awsstudygroup.com/ <br> https://www.youtube.com/watch?v=uAQCm4sm_1c |
+| 2 | Tìm hiểu Cloud Computing, AWS Global Infrastructure và Well-Architected Framework. | 20/04/2026 | 20/04/2026 | https://cloudjourney.awsstudygroup.com/ <br> https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html |
+| 3 | Tìm hiểu AWS Management Console, CLI, SDK và cách tạo AWS Support case. | 21/04/2026 | 21/04/2026 | https://cloudjourney.awsstudygroup.com/ <br> https://www.youtube.com/watch?v=95quNuhvMT0 |
+| 4 | Thiết lập bảo mật tài khoản AWS (MFA, IAM User/Group) và xử lý lỗi xác thực. | 22/04/2026 | 22/04/2026 | https://www.youtube.com/watch?v=1dG5xutGbr4 <br> https://www.youtube.com/watch?v=b9pK1oG534Q <br> https://www.youtube.com/watch?v=69iKhwI7k2Y |
+| 5 | Thực hành lab tổng hợp (VPC, SG, EC2, RDS) và sử dụng AWS Budgets. | 23/04/2026 | 23/04/2026 | https://cloudjourney.awsstudygroup.com/ <br> https://000007.awsstudygroup.com/vi/3-usage-budget/ |
+| 6 | Thực hành Database (kết nối, truy vấn dữ liệu), dùng công cụ Kiro và học lý thuyết Module 02. | 24/04/2026 | 24/04/2026 | https://cloudjourney.awsstudygroup.com/ <br> https://www.youtube.com/watch?v=uAQCm4sm_1c |
 
 ---
 
-### Kết quả đạt được tuần 1:
+## Kiến thức & kỹ năng đạt được
+
+### 1. Nền tảng Cloud Computing & AWS
+
+* **Nắm vững khái niệm**: Hiểu rõ lợi thế của mô hình Cloud Computing (on-demand, pay-as-you-go) so với On-Premise truyền thống về khả năng mở rộng và chi phí.
+* **Đã tìm hiểu hạ tầng toàn cầu**: Nắm bắt cấu trúc Region, Availability Zone (AZ) và Edge Location để tối ưu hóa độ trễ và độ sẵn sàng cho người dùng.
+* **Đã nghiên cứu tư duy thiết kế**: Nắm vững 6 trụ cột cốt lõi của AWS Well-Architected Framework để thiết kế hệ thống đảm bảo tính mở rộng, chịu lỗi và tiết kiệm chi phí.
+
+### 2. Quản lý Tài khoản & Bảo mật (Security)
+
+* **Nắm được nguyên tắc bảo mật cơ bản**: Hiểu và áp dụng mô hình Trách nhiệm chia sẻ (Shared Responsibility Model) và nguyên tắc Đặc quyền tối thiểu (Least Privilege).
+* **Đã thực hành quản lý IAM**: Nắm rõ rủi ro của Root User, thực hiện bật MFA, tạo IAM User/Group và phân quyền quản trị an toàn thay vì dùng Root User cho công việc hằng ngày.
+
+### 3. Tối ưu chi phí & Vận hành
+
+* **Đã tìm hiểu quản lý chi phí**: Nhận diện các nguyên nhân phát sinh chi phí ngoài ý muốn và thực hành thiết lập cảnh báo với **AWS Budgets**.
+* **Đã thực hành quy trình dọn dẹp**: Hình thành thói quen kiểm tra và cleanup toàn bộ tài nguyên không sử dụng sau các bài lab để tránh tính phí.
+* **Nắm được quy trình Support**: Hiểu các gói AWS Support và biết cách mở Support Case khi gặp sự cố xác thực tài khoản.
+
+### 4. Tổng quan Networking & Database
+
+* **Đã nghiên cứu kiến trúc VPC cơ bản**: Bước đầu làm quen với các khái niệm Public/Private Subnet, Internet Gateway, NAT Gateway và Route Table.
+* **Nắm được cơ chế bảo mật mạng**: Phân biệt cơ chế hoạt động của Security Group (Stateful) bảo vệ ở cấp độ instance và Network ACL (Stateless) bảo vệ ở cấp độ subnet.
+* **Đã tìm hiểu dịch vụ RDS**: Nắm được cách cấp phát cơ sở dữ liệu trên cloud và phương thức để ứng dụng EC2 kết nối an toàn với RDS.
 
 ---
 
-* **Nắm vững nền tảng Cloud Computing và AWS:**
-  * Hiểu rõ sự khác biệt giữa mô hình **On-Premise** và **Cloud Computing**, đặc biệt là lợi thế của Cloud về khả năng mở rộng và tối ưu chi phí.
-  * Nắm được bản chất của mô hình **on-demand** và **pay-as-you-go**, từ đó nhận thức được việc sử dụng tài nguyên không kiểm soát có thể dẫn đến phát sinh chi phí ngoài ý muốn.
-  * Hiểu cấu trúc hạ tầng toàn cầu của AWS:
-    * **Region**: khu vực triển khai chính
-    * **Availability Zone (AZ)**: đảm bảo tính sẵn sàng cao
-    * **Edge Location**: tối ưu độ trễ khi phân phối nội dung
-  * Bước đầu biết cách lựa chọn Region phù hợp với người dùng tại Việt Nam (ưu tiên Singapore) nhằm tối ưu độ trễ và chi phí.
+## Kết quả thực hành & Lab
+
+### 1. Lab Cơ sở hạ tầng & Bảo mật cơ bản
+
+* **Đã thực hành**: Thiết lập thành công tài khoản AWS, tạo cấu trúc IAM User/Group chuẩn, và cấu hình Virtual MFA cho Root User.
+* **Đã cấu hình**: Thiết lập giới hạn chi tiêu và cảnh báo ngân sách thông qua tính năng AWS Budgets.
+* **Kết quả đạt được**: Nắm vững luồng sử dụng AWS Console, sẵn sàng môi trường chuẩn bị cho các bài lab nâng cao hơn.
+
+### 2. Lab Kiến trúc mạng & Database
+
+* **Đã thực hành**: Triển khai một kiến trúc mạng thu nhỏ bao gồm VPC, chia Subnet, và thiết lập Security Group cho máy chủ web.
+* **Đã cấu hình**: Cấp phát máy chủ EC2 cơ bản và một instance RDS, sau đó thực hiện kết nối ứng dụng với database thành công.
+* **Kết quả đạt được**: Hoàn thành toàn bộ chuỗi 5 lab đầu tiên và sử dụng Kiro để kiểm tra, cleanup tự động hệ thống.
 
 ---
 
-* **Hiểu tư duy thiết kế hệ thống theo AWS Well-Architected Framework:**
-  * Nắm được 6 trụ cột cốt lõi và vai trò của từng trụ trong việc xây dựng hệ thống:
-    * Operational Excellence
-    * Security
-    * Reliability
-    * Performance Efficiency
-    * Cost Optimization
-    * Sustainability
-  * Hiểu rằng việc thiết kế hệ thống không chỉ tập trung vào chạy được mà còn phải đảm bảo:
-    * Khả năng mở rộng (Scalability)
-    * Khả năng chịu lỗi (Fault Tolerance)
-    * Tối ưu chi phí (Cost-aware design)
-  * Nhận thức được tầm quan trọng của việc:
-    * **Decoupling hệ thống** thay vì thiết kế monolithic
-    * Ưu tiên sử dụng **Managed Services** để giảm tải vận hành
-    * Không over-provision tài nguyên, thay vào đó sử dụng Auto Scaling
+## Khó khăn gặp phải & Cách khắc phục
+
+* **Làm quen với giao diện AWS Console**: Giao diện rộng với quá nhiều dịch vụ khiến việc tìm kiếm menu (như IAM hay Billing) mất nhiều thời gian ban đầu.
+  * *Cách khắc phục*: Tập làm quen với thanh công cụ tìm kiếm toàn cục (Global Search) và ghim (pin) các dịch vụ thường dùng lên thanh điều hướng.
+* **Kiểm soát chi phí phát sinh**: Khi thao tác tạo RDS và EC2, lo ngại việc bị trừ tiền thẻ Visa do quên tắt dịch vụ hoặc vượt mức Free Tier.
+  * *Cách khắc phục*: Đã cấu hình AWS Budgets ngay từ ngày đầu và tập thói quen sử dụng công cụ Kiro để quét các tài nguyên "mồ côi" trước khi log out.
 
 ---
 
-* **Hiểu và hình thành tư duy quản lý chi phí trên AWS:**
-  * Nhận thức rõ rủi ro của mô hình pay-as-you-go khi không kiểm soát tài nguyên.
-  * Xác định được các nguyên nhân phổ biến gây phát sinh chi phí:
-    * Quên tắt EC2 instance
-    * Không xóa RDS hoặc snapshot
-    * Sử dụng tài nguyên ngoài Free Tier
-  * Thực hành sử dụng **AWS Budgets** để:
-    * Thiết lập ngưỡng cảnh báo chi phí
-    * Theo dõi mức sử dụng theo thời gian
-  * Hình thành thói quen:
-    * **Luôn cleanup tài nguyên sau khi hoàn thành lab**
-    * Kiểm tra tài nguyên trước khi kết thúc phiên làm việc
-  * Bước đầu sử dụng công cụ **Kiro** để hỗ trợ:
-    * Tạo checklist kiểm tra tài nguyên
-    * Tự động hóa một phần quy trình rà soát chi phí
+## Bài học rút ra
+
+* **Bảo mật là ưu tiên số một**: Không bao giờ sử dụng Root User cho các tác vụ hằng ngày và luôn thiết lập MFA là nguyên tắc sống còn khi làm việc với AWS.
+* **Kiểm soát chi phí tự động**: AWS tính tiền theo nguyên tắc pay-as-you-go, do đó việc dựa vào trí nhớ để tắt máy chủ là không an toàn; phải kết hợp AWS Budgets và quy trình dọn dẹp bài bản.
+* **Nắm vững kiến trúc mạng**: Dù là dịch vụ EC2 hay RDS, mọi thứ đều phải chạy trên nền tảng VPC. Do đó, hiểu rõ luồng mạng (Subnet, Security Group) là tiền đề để làm việc với bất kỳ dịch vụ AWS nào khác.
 
 ---
 
-* **Nắm được các nguyên tắc bảo mật cơ bản trong AWS:**
-  * Hiểu rõ rủi ro khi sử dụng **Root User** và lý do không dùng trong công việc hằng ngày.
-  * Đã thực hiện:
-    * Bật **MFA** cho Root User
-    * Tạo **IAM User** và **IAM Group**
-    * Gán quyền thông qua Group thay vì trực tiếp cho User
-  * Hiểu và áp dụng nguyên tắc **Least Privilege** trong cấp quyền.
-  * Nhận thức được bảo mật trong Cloud là **trách nhiệm chia sẻ (Shared Responsibility Model)** giữa AWS và người dùng.
-
----
-
-* **Hiểu cách AWS Support hoạt động và xử lý sự cố cơ bản:**
-  * Nắm được các gói Support và phạm vi hỗ trợ của từng gói.
-  * Biết cách tạo **Support Case** khi gặp sự cố.
-  * Có khả năng tự xử lý một số lỗi cơ bản liên quan đến xác thực và quyền truy cập.
-
----
-
-* **Làm quen với AWS Console, CLI và SDK:**
-  * Sử dụng AWS Management Console để tạo và quản lý tài nguyên.
-  * Cấu hình thành công AWS CLI và hiểu cách CLI tương tác với AWS thông qua API.
-  * Thực hiện được một số lệnh cơ bản để thao tác tài nguyên.
-  * Hiểu vai trò của **AWS SDK** trong việc tích hợp AWS vào ứng dụng thực tế.
-
----
-
-* **Hoàn thành các lab và hiểu mối liên hệ giữa các dịch vụ:**
-  * Triển khai được kiến trúc cơ bản gồm:
-    * **VPC**: thiết lập network
-    * **Subnet**: phân chia public/private
-    * **EC2**: triển khai compute
-    * **RDS**: quản lý database
-  * Hiểu mối quan hệ giữa các thành phần:
-    * EC2 hoạt động trong Subnet thuộc VPC
-    * Security Group kiểm soát truy cập instance
-    * RDS kết nối với application thông qua network
-  * Thực hành:
-    * Kết nối database
-    * Thêm và truy vấn dữ liệu
-  * Sau khi hoàn thành lab, đã thực hiện cleanup toàn bộ tài nguyên để tránh phát sinh chi phí.
-
----
-
-* **Nắm vững Module 02 – Networking & Security (điểm nổi bật trong tuần):**
-  * Hiểu cách xây dựng kiến trúc mạng trong AWS thông qua VPC.
-  * Phân biệt rõ:
-    * **Public Subnet**: có thể truy cập Internet
-    * **Private Subnet**: không truy cập trực tiếp Internet
-  * Nắm vững vai trò của các thành phần:
-    * **Internet Gateway (IGW)**: kết nối VPC với Internet
-    * **NAT Gateway**: cho phép Private Subnet truy cập Internet theo chiều ra
-    * **Route Table**: định tuyến traffic
-    * **VPC Endpoint**: kết nối nội bộ tới dịch vụ AWS
-  * Hiểu rõ cơ chế bảo mật:
-    * **Security Group (Stateful)**: kiểm soát ở cấp instance
-    * **NACL (Stateless)**: kiểm soát ở cấp subnet
-  * Phân tích được luồng traffic:
-    * Public EC2 ↔ Internet
-    * Private EC2 → NAT → Internet
-  * Làm quen với mô hình mở rộng:
-    * **VPC Peering**
-    * **Transit Gateway**
-  * Nhận thức được rằng thiết kế network là nền tảng quan trọng để đảm bảo:
-    * Bảo mật hệ thống
-    * Khả năng mở rộng
-    * Tính ổn định của ứng dụng
-
----
-
-### Một số hình ảnh thực hành:
+## Hình ảnh thực hành
 
 ![Setup](/images/Worklog-weak1/setup-virtual-mfa-device.png)
 

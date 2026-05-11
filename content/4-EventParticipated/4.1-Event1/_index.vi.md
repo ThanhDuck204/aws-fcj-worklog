@@ -1,125 +1,151 @@
 ---
 title: "Event 1"
-date: 2024-01-01
+date: 2026-05-09
 weight: 1
 chapter: false
 pre: " <b> 4.1. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
+# Bài Thu Hoạch: AWS Study Group - Buổi Chia Sẻ Cộng Đồng
 
-# Bài thu hoạch “GenAI-powered App-DB Modernization workshop”
+### Thông Tin Sự Kiện
 
-### Mục Đích Của Sự Kiện
+| Thông tin | Chi tiết |
+|---|---|
+| **Tên sự kiện** | AWS Study Group – Buổi Chia Sẻ Cộng Đồng |
+| **Ngày & Giờ** | 09/05/2026 |
+| **Địa điểm** | TP. Hồ Chí Minh |
+| **Vai trò** | Người tham dự |
 
-- Chia sẻ best practices trong thiết kế ứng dụng hiện đại
-- Giới thiệu phương pháp DDD và event-driven architecture
-- Hướng dẫn lựa chọn compute services phù hợp
-- Giới thiệu công cụ AI hỗ trợ development lifecycle
+---
+
+### Mục Tiêu Sự Kiện
+
+Sự kiện tập trung vào một số mục tiêu chính:
+
+- **Chia sẻ kinh nghiệm học tập**: Truyền cảm hứng xây dựng thói quen học tập bền vững cho cộng đồng
+- **Giới thiệu công cụ AI**: Chia sẻ về ứng dụng AI và kỹ thuật Prompt Engineering trong phát triển phần mềm
+- **Định hướng nghề nghiệp**: Cung cấp góc nhìn thực tế về thị trường việc làm và cách nâng cấp bản thân
+- **Phương pháp phát triển hiện đại**: Giới thiệu các phương pháp và quy trình phát triển phần mềm chuyên nghiệp
+
+---
 
 ### Danh Sách Diễn Giả
 
-- **Jignesh Shah** - Director, Open Source Databases
-- **Erica Liu** - Sr. GTM Specialist, AppMod
-- **Fabrianne Effendi** - Assc. Specialist SA, Serverless Amazon Web Services
+Sự kiện có 4 diễn giả theo thứ tự trình bày:
 
-### Nội Dung Nổi Bật
+#### 1. Huỳnh Hoàng Long *(Admin AWS Study Group)*
 
-#### Đưa ra các ảnh hưởng tiêu cực của kiến trúc ứng dụng cũ
+**Chủ đề**: *"Làm sao để nghiện học tập như nghiện mạng xã hội"*
 
-- Thời gian release sản phẩm lâu → Mất doanh thu/bỏ lỡ cơ hội
-- Hoạt động kém hiệu quả → Mất năng suất, tốn kém chi phí
-- Không tuân thủ các quy định về bảo mật → Mất an ninh, uy tín
+- Chia sẻ chiến lược xây dựng thói quen học tập bền vững và hấp dẫn
+- Trình bày cách tạo động lực học tập dài hạn trong lĩnh vực công nghệ
+- Hướng dẫn kỹ thuật học tập hiệu quả theo cơ chế tâm lý học hành vi
 
-#### Chuyển đổi sang kiến trúc ứng dụng mới - Microservice Architecture
+---
 
-Chuyển đổi thành hệ thống modular – từng chức năng là một **dịch vụ độc lập** giao tiếp với nhau qua **sự kiện** với 3 trụ cột cốt lõi:
+#### 2. Nguyễn Tuấn Thịnh *(Admin AWS Study Group)*
 
-- **Queue Management**: Xử lý tác vụ bất đồng bộ
-- **Caching Strategy:** Tối ưu performance
-- **Message Handling:** Giao tiếp linh hoạt giữa services
+**Chủ đề**: *"Automated Prompt Engineering: Enhancing LLM Output Quality"*
 
-#### Domain-Driven Design (DDD)
+- Giới thiệu **Proptimizer Extension** – một browser extension tự xây dựng giúp tối ưu hóa câu prompt tự động
+- Khám phá các kỹ thuật cải thiện chất lượng nội dung do AI (LLM) tạo ra
+- Demo thực tế cách extension hỗ trợ developer trong quá trình làm việc với công cụ AI
 
-- **Phương pháp 4 bước**: Xác định domain events → sắp xếp timeline → identify actors → xác định bounded contexts
-- **Case study bookstore**: Minh họa cách áp dụng DDD thực tế
-- **Context mapping**: 7 patterns tích hợp bounded contexts
+---
 
-#### Event-Driven Architecture
+#### 3. Anh Khang *(Admin AWS Study Group)*
 
-- **3 patterns tích hợp**: Publish/Subscribe, Point-to-point, Streaming
-- **Lợi ích**: Loose coupling, scalability, resilience
-- **So sánh sync vs async**: Hiểu rõ trade-offs (sự đánh đổi)
+**Chủ đề**: *"Tại sao bạn chưa đi làm"*
 
-#### Compute Evolution
+- Phân tích thực trạng **thị trường việc làm** ngành IT tại Việt Nam
+- Chia sẻ về yêu cầu **môi trường làm việc** và kỳ vọng của doanh nghiệp đối với sinh viên mới
+- Hướng dẫn cách **nâng cấp bản thân** toàn diện: kỹ năng kỹ thuật, kỹ năng mềm và tư duy chuyên nghiệp
+- Giải thích khoảng cách giữa kiến thức học đường và sẵn sàng đi làm thực tế
 
-- **Shared Responsibility Model**: Từ EC2 → ECS → Fargate → Lambda
-- **Serverless benefits**: No server management, auto-scaling, pay-for-value
-- **Functions vs Containers**: Criteria lựa chọn phù hợp
+---
 
-#### Amazon Q Developer
+#### 4. Chị Thảo *(Software Developer)*
 
-- **SDLC automation**: Từ planning đến maintenance
-- **Code transformation**: Java upgrade, .NET modernization
-- **AWS Transform agents**: VMware, Mainframe, .NET migration
+**Chủ đề**: *"BMAD"* – Build, Measure, Analyze, Deploy
 
-### Những Gì Học Được
+- Giới thiệu phương pháp phát triển phần mềm hiện đại theo chu trình BMAD
+- Chia sẻ tầm quan trọng của đo lường và phân tích trong quá trình phát triển sản phẩm
+- Trình bày về các thực hành triển khai liên tục (Continuous Deployment)
 
-#### Tư Duy Thiết Kế
+---
 
-- **Business-first approach**: Luôn bắt đầu từ business domain, không phải technology
-- **Ubiquitous language**: Importance của common vocabulary giữa business và tech teams
-- **Bounded contexts**: Cách identify và manage complexity trong large systems
+### Những Điểm Chính Rút Ra
 
-#### Kiến Trúc Kỹ Thuật
+#### 1. Thói Quen Học Tập và Động Lực
+- Học được các chiến lược để làm cho việc học hấp dẫn tương tự mạng xã hội
+- Hiểu tầm quan trọng của thói quen học tập nhất quán và liên tục
+- Khám phá kỹ thuật duy trì động lực trong học tập kỹ thuật dài hạn
 
-- **Event storming technique**: Phương pháp thực tế để mô hình hóa quy trình kinh doanh
-- Sử dụng **Event-driven communication** thay vì synchronous calls
-- **Integration patterns**: Hiểu khi nào dùng sync, async, pub/sub, streaming
-- **Compute spectrum**: Criteria chọn từ VM → containers → serverless
+#### 2. Phát Triển Hỗ Trợ Bởi AI
+- Hiểu rõ cách các công cụ AI hỗ trợ toàn bộ vòng đời phát triển phần mềm
+- Học về **Automated Prompt Engineering** và cách áp dụng vào công việc thực tế
+- Tìm hiểu về **Proptimizer Extension** – công cụ tối ưu hóa prompt do cộng đồng tự phát triển
 
-#### Chiến Lược Hiện Đại Hóa
+#### 3. Phát Triển Sự Nghiệp
+- Nhận được hướng dẫn thực tế về chuẩn bị cho công việc chuyên nghiệp
+- Hiểu khoảng cách giữa học tập tại trường và sẵn sàng cho công việc thực tế
+- Học về kỳ vọng, yêu cầu và văn hóa làm việc trong ngành IT
 
-- **Phased approach**: Không rush, phải có roadmap rõ ràng
-- **7Rs framework**: Nhiều con đường khác nhau tùy thuộc vào đặc điểm của mỗi ứng dụng
-- **ROI measurement**: Cost reduction + business agility
+#### 4. Thực Hành Phát Triển Hiện Đại
+- Khám phá phương pháp **BMAD**: Build → Measure → Analyze → Deploy
+- Hiểu tầm quan trọng của đo lường và phân tích trong phát triển sản phẩm
+- Học về các thực hành triển khai liên tục trong môi trường thực tế
 
-### Ứng Dụng Vào Công Việc
+---
 
-- **Áp dụng DDD** cho project hiện tại: Event storming sessions với business team
-- **Refactor microservices**: Sử dụng bounded contexts để identify service boundaries
-- **Implement event-driven patterns**: Thay thế một số sync calls bằng async messaging
-- **Serverless adoption**: Pilot AWS Lambda cho một số use cases phù hợp
-- **Try Amazon Q Developer**: Integrate vào development workflow để boost productivity
+### Suy Ngẫm Cá Nhân
 
-### Trải nghiệm trong event
+Sự kiện này vô cùng có giá trị đối với hành trình thực tập của em. Các diễn giả đã cung cấp những hiểu biết thực tế, áp dụng trực tiếp vào con đường học tập hiện tại của em với AWS.
 
-Tham gia workshop **“GenAI-powered App-DB Modernization”** là một trải nghiệm rất bổ ích, giúp tôi có cái nhìn toàn diện về cách hiện đại hóa ứng dụng và cơ sở dữ liệu bằng các phương pháp và công cụ hiện đại. Một số trải nghiệm nổi bật:
+Phiên trình bày của **anh Thịnh** về Proptimizer Extension đặc biệt ấn tượng – thấy được cách một thành viên cộng đồng có thể tự xây dựng công cụ để giải quyết vấn đề thực tế, không chỉ học lý thuyết.
 
-#### Học hỏi từ các diễn giả có chuyên môn cao
-- Các diễn giả đến từ AWS và các tổ chức công nghệ lớn đã chia sẻ **best practices** trong thiết kế ứng dụng hiện đại.
-- Qua các case study thực tế, tôi hiểu rõ hơn cách áp dụng **Domain-Driven Design (DDD)** và **Event-Driven Architecture** vào các project lớn.
+Bài chia sẻ của **anh Khang** về thị trường việc làm giúp em nhìn nhận rõ hơn về khoảng cách giữa kiến thức hiện tại và những gì doanh nghiệp thực sự cần – đây là động lực để em chủ động nâng cấp bản thân mỗi ngày.
 
-#### Trải nghiệm kỹ thuật thực tế
-- Tham gia các phiên trình bày về **event storming** giúp tôi hình dung cách **mô hình hóa quy trình kinh doanh** thành các domain events.
-- Học cách **phân tách microservices** và xác định **bounded contexts** để quản lý sự phức tạp của hệ thống lớn.
-- Hiểu rõ trade-offs giữa **synchronous và asynchronous communication** cũng như các pattern tích hợp như **pub/sub, point-to-point, streaming**.
+Quan trọng nhất, sự kiện này giúp em hiểu rằng cộng đồng AWS Study Group không chỉ là nơi học kỹ thuật, mà còn là nơi định hướng nghề nghiệp và kết nối những người cùng chí hướng.
 
-#### Ứng dụng công cụ hiện đại
-- Trực tiếp tìm hiểu về **Amazon Q Developer**, công cụ AI hỗ trợ SDLC từ lập kế hoạch đến maintenance.
-- Học cách **tự động hóa code transformation** và pilot serverless với **AWS Lambda**, từ đó nâng cao năng suất phát triển.
+---
 
-#### Kết nối và trao đổi
-- Workshop tạo cơ hội trao đổi trực tiếp với các chuyên gia, đồng nghiệp và team business, giúp **nâng cao ngôn ngữ chung (ubiquitous language)** giữa business và tech.
-- Qua các ví dụ thực tế, tôi nhận ra tầm quan trọng của **business-first approach**, luôn bắt đầu từ nhu cầu kinh doanh thay vì chỉ tập trung vào công nghệ.
+### Cơ Hội Kết Nối
 
-#### Bài học rút ra
-- Việc áp dụng DDD và event-driven patterns giúp giảm **coupling**, tăng **scalability** và **resilience** cho hệ thống.
-- Chiến lược hiện đại hóa cần **phased approach** và đo lường **ROI**, không nên vội vàng chuyển đổi toàn bộ hệ thống.
-- Các công cụ AI như Amazon Q Developer có thể **boost productivity** nếu được tích hợp vào workflow phát triển hiện tại.
+- Kết nối với các admin và thành viên cộng đồng AWS Study Group
+- Gặp gỡ các intern và người học khác trong hệ sinh thái AWS
+- Trao đổi thông tin để hợp tác trong các dự án và lộ trình học tập tương lai
+- Tham gia thảo luận về các công cụ AI và phương pháp phát triển hiện đại
 
-#### Một số hình ảnh khi tham gia sự kiện
-* Thêm các hình ảnh của các bạn tại đây
-> Tổng thể, sự kiện không chỉ cung cấp kiến thức kỹ thuật mà còn giúp tôi thay đổi cách tư duy về thiết kế ứng dụng, hiện đại hóa hệ thống và phối hợp hiệu quả hơn giữa các team.
+---
+
+### Kế Hoạch Hành Động
+
+Dựa trên sự kiện, em dự định:
+
+- Áp dụng các chiến lược thói quen học tập vào thói quen hàng ngày
+- Thử nghiệm **Proptimizer Extension** và các kỹ thuật Prompt Engineering trong công việc với AI
+- Tập trung xây dựng kỹ năng thực tế song song với kiến thức lý thuyết
+- Khám phá phương pháp **BMAD** trong các dự án tương lai
+- Duy trì kết nối và đóng góp tích cực cho cộng đồng AWS Study Group
+
+---
+
+### Tài Liệu Tham Khảo
+
+- [AWS Study Group Facebook](https://www.facebook.com/groups/awsstudygroup)
+- [Discord Lamentum](https://discord.gg/lamentum)
+- Slides và tài liệu sự kiện (chia sẻ qua Discord)
+
+---
+
+**Đánh giá tổng thể: ⭐⭐⭐⭐⭐ (5/5)**
+
+> Sự kiện này đã nâng cao đáng kể sự hiểu biết của em về cả phát triển kỹ thuật lẫn định hướng chuyên nghiệp trong hệ sinh thái AWS. Đặc biệt ấn tượng với tinh thần chia sẻ và đóng góp của các admin và thành viên cộng đồng.
+
+---
+
+### Một Số Hình Ảnh Tại Sự Kiện
+
+![Ảnh chụp cùng các thành viên AWS Study Group sau sự kiện](/images/Event/event1.jpg)
