@@ -9,8 +9,8 @@ pre: " <b> 1.3. </b> "
 ## Week 3 Objectives
 
 * Begin studying Module 03 – Compute on AWS.
-* Understand the core concepts of Amazon EC2.
-* Learn how to select Instance Types, AMIs, and security mechanisms for EC2.
+* Understand core Amazon EC2 concepts: Instance Types, AMI, Key Pair, and pricing models.
+* Learn EC2 scaling, managed storage (EFS, FSx), and start Module 04 – Storage.
 
 ---
 
@@ -21,74 +21,61 @@ pre: " <b> 1.3. </b> "
 | 2 | Studied Module 03 theory – Compute: Amazon EC2, Instance Types, AMI, Key Pair | 05/05/2026 | 05/05/2026 | |
 | 3 | Studied EC2 User Data, EC2 Meta Data, and EC2 Auto Scaling | 06/05/2026 | 06/05/2026 | |
 | 4 | Completed Lab 13: AWS Backup infrastructure deployment, SNS setup, and backup/restore testing | 07/05/2026 | 07/05/2026 | https://000013.awsstudygroup.com/ |
-| 5 | Researched AWS Storage Gateway workshop setup and S3 Static Website & CloudFront. Completed Module 03. | 08/05/2026 | 08/05/2026 | https://000024.awsstudygroup.com/vi/3-cleanup/ <br> https://000057.awsstudygroup.com/ |
-| 6 | Began studying Module 04 theory – Storage | 09/05/2026 | 09/05/2026 | |
+| 5 | Researched AWS Storage Gateway workshop and S3 Static Website & CloudFront. Completed Module 03. | 08/05/2026 | 08/05/2026 | https://000024.awsstudygroup.com/vi/3-cleanup/ <br> https://000057.awsstudygroup.com/ |
+| 6 | Began studying Module 04 theory – Storage on AWS | 09/05/2026 | 09/05/2026 | |
 
 ---
 
 ## Knowledge & Skills Gained
 
-### 1. Amazon EC2 (Compute Service)
+### 1. Amazon EC2 (Compute)
 
-* **Understood Core Concepts**: Mastered the architecture of EC2 (Elastic Compute Cloud), specifically its flexible resource allocation and rapid provisioning suitable for diverse workloads.
-* **Studied Hardware & Virtualization**: Learned to select appropriate configurations via **EC2 Instance Types** (CPU, RAM, Network limits) and understood underlying Hypervisor architectures.
-* **Researched Amazon Machine Images (AMI)**: Comprehended the mechanism of mass-provisioning virtual machines using AMIs (incorporating OS, permissions, and block device mapping).
-* **Practiced Access Security**: Mastered **Key Pair** (Public/Private Key) management for SSH authentication (Linux) and RDP password decryption (Windows).
-* **Analyzed Pricing Models**: Differentiated and selected appropriate **EC2 Pricing Options** (On-demand, Reserved, Savings Plans, Spot) to optimize infrastructure costs.
+* **Understood EC2 Architecture**: Grasped flexible resource allocation and fast provisioning via **EC2 Instance Types** (CPU, RAM, Network) and **AMI** (OS, permissions, block device mapping).
+* **Practiced Access Security**: Managed **Key Pairs** for SSH (Linux) and RDP password decryption (Windows).
+* **Analyzed Pricing Models**: Compared **EC2 Pricing Options** (On-demand, Reserved, Savings Plans, Spot) to select cost-appropriate strategies per workload.
 
 ### 2. EC2 Tooling & Scaling
 
-* **Understood Local Storage Mechanisms**: Distinguished between **Instance Store** (high-speed NVMe, ephemeral storage) and persistent solutions like EBS.
-* **Researched Configuration Automation**: Utilized **EC2 User Data** (launch scripts) and retrieved **EC2 Meta Data** to automatically bootstrap server environments upon boot.
-* **Studied EC2 Auto Scaling**: Grasped the principles of automated scale-out and scale-in policies to maintain High Availability (HA) under fluctuating demands.
+* **Studied Storage Types**: Distinguished **Instance Store** (high-speed NVMe, ephemeral) from persistent EBS storage.
+* **Researched Automation**: Used **EC2 User Data** (launch scripts) and **EC2 Meta Data** to auto-bootstrap server environments.
+* **Understood Auto Scaling**: Learned automated scale-out/in policies to maintain High Availability under varying loads.
 
-### 3. Extended Compute & Network Storage
+### 3. Extended Compute & Storage
 
-* **Studied Amazon Lightsail**: Explored the cost-optimized virtual private server service, complete with bundled bandwidth, ideal for lightweight applications or dev/test environments.
-* **Researched File Systems**: Compared **Amazon EFS** (Linux-only) with **Amazon FSx** (Windows/Linux), understanding simultaneous multi-EC2 mounting and usage-based billing mechanisms.
-* **Understood Application Migration**: Comprehended the role of the **AWS Application Migration Service (MGN)** in establishing Disaster Recovery Sites by replicating on-premise servers to AWS.
+* **Studied File Systems**: Compared **Amazon EFS** (Linux-only) with **Amazon FSx** (Windows/Linux) for simultaneous multi-EC2 mounting.
+* **Researched Application Migration**: Understood how **AWS MGN** replicates on-premise servers to AWS for Disaster Recovery.
 
-### 4. Amazon S3 (Storage Service)
+### 4. Amazon S3 (Storage)
 
-* **Understood Object Storage**: Mastered object-based storage architecture, WORM (Write Once Read Many) data models, size constraints (5TB max per object), and multipart upload capabilities.
-* **Studied Access Point Security**: Recognized the benefits of **S3 Access Points** in designing granular access permissions for multiple applications without overly complicating bucket policies.
-* **Analyzed S3 Storage Classes**: Understood data classification for cost optimization across Standard, Infrequent Access (IA), Intelligent Tiering, and Glacier/Deep Archive tiers.
-* **Researched Data Lifecycle Automation**: Explored **Object Life Cycle Management** to automate transitions between storage classes, alongside **Cross-Region Replication (CRR)** for robust disaster recovery.
+* **Understood Object Storage**: Mastered WORM model, 5TB object size limit, multipart upload, and **S3 Access Points** for granular permissions.
+* **Analyzed S3 Storage Classes**: Learned cost optimization across Standard, IA, Intelligent Tiering, and Glacier/Deep Archive.
+* **Researched Lifecycle Automation**: Understood **Object Lifecycle Management** for automatic tier transitions and **Cross-Region Replication (CRR)** for disaster recovery.
 
 ---
 
 ## Lab & Practical Experience
 
-### 1. Lab 13: Deploying AWS Backup Infrastructure
-
-* **Practiced**: Created an S3 Bucket, adjusted access policies, and deployed a CloudFormation template to automate the provisioning of the AWS Backup infrastructure.
-* **Configured**: Implemented an automated alerting system via **Amazon SNS**, enabling real-time email notifications regarding backup or restore task statuses.
-* **Achieved**: Successfully operated an on-demand backup workflow, executed automated restore tests via AWS Lambda, and monitored detailed execution logs using CloudWatch.
-
-### 2. Storage Gateway Workshop & S3 Static Website Research
-
-* **Researched**: Investigated Storage Gateway architecture (cache volumes, SMB file share configurations) to deeply understand hybrid storage models bridging On-premise and AWS Cloud environments.
-* **Studied**: Examined the workflow for hosting static websites directly on an **S3 Bucket**, configuring secure public access, and utilizing Versioning to prevent accidental data loss.
-* **Understood**: Explored global content delivery acceleration through **Amazon CloudFront**, integrating Origin Access Control (OAC) to maintain secure backend connections.
+* **Lab 13 – AWS Backup**: Created S3 Bucket, deployed CloudFormation template, configured **Amazon SNS** alerts, and successfully ran an on-demand backup and automated restore via AWS Lambda; monitored logs in CloudWatch.
+* **Storage Gateway & S3 Workshop**: Researched Storage Gateway architecture (SMB file share, cache volume); hosted a static website on S3 with public access policy and Versioning enabled; explored **Amazon CloudFront** with Origin Access Control (OAC).
 
 ---
 
 ## Difficulties Encountered & Solutions
 
-* **Free Tier Limitations**: During the AWS Storage Gateway research, it was not possible to fully provision a Gateway instance without exceeding the AWS Free Tier limitations.
-  * *Solution*: Shifted focus to theoretical analysis, thoroughly reviewing the setup workflow (SMB configurations, cache volumes) through official documentation and AWS demo workshops.
-* **S3 Static Website Access Policies**: Encountered initial confusion differentiating between account/bucket-level `Block public access` settings and granular `Bucket Policies`.
-  * *Solution*: Proactively researched documentation and successfully configured the bucket by disabling public access blocks and implementing a secure `s3:GetObject` policy for `Principal: "*"`.
-* **Complexity in AWS Backup Configurations**: Establishing an automated restore flow via AWS Lambda required highly specific IAM Role permissions, making it prone to "Access Denied" errors.
-  * *Solution*: Carefully audited the CloudFormation template and traced the execution progress using CloudWatch Logs to fully grasp how IAM Roles are dynamically granted and assumed.
+* **Free Tier Limitations on Storage Gateway**: Could not fully provision a Gateway instance within Free Tier limits.
+  * *Solution*: Focused on theoretical analysis and walkthrough documentation (SMB configuration, cache volumes) via official AWS workshops.
+* **S3 Static Website Access Policies**: Confused between account-level `Block public access` and granular `Bucket Policy` settings.
+  * *Solution*: Researched documentation and successfully configured `s3:GetObject` for `Principal: "*"` alongside disabling public access blocks.
+* **IAM Complexity in AWS Backup**: Automated restore via Lambda required highly specific IAM Role permissions, frequently causing "Access Denied" errors.
+  * *Solution*: Audited the CloudFormation template and traced execution via CloudWatch Logs to understand how IAM Roles were dynamically assigned.
 
 ---
 
 ## Lessons Learned
 
-* A solid understanding of **Pricing Options** and **Storage Classes** is the core foundational element to achieving true Cost Optimization when designing cloud architectures.
-* In operational environments, deploying **Object Life Cycle Management** and **Auto Scaling** is mandatory to allow systems to adapt dynamically to load variations and data aging, significantly reducing manual intervention.
-* When provisioning infrastructure automatically via **CloudFormation**, meticulously reviewing templates and IAM Role creation flows is critical to maintaining strict security postures.
+* Understanding **Pricing Options** and **Storage Classes** is foundational to Cost Optimization when designing cloud architectures.
+* **Object Lifecycle Management** and **Auto Scaling** are essential operational tools – they remove manual overhead and keep systems adaptive by design.
+* When using **CloudFormation**, always review the template and IAM Role flows carefully to avoid silent permission errors during automated provisioning.
 
 ---
 

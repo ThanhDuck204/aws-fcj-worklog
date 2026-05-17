@@ -34,7 +34,7 @@ The event focused on several key objectives:
 
 The event featured 4 speakers in the following order:
 
-#### 1. Huỳnh Hoàng Long *(Admin, AWS Study Group)*
+#### 1. Huynh Hoang Long *(Admin, AWS Study Group)*
 
 **Topic**: *"How to Get Addicted to Learning Like Social Media"*
 
@@ -44,7 +44,7 @@ The event featured 4 speakers in the following order:
 
 ---
 
-#### 2. Nguyễn Tuấn Thịnh *(Admin, AWS Study Group)*
+#### 2. Nguyen Tuan Thinh *(Admin, AWS Study Group)*
 
 **Topic**: *"Automated Prompt Engineering: Enhancing LLM Output Quality"*
 
@@ -54,7 +54,7 @@ The event featured 4 speakers in the following order:
 
 ---
 
-#### 3. Anh Khang *(Admin, AWS Study Group)*
+#### 3. Mr. Khang *(Admin, AWS Study Group)*
 
 **Topic**: *"Why You Haven't Started Working Yet"*
 
@@ -65,7 +65,7 @@ The event featured 4 speakers in the following order:
 
 ---
 
-#### 4. Chị Thảo *(Software Developer)*
+#### 4. Ms. Thao *(Software Developer)*
 
 **Topic**: *"BMAD"* – Build, Measure, Analyze, Deploy
 
@@ -103,7 +103,7 @@ The event featured 4 speakers in the following order:
 
 This event was incredibly valuable for my internship journey. The speakers provided practical insights directly applicable to my current learning path with AWS.
 
-**Thịnh's** session on the Proptimizer Extension was particularly impressive – seeing a community member build their own tool to solve real problems, not just study theory, was truly inspiring.
+**Thinh's** session on the Proptimizer Extension was particularly impressive – seeing a community member build their own tool to solve real problems, not just study theory, was truly inspiring.
 
 **Khang's** talk on the job market gave me a clearer picture of the gap between my current knowledge and what companies actually need – a strong motivation to proactively upgrade my skills every day.
 
@@ -124,11 +124,11 @@ Most importantly, this event helped me realize that the AWS Study Group communit
 
 Based on the event, I plan to:
 
-- ✅ Apply the learning habit strategies to my daily study routine
-- ✅ Experiment with **Proptimizer Extension** and Prompt Engineering techniques in AI workflows
-- ✅ Focus on building practical skills alongside theoretical knowledge
-- ✅ Explore the **BMAD** methodology in future projects
-- ✅ Stay connected and actively contribute to the AWS Study Group community
+- Apply the learning habit strategies to my daily study routine
+- Experiment with **Proptimizer Extension** and Prompt Engineering techniques in AI workflows
+- Focus on building practical skills alongside theoretical knowledge
+- Explore the **BMAD** methodology in future projects
+- Stay connected and actively contribute to the AWS Study Group community
 
 ---
 

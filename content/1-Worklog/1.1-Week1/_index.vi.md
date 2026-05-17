@@ -10,9 +10,7 @@ pre: " <b> 1.1. </b> "
 
 * Làm quen với môi trường thực tập và các thành viên trong First Cloud Journey.
 * Hiểu được các khái niệm cơ bản về Cloud Computing và AWS.
-* Biết cách sử dụng AWS Console, CLI và làm quen với các dịch vụ chính.
-* Nắm được các nguyên tắc bảo mật và quản lý chi phí khi sử dụng AWS.
-* Hiểu định hướng thiết kế hệ thống thông qua Well-Architected Framework.
+* Thực hành IAM, bảo mật tài khoản, quản lý chi phí và thiết lập mạng/database cơ bản.
 
 ---
 
@@ -32,59 +30,43 @@ pre: " <b> 1.1. </b> "
 
 ### 1. Nền tảng Cloud Computing & AWS
 
-* **Nắm vững khái niệm**: Hiểu rõ lợi thế của mô hình Cloud Computing (on-demand, pay-as-you-go) so với On-Premise truyền thống về khả năng mở rộng và chi phí.
-* **Đã tìm hiểu hạ tầng toàn cầu**: Nắm bắt cấu trúc Region, Availability Zone (AZ) và Edge Location để tối ưu hóa độ trễ và độ sẵn sàng cho người dùng.
-* **Đã nghiên cứu tư duy thiết kế**: Nắm vững 6 trụ cột cốt lõi của AWS Well-Architected Framework để thiết kế hệ thống đảm bảo tính mở rộng, chịu lỗi và tiết kiệm chi phí.
+* **Nắm vững khái niệm**: Hiểu lợi thế của Cloud (on-demand, pay-as-you-go) so với On-Premise, và cấu trúc hạ tầng toàn cầu AWS (Region, AZ, Edge Location).
+* **Đã nghiên cứu Well-Architected Framework**: Làm quen với 6 trụ cột thiết kế hệ thống đảm bảo tính mở rộng, chịu lỗi và tiết kiệm chi phí.
 
-### 2. Quản lý Tài khoản & Bảo mật (Security)
+### 2. Bảo mật tài khoản & IAM
 
-* **Nắm được nguyên tắc bảo mật cơ bản**: Hiểu và áp dụng mô hình Trách nhiệm chia sẻ (Shared Responsibility Model) và nguyên tắc Đặc quyền tối thiểu (Least Privilege).
-* **Đã thực hành quản lý IAM**: Nắm rõ rủi ro của Root User, thực hiện bật MFA, tạo IAM User/Group và phân quyền quản trị an toàn thay vì dùng Root User cho công việc hằng ngày.
+* **Đã thực hành cấu hình IAM**: Bật MFA cho Root account, tạo IAM User/Group và phân quyền tối thiểu (Least Privilege) để không dùng Root cho công việc hằng ngày.
+* **Đã thiết lập kiểm soát chi phí**: Cấu hình cảnh báo chi tiêu với **AWS Budgets** và nắm được quy trình mở Support Case khi gặp sự cố xác thực.
 
-### 3. Tối ưu chi phí & Vận hành
+### 3. Tổng quan Networking & Database
 
-* **Đã tìm hiểu quản lý chi phí**: Nhận diện các nguyên nhân phát sinh chi phí ngoài ý muốn và thực hành thiết lập cảnh báo với **AWS Budgets**.
-* **Đã thực hành quy trình dọn dẹp**: Hình thành thói quen kiểm tra và cleanup toàn bộ tài nguyên không sử dụng sau các bài lab để tránh tính phí.
-* **Nắm được quy trình Support**: Hiểu các gói AWS Support và biết cách mở Support Case khi gặp sự cố xác thực tài khoản.
-
-### 4. Tổng quan Networking & Database
-
-* **Đã nghiên cứu kiến trúc VPC cơ bản**: Bước đầu làm quen với các khái niệm Public/Private Subnet, Internet Gateway, NAT Gateway và Route Table.
-* **Nắm được cơ chế bảo mật mạng**: Phân biệt cơ chế hoạt động của Security Group (Stateful) bảo vệ ở cấp độ instance và Network ACL (Stateless) bảo vệ ở cấp độ subnet.
-* **Đã tìm hiểu dịch vụ RDS**: Nắm được cách cấp phát cơ sở dữ liệu trên cloud và phương thức để ứng dụng EC2 kết nối an toàn với RDS.
+* **Đã nghiên cứu kiến trúc VPC cơ bản**: Nắm bắt Public/Private Subnet, Internet Gateway, NAT Gateway và Route Table.
+* **Nắm được cơ chế bảo mật mạng**: Phân biệt Security Group (Stateful, cấp instance) và Network ACL (Stateless, cấp subnet).
+* **Đã tìm hiểu dịch vụ RDS**: Nắm cách cấp phát database trên cloud và kết nối từ EC2 vào RDS an toàn.
 
 ---
 
 ## Kết quả thực hành & Lab
 
-### 1. Lab Cơ sở hạ tầng & Bảo mật cơ bản
-
-* **Đã thực hành**: Thiết lập thành công tài khoản AWS, tạo cấu trúc IAM User/Group chuẩn, và cấu hình Virtual MFA cho Root User.
-* **Đã cấu hình**: Thiết lập giới hạn chi tiêu và cảnh báo ngân sách thông qua tính năng AWS Budgets.
-* **Kết quả đạt được**: Nắm vững luồng sử dụng AWS Console, sẵn sàng môi trường chuẩn bị cho các bài lab nâng cao hơn.
-
-### 2. Lab Kiến trúc mạng & Database
-
-* **Đã thực hành**: Triển khai một kiến trúc mạng thu nhỏ bao gồm VPC, chia Subnet, và thiết lập Security Group cho máy chủ web.
-* **Đã cấu hình**: Cấp phát máy chủ EC2 cơ bản và một instance RDS, sau đó thực hiện kết nối ứng dụng với database thành công.
-* **Kết quả đạt được**: Hoàn thành toàn bộ chuỗi 5 lab đầu tiên và sử dụng Kiro để kiểm tra, cleanup tự động hệ thống.
+* **Lab Bảo mật**: Thiết lập cấu trúc IAM User/Group, bật Virtual MFA cho Root account và cấu hình cảnh báo AWS Budgets.
+* **Lab Mạng & Database**: Triển khai VPC với Public/Private Subnet, cấp phát EC2 và RDS, hoàn thành toàn bộ 5 lab đầu tiên và dùng Kiro để cleanup tài nguyên.
 
 ---
 
 ## Khó khăn gặp phải & Cách khắc phục
 
-* **Làm quen với giao diện AWS Console**: Giao diện rộng với quá nhiều dịch vụ khiến việc tìm kiếm menu (như IAM hay Billing) mất nhiều thời gian ban đầu.
-  * *Cách khắc phục*: Tập làm quen với thanh công cụ tìm kiếm toàn cục (Global Search) và ghim (pin) các dịch vụ thường dùng lên thanh điều hướng.
-* **Kiểm soát chi phí phát sinh**: Khi thao tác tạo RDS và EC2, lo ngại việc bị trừ tiền thẻ Visa do quên tắt dịch vụ hoặc vượt mức Free Tier.
-  * *Cách khắc phục*: Đã cấu hình AWS Budgets ngay từ ngày đầu và tập thói quen sử dụng công cụ Kiro để quét các tài nguyên "mồ côi" trước khi log out.
+* **Làm quen với AWS Console**: Giao diện rộng với quá nhiều dịch vụ khiến tìm kiếm menu mất thời gian ban đầu.
+  * *Cách khắc phục*: Sử dụng thanh Global Search và ghim (pin) các dịch vụ thường dùng lên header.
+* **Kiểm soát chi phí phát sinh**: Lo ngại bị tính phí ngoài ý muốn do quên tắt EC2/RDS sau khi thực hành.
+  * *Cách khắc phục*: Cấu hình AWS Budgets từ ngày đầu và dùng Kiro để quét tài nguyên "mồ côi" trước mỗi lần log out.
 
 ---
 
 ## Bài học rút ra
 
-* **Bảo mật là ưu tiên số một**: Không bao giờ sử dụng Root User cho các tác vụ hằng ngày và luôn thiết lập MFA là nguyên tắc sống còn khi làm việc với AWS.
-* **Kiểm soát chi phí tự động**: AWS tính tiền theo nguyên tắc pay-as-you-go, do đó việc dựa vào trí nhớ để tắt máy chủ là không an toàn; phải kết hợp AWS Budgets và quy trình dọn dẹp bài bản.
-* **Nắm vững kiến trúc mạng**: Dù là dịch vụ EC2 hay RDS, mọi thứ đều phải chạy trên nền tảng VPC. Do đó, hiểu rõ luồng mạng (Subnet, Security Group) là tiền đề để làm việc với bất kỳ dịch vụ AWS nào khác.
+* Không bao giờ dùng Root account cho công việc hằng ngày — MFA và IAM User với quyền hạn phù hợp là nguyên tắc bắt buộc khi làm việc với AWS.
+* AWS tính phí theo mức sử dụng thực tế; phải kết hợp AWS Budgets và quy trình dọn dẹp tài nguyên để tránh phát sinh chi phí bất ngờ.
+* VPC là nền tảng của mọi dịch vụ AWS — hiểu rõ Subnet, Security Group và Route Table là điều kiện tiên quyết trước khi triển khai bất kỳ dịch vụ nào khác.
 
 ---
 

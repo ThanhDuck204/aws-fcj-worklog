@@ -8,11 +8,9 @@ pre: " <b> 1.1. </b> "
 
 ## Week 1 Objectives
 
-* Get acquainted with the internship environment and the members of First Cloud Journey.
-* Understand the basic concepts of Cloud Computing and AWS.
-* Learn how to use the AWS Console and CLI, and become familiar with core services.
-* Grasp the principles of security and cost management on AWS.
-* Understand system design strategies through the AWS Well-Architected Framework.
+* Get acquainted with the internship environment and First Cloud Journey.
+* Understand core Cloud Computing and AWS concepts.
+* Practice IAM, account security, cost management, and basic networking/database setup.
 
 ---
 
@@ -32,59 +30,43 @@ pre: " <b> 1.1. </b> "
 
 ### 1. Cloud Computing & AWS Foundations
 
-* **Understood Core Concepts**: Grasped the advantages of the Cloud Computing model (on-demand, pay-as-you-go) compared to traditional On-Premise models in terms of scalability and cost.
-* **Studied Global Infrastructure**: Comprehended the architecture of Regions, Availability Zones (AZs), and Edge Locations to optimize latency and ensure high availability.
-* **Researched Design Frameworks**: Mastered the 6 core pillars of the AWS Well-Architected Framework to design scalable, fault-tolerant, and cost-effective systems.
+* **Studied Core Concepts**: Understood the advantages of Cloud (on-demand, pay-as-you-go) over On-Premise, and the structure of AWS Global Infrastructure (Regions, AZs, Edge Locations).
+* **Researched Well-Architected Framework**: Familiarized with the 6 design pillars for building scalable, fault-tolerant, and cost-efficient systems on AWS.
 
-### 2. Account Management & Security
+### 2. Account Security & IAM
 
-* **Understood Basic Security Principles**: Learned and applied the Shared Responsibility Model and the Principle of Least Privilege.
-* **Practiced IAM Management**: Recognized the risks of using the Root User, enabled MFA, created IAM Users/Groups, and assigned appropriate administrative permissions for daily operations.
+* **Practiced IAM Setup**: Enabled MFA on the Root account, created IAM Users/Groups, and applied least-privilege permissions to eliminate Root account usage in daily operations.
+* **Configured Cost Controls**: Set up spending alerts via **AWS Budgets** and learned to open Support Cases for authentication issues.
 
-### 3. Cost Optimization & Operations
+### 3. Networking & Database Overview
 
-* **Researched Cost Management**: Identified common causes of unexpected billing charges and practiced setting up automated alerts via **AWS Budgets**.
-* **Practiced Cleanup Workflows**: Cultivated the habit of reviewing and tearing down unused resources after completing labs to prevent unnecessary charges.
-* **Understood Support Procedures**: Learned about the available AWS Support plans and the process of opening a Support Case for authentication issues.
-
-### 4. Networking & Database Overview
-
-* **Studied Basic VPC Architecture**: Gained initial familiarity with Public/Private Subnets, Internet Gateways, NAT Gateways, and Route Tables.
-* **Understood Network Security Mechanisms**: Differentiated between Security Groups (Stateful, instance-level protection) and Network ACLs (Stateless, subnet-level protection).
-* **Explored RDS Services**: Understood how to provision a managed relational database on the cloud and securely connect it to an EC2 application.
+* **Studied VPC Architecture**: Learned the fundamentals of Public/Private Subnets, Internet Gateways, NAT Gateways, and Route Tables.
+* **Differentiated Security Layers**: Distinguished Security Groups (Stateful, instance-level) from Network ACLs (Stateless, subnet-level).
+* **Explored RDS**: Provisioned a managed relational database and connected it to an EC2 instance from the application layer.
 
 ---
 
 ## Lab & Practical Experience
 
-### 1. Basic Infrastructure & Security Lab
-
-* **Practiced**: Successfully set up the AWS account, designed a standard IAM User/Group structure, and configured Virtual MFA for the Root User.
-* **Configured**: Established spending limits and budget alerts utilizing AWS Budgets.
-* **Achieved**: Gained a firm grasp of navigating the AWS Console, effectively preparing the environment for advanced hands-on labs.
-
-### 2. Network & Database Architecture Lab
-
-* **Practiced**: Deployed a miniature network architecture including a VPC, subnet partitioning, and Security Group configurations for web servers.
-* **Configured**: Provisioned a basic EC2 instance alongside an RDS instance, successfully establishing database connectivity from the application layer.
-* **Achieved**: Completed the first 5 foundational labs and utilized the Kiro tool to automate system review and resource cleanup.
+* **Security Lab**: Successfully configured IAM User/Group structure, enabled Virtual MFA for the Root account, and set up AWS Budgets alerts.
+* **Network & Database Lab**: Deployed a VPC with Public/Private Subnets, provisioned EC2 and RDS instances, completed all 5 foundational labs, and used Kiro for automated resource cleanup.
 
 ---
 
 ## Difficulties Encountered & Solutions
 
-* **Navigating the AWS Console**: The sheer volume of services initially made locating specific menus (like IAM or Billing) time-consuming.
-  * *Solution*: Adapted by frequently utilizing the Global Search bar and pinning frequently used services to the navigation header.
-* **Controlling Unintended Costs**: While provisioning RDS and EC2 instances, there was concern about incurring unexpected charges due to forgotten resources or exceeding Free Tier limits.
-  * *Solution*: Proactively configured AWS Budgets on the first day and developed a strict habit of using the Kiro tool to scan for "orphaned" resources before logging out.
+* **AWS Console Navigation**: The large number of services made locating specific menus time-consuming at first.
+  * *Solution*: Adopted the Global Search bar and pinned frequently used services to the console header.
+* **Unintended Cost Risks**: Concern about unexpected charges from forgotten EC2/RDS resources running past Free Tier.
+  * *Solution*: Configured AWS Budgets on day one and used Kiro to scan for orphaned resources before logging out each session.
 
 ---
 
 ## Lessons Learned
 
-* **Security is the Top Priority**: Never utilizing the Root User for daily tasks and strictly enforcing MFA are fundamental, non-negotiable principles when operating in AWS.
-* **Automated Cost Control**: AWS charges based on a pay-as-you-go model, meaning relying on memory to shut down instances is risky; it must be paired with AWS Budgets and systematic cleanup protocols.
-* **Mastering Network Fundamentals**: Whether deploying EC2 or RDS, everything operates within a VPC. Therefore, a deep understanding of network flows (Subnets, Security Groups) is a prerequisite for working with any other AWS service.
+* Never use the Root account for daily operations — MFA and scoped IAM Users are non-negotiable security baselines on AWS.
+* AWS charges are usage-based; relying on memory to shut down instances is risky. AWS Budgets and consistent cleanup routines are essential.
+* VPC is the foundation for every AWS deployment — understanding Subnets, Security Groups, and Route Tables is prerequisite knowledge for all other services.
 
 ---
 

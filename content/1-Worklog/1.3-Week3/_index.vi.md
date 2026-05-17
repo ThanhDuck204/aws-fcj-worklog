@@ -9,8 +9,8 @@ pre: " <b> 1.3. </b> "
 ## Mục tiêu tuần 3
 
 * Bắt đầu học Module 03 – Compute trên AWS.
-* Nắm được các khái niệm cơ bản về Amazon EC2.
-* Hiểu cách lựa chọn Instance Type, AMI, và cơ chế bảo mật cho EC2.
+* Nắm được các khái niệm cốt lõi của Amazon EC2: Instance Type, AMI, Key Pair và mô hình định giá.
+* Tìm hiểu EC2 Scaling, lưu trữ mạng (EFS, FSx) và khởi đầu Module 04 – Storage.
 
 ---
 
@@ -30,65 +30,52 @@ pre: " <b> 1.3. </b> "
 
 ### 1. Dịch vụ Amazon EC2 (Compute)
 
-* **Nắm được khái niệm tổng quan**: Hiểu rõ kiến trúc của EC2, khả năng cấp phát tài nguyên linh hoạt và tốc độ khởi tạo nhanh chóng, phù hợp cho nhiều dạng workload khác nhau.
-* **Đã tìm hiểu phần cứng & ảo hóa**: Biết cách lựa chọn cấu hình qua **EC2 Instance Type** (đáp ứng yêu cầu CPU, RAM, Network) và kiến trúc ảo hóa bằng Hypervisor.
-* **Đã nghiên cứu Amazon Machine Image (AMI)**: Hiểu cơ chế provision hàng loạt máy ảo sử dụng AMI (bao gồm hệ điều hành, quyền sử dụng, và block device mapping).
-* **Đã thực hành bảo mật truy cập**: Nắm rõ cách quản lý **Key Pair** (Public/Private Key) để xác thực qua SSH (đối với Linux) và lấy mật khẩu RDP (đối với Windows).
-* **Đã phân tích mô hình định giá**: Phân biệt và lựa chọn chiến lược **EC2 Pricing Options** (On-demand, Reserved, Savings Plans, Spot) phù hợp để tối ưu chi phí hạ tầng.
+* **Nắm được kiến trúc EC2**: Hiểu cơ chế cấp phát tài nguyên linh hoạt qua **EC2 Instance Type** (CPU, RAM, Network) và **AMI** (hệ điều hành, quyền sử dụng, block device mapping).
+* **Đã thực hành bảo mật truy cập**: Quản lý **Key Pair** để xác thực qua SSH (Linux) và lấy mật khẩu RDP (Windows).
+* **Đã phân tích mô hình định giá**: So sánh **EC2 Pricing Options** (On-demand, Reserved, Savings Plans, Spot) để chọn chiến lược phù hợp với từng loại workload.
 
-### 2. Các công cụ hỗ trợ EC2 & Scaling
+### 2. Công cụ hỗ trợ EC2 & Scaling
 
-* **Nắm được cơ chế lưu trữ cục bộ**: Phân biệt giữa **Instance Store** (lưu trữ NVMe tốc độ cao, mất dữ liệu khi stop) và các giải pháp lưu trữ bền vững (EBS).
-* **Đã nghiên cứu tự động hóa cấu hình**: Vận dụng **EC2 User Data** (script chạy 1 lần lúc khởi tạo) và truy xuất thông tin từ **EC2 Meta Data** để tự động thiết lập môi trường server.
-* **Đã tìm hiểu dịch vụ EC2 Auto Scaling**: Hiểu nguyên lý tự động mở rộng (scale out) và thu hẹp (scale in) số lượng EC2 dựa theo policy để đảm bảo tính sẵn sàng cao (High Availability).
+* **Nắm được các loại lưu trữ**: Phân biệt **Instance Store** (NVMe tốc độ cao, mất khi stop) với lưu trữ bền vững EBS.
+* **Đã nghiên cứu tự động hóa cấu hình**: Dùng **EC2 User Data** (script khởi tạo) và **EC2 Meta Data** để tự động thiết lập môi trường server.
+* **Đã tìm hiểu EC2 Auto Scaling**: Hiểu nguyên lý tự động scale out/in theo policy để đảm bảo High Availability.
 
 ### 3. Dịch vụ mở rộng & Lưu trữ mạng
 
-* **Đã tìm hiểu Amazon Lightsail**: Nắm bắt giải pháp máy chủ ảo tích hợp sẵn băng thông, tối ưu cho ứng dụng nhẹ hoặc môi trường dev/test.
-* **Đã nghiên cứu hệ thống File System**: So sánh **Amazon EFS** (chỉ hỗ trợ Linux) và **Amazon FSx** (hỗ trợ Windows/Linux), hiểu cách mount đồng thời lên nhiều EC2 và cơ chế tính phí linh hoạt.
-* **Nắm được giải pháp di chuyển ứng dụng**: Hiểu vai trò của **AWS Application Migration Service (MGN)** trong việc triển khai Disaster Recovery Site bằng cách nhân bản máy chủ từ Data Center lên AWS.
+* **Đã nghiên cứu File System**: So sánh **Amazon EFS** (chỉ Linux) và **Amazon FSx** (Windows/Linux), hiểu cách mount đồng thời lên nhiều EC2.
+* **Nắm được giải pháp migration**: Hiểu vai trò của **AWS MGN** trong việc nhân bản máy chủ On-premise lên AWS cho Disaster Recovery.
 
-### 4. Dịch vụ lưu trữ Amazon S3 (Storage)
+### 4. Dịch vụ lưu trữ Amazon S3
 
-* **Nắm được khái niệm Object Storage**: Hiểu kiến trúc lưu trữ đối tượng, mô hình ghi một lần đọc nhiều lần (WORM), giới hạn kích thước (tối đa 5TB/object) và tính năng multipart upload.
-* **Đã tìm hiểu bảo mật bằng Access Point**: Nhận thức được lợi ích của việc tạo **S3 Access Point** giúp phân quyền chi tiết cho nhiều ứng dụng mà không cần thiết lập một bucket policy quá phức tạp.
-* **Đã phân tích S3 Storage Class**: Hiểu cách phân loại dữ liệu để tối ưu hóa chi phí lưu trữ thông qua Standard, Infrequent Access (IA), Intelligent Tiering, và Glacier/Deep Archive.
-* **Đã nghiên cứu tự động hóa luân chuyển dữ liệu**: Hiểu cơ chế thiết lập **Object Life Cycle Management** để tự động di chuyển object giữa các storage class và **Cross-Region Replication (CRR)** để tăng cường dự phòng.
+* **Nắm được Object Storage**: Hiểu mô hình WORM, giới hạn 5TB/object, multipart upload và **S3 Access Point** để phân quyền chi tiết.
+* **Đã phân tích S3 Storage Class**: Nắm cách tối ưu chi phí qua Standard, IA, Intelligent Tiering và Glacier/Deep Archive.
+* **Đã nghiên cứu tự động hóa vòng đời**: Hiểu **Object Lifecycle Management** để tự động chuyển tier và **Cross-Region Replication (CRR)** để tăng dự phòng.
 
 ---
 
 ## Kết quả thực hành & Lab
 
-### 1. Lab 13: Triển khai hạ tầng AWS Backup
-
-* **Đã thực hành**: Tạo S3 Bucket, điều chỉnh policy truy cập và sử dụng template CloudFormation để tự động khởi tạo toàn bộ hạ tầng AWS Backup.
-* **Đã cấu hình**: Hệ thống cảnh báo tự động qua dịch vụ **Amazon SNS**, cho phép gửi email thông báo trạng thái ngay khi tác vụ sao lưu hoặc khôi phục hoàn tất.
-* **Kết quả đạt được**: Vận hành thành công quy trình tạo bản sao lưu on-demand, khôi phục dữ liệu tự động qua AWS Lambda, và theo dõi log thực thi cụ thể trên CloudWatch.
-
-### 2. Nghiên cứu Workshop Storage Gateway & S3 Static Website
-
-* **Đã nghiên cứu**: Kiến trúc Storage Gateway (tạo cache volume, cấu hình file share SMB) để hiểu sâu về mô hình lưu trữ lai (hybrid storage) giữa môi trường On-premise và AWS Cloud.
-* **Đã tìm hiểu**: Quy trình host tĩnh một website trực tiếp trên **S3 Bucket**, phương thức thiết lập quyền truy cập công khai an toàn và sử dụng tính năng Versioning để bảo vệ dữ liệu khỏi việc vô tình bị xóa.
-* **Nắm được**: Mô hình tăng tốc độ phân phối nội dung website toàn cầu thông qua **Amazon CloudFront**, kết hợp thiết lập Origin Access Control (OAC) để đảm bảo bảo mật.
+* **Lab 13 – AWS Backup**: Tạo S3 Bucket, triển khai template CloudFormation, cấu hình cảnh báo **Amazon SNS**, thực hiện thành công backup on-demand và khôi phục tự động qua AWS Lambda; theo dõi log qua CloudWatch.
+* **Workshop Storage Gateway & S3**: Nghiên cứu kiến trúc Storage Gateway (SMB file share, cache volume); host website tĩnh trên S3 với Bucket Policy và Versioning; tìm hiểu **Amazon CloudFront** kết hợp Origin Access Control (OAC).
 
 ---
 
 ## Khó khăn gặp phải & Cách khắc phục
 
-* **Hạn chế của tài khoản Free Tier**: Trong quá trình nghiên cứu AWS Storage Gateway, không thể thực hành trọn vẹn việc khởi tạo Gateway do vượt giới hạn tài nguyên của Free Tier.
-  * *Cách khắc phục*: Chủ yếu tập trung phân tích lý thuyết, đọc hiểu quy trình thiết lập (cấu hình SMB, cache volume) thông qua tài liệu chính thức và các workshop mẫu của AWS.
-* **Thiết lập quyền cho S3 Static Website**: Ban đầu gặp bối rối khi phân biệt giữa cấu hình chặn truy cập cấp độ tài khoản/bucket (`Block public access`) và cấp quyền chi tiết qua `Bucket Policy`.
-  * *Cách khắc phục*: Đã chủ động nghiên cứu document và cấu hình thành công việc tắt chặn truy cập công khai kết hợp với viết policy `s3:GetObject` cho `Principal: "*"`.
-* **Phức tạp trong cấu hình AWS Backup**: Quá trình thiết lập luồng phục hồi tự động qua AWS Lambda đòi hỏi cấu hình quyền IAM Role rất chi tiết, dễ xảy ra lỗi "Access Denied".
-  * *Cách khắc phục*: Đã rà soát lại kỹ lưỡng kịch bản CloudFormation và theo dõi tiến trình thực thi qua CloudWatch Logs để phát hiện và nắm được cách IAM Role được gán quyền tự động.
+* **Giới hạn Free Tier với Storage Gateway**: Không thể khởi tạo Gateway thực tế do vượt hạn mức tài nguyên Free Tier.
+  * *Cách khắc phục*: Tập trung phân tích lý thuyết và đọc hiểu quy trình thiết lập qua tài liệu chính thức và workshop mẫu của AWS.
+* **Phân biệt quyền truy cập S3 Static Website**: Ban đầu bối rối giữa `Block public access` cấp tài khoản/bucket và `Bucket Policy` chi tiết.
+  * *Cách khắc phục*: Nghiên cứu document và cấu hình thành công `s3:GetObject` cho `Principal: "*"` kết hợp tắt chặn truy cập công khai.
+* **Phức tạp IAM trong AWS Backup**: Luồng phục hồi tự động qua Lambda yêu cầu IAM Role rất chi tiết, dễ gặp lỗi "Access Denied".
+  * *Cách khắc phục*: Rà soát kịch bản CloudFormation và theo dõi log thực thi trên CloudWatch để hiểu cách IAM Role được gán quyền tự động.
 
 ---
 
 ## Bài học rút ra
 
-* Việc hiểu rõ bản chất của **Pricing Options** và **Storage Classes** là yếu tố cốt lõi để đạt được mục tiêu Tối ưu hóa chi phí (Cost Optimization) trong quá trình thiết kế hệ thống trên cloud.
-* Trong thực tế vận hành, việc ứng dụng **Object Life Cycle Management** và **Auto Scaling** là bắt buộc để hệ thống tự động thích ứng với nhu cầu tải và tuổi thọ dữ liệu, qua đó giảm thiểu đáng kể các can thiệp thủ công.
-* Khi triển khai hạ tầng tự động qua **CloudFormation**, cần phải đọc hiểu chi tiết template và luồng tạo IAM Role để duy trì tính an toàn và bảo mật cho hệ thống.
+* Hiểu đúng **Pricing Options** và **Storage Classes** là nền tảng để đạt Cost Optimization khi thiết kế hệ thống cloud.
+* **Object Lifecycle Management** và **Auto Scaling** là công cụ vận hành thiết yếu — chúng loại bỏ thao tác thủ công và giúp hệ thống tự thích ứng.
+* Khi dùng **CloudFormation**, luôn đọc kỹ template và luồng tạo IAM Role để tránh lỗi quyền âm thầm trong quá trình tự động hóa.
 
 ---
 
