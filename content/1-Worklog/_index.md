@@ -1,4 +1,4 @@
----
+﻿---
 title: "Worklog"
 date: 2024-01-01
 weight: 1
@@ -13,11 +13,11 @@ Typically, and as a standard, a worklog is carried out over about 3 months (thro
 
 **Week 1:** [Getting familiar with AWS and basic AWS services](1.1-week1/)
 
-**Week 2:** [](1.2-week2/)
+**Week 2:** [Networking & Security on AWS](1.2-week2/)
 
-**Week 3:** [](1.3-week3/)
+**Week 3:** [AWS Compute & Storage Services](1.3-week3/)
 
-**Week 4:** [](1.4-week4/)
+**Week 4:** [AWS Storage, Disaster Recovery, and Management Dashboard Research](1.4-week4/)
 
 **Week 5:** [](1.5-week5/)
 

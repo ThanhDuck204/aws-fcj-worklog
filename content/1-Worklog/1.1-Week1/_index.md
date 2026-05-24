@@ -1,4 +1,4 @@
----
+﻿---
 title: "Week 1 Worklog"
 date: 2024-01-01
 weight: 1
@@ -16,13 +16,13 @@ pre: " <b> 1.1. </b> "
 
 ## Tasks Carried Out
 
-| Day | Task | Start Date | Completion Date | Reference Materials |
-| --- | ---- | ---------- | --------------- | ------------------- |
-| 2 | Studied Cloud Computing, AWS Global Infrastructure, and the Well-Architected Framework. | 20/04/2026 | 20/04/2026 | https://cloudjourney.awsstudygroup.com/ <br> https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html |
-| 3 | Explored the AWS Management Console, CLI, SDK, and AWS Support case creation. | 21/04/2026 | 21/04/2026 | https://cloudjourney.awsstudygroup.com/ <br> https://www.youtube.com/watch?v=95quNuhvMT0 |
-| 4 | Configured AWS account security (MFA, IAM User/Group) and resolved authentication issues. | 22/04/2026 | 22/04/2026 | https://www.youtube.com/watch?v=1dG5xutGbr4 <br> https://www.youtube.com/watch?v=b9pK1oG534Q <br> https://www.youtube.com/watch?v=69iKhwI7k2Y |
-| 5 | Completed comprehensive labs (VPC, SG, EC2, RDS) and implemented AWS Budgets. | 23/04/2026 | 23/04/2026 | https://cloudjourney.awsstudygroup.com/ <br> https://000007.awsstudygroup.com/vi/3-usage-budget/ |
-| 6 | Practiced Database connectivity/queries, utilized Kiro, and started Module 02 theory. | 24/04/2026 | 24/04/2026 | https://cloudjourney.awsstudygroup.com/ <br> https://www.youtube.com/watch?v=uAQCm4sm_1c |
+| Date | Task | Result | Resources | Notes |
+|---|---|---|---|---|
+| 20/04/2026 | Studied Cloud Computing, AWS Global Infrastructure, and the Well-Architected Framework. | Understood cloud fundamentals, AWS Regions, AZs, Edge Locations, and the 6 Well-Architected pillars. | [Cloud Journey](https://cloudjourney.awsstudygroup.com/) <br> [AWS Well-Architected Framework](https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html) | Completed foundational theory. |
+| 21/04/2026 | Explored the AWS Management Console, CLI, SDK, and AWS Support case creation. | Practiced basic AWS tools and learned the support case workflow. | [Cloud Journey](https://cloudjourney.awsstudygroup.com/) <br> [AWS Support Case Tutorial](https://www.youtube.com/watch?v=95quNuhvMT0) | Built familiarity with AWS operations. |
+| 22/04/2026 | Configured AWS account security with MFA, IAM User/Group, and authentication troubleshooting. | Completed a basic IAM structure and understood common authentication issues. | [AWS Account Security Tutorial](https://www.youtube.com/watch?v=1dG5xutGbr4) <br> [IAM User and Group Tutorial](https://www.youtube.com/watch?v=b9pK1oG534Q) <br> [MFA Setup Tutorial](https://www.youtube.com/watch?v=69iKhwI7k2Y) | Completed account security practice. |
+| 23/04/2026 | Completed comprehensive labs covering VPC, Security Groups, EC2, RDS, and AWS Budgets. | Finished the integrated networking/database labs and configured spending alerts. | [Cloud Journey](https://cloudjourney.awsstudygroup.com/) <br> [AWS Budgets Lab](https://000007.awsstudygroup.com/vi/3-usage-budget/) | Completed integrated AWS lab work. |
+| 24/04/2026 | Practiced database connectivity and queries, used Kiro, and started Module 02 theory. | Connected to the database successfully, cleaned up resources, and began networking theory. | [Cloud Journey](https://cloudjourney.awsstudygroup.com/) <br> [Module 02 Theory](https://www.youtube.com/watch?v=uAQCm4sm_1c) | Transitioned into Module 02. |
 
 ---
 
@@ -64,9 +64,9 @@ pre: " <b> 1.1. </b> "
 
 ## Lessons Learned
 
-* Never use the Root account for daily operations — MFA and scoped IAM Users are non-negotiable security baselines on AWS.
+* Never use the Root account for daily operations â€” MFA and scoped IAM Users are non-negotiable security baselines on AWS.
 * AWS charges are usage-based; relying on memory to shut down instances is risky. AWS Budgets and consistent cleanup routines are essential.
-* VPC is the foundation for every AWS deployment — understanding Subnets, Security Groups, and Route Tables is prerequisite knowledge for all other services.
+* VPC is the foundation for every AWS deployment â€” understanding Subnets, Security Groups, and Route Tables is prerequisite knowledge for all other services.
 
 ---
 

@@ -13,8 +13,8 @@ pre: " <b> 4.1. </b> "
 | Thông tin | Chi tiết |
 |---|---|
 | **Tên sự kiện** | AWS Study Group – Buổi Chia Sẻ Cộng Đồng |
-| **Ngày & Giờ** | 09/05/2026 |
-| **Địa điểm** | TP. Hồ Chí Minh |
+| **Ngày & Giờ** | 09/05/2026, 09:00 - 12:00 |
+| **Địa điểm** | Tầng 26, Tòa Bitexco, 02 Hai Triều, Phường Bến Thành, Quận 1, TP. Hồ Chí Minh |
 | **Vai trò** | Người tham dự |
 
 ---

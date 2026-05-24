@@ -1,4 +1,4 @@
----
+﻿---
 title: "Week 3 Worklog"
 date: 2026-05-05
 weight: 3
@@ -8,21 +8,21 @@ pre: " <b> 1.3. </b> "
 
 ## Week 3 Objectives
 
-* Begin studying Module 03 – Compute on AWS.
+* Begin studying Module 03 â€“ Compute on AWS.
 * Understand core Amazon EC2 concepts: Instance Types, AMI, Key Pair, and pricing models.
-* Learn EC2 scaling, managed storage (EFS, FSx), and start Module 04 – Storage.
+* Learn EC2 scaling, managed storage (EFS, FSx), and start Module 04 â€“ Storage.
 
 ---
 
 ## Tasks Carried Out
 
-| Day | Task | Start Date | Completion Date | Reference Materials |
-| --- | ---- | ---------- | --------------- | ------------------- |
-| 2 | Studied Module 03 theory – Compute: Amazon EC2, Instance Types, AMI, Key Pair | 05/05/2026 | 05/05/2026 | |
-| 3 | Studied EC2 User Data, EC2 Meta Data, and EC2 Auto Scaling | 06/05/2026 | 06/05/2026 | |
-| 4 | Completed Lab 13: AWS Backup infrastructure deployment, SNS setup, and backup/restore testing | 07/05/2026 | 07/05/2026 | https://000013.awsstudygroup.com/ |
-| 5 | Researched AWS Storage Gateway workshop and S3 Static Website & CloudFront. Completed Module 03. | 08/05/2026 | 08/05/2026 | https://000024.awsstudygroup.com/vi/3-cleanup/ <br> https://000057.awsstudygroup.com/ |
-| 6 | Began studying Module 04 theory – Storage on AWS | 09/05/2026 | 09/05/2026 | |
+| Date | Task | Result | Resources | Notes |
+|---|---|---|---|---|
+| 05/05/2026 | Studied Module 03 theory: Amazon EC2, Instance Types, AMI, and Key Pair. | Understood EC2 architecture and how to choose instance types and AMIs. |  | Completed EC2 fundamentals. |
+| 06/05/2026 | Studied EC2 User Data, EC2 Meta Data, and EC2 Auto Scaling. | Learned server bootstrap automation and basic scaling concepts. |  | Completed EC2 tooling section. |
+| 07/05/2026 | Completed Lab 13: AWS Backup infrastructure deployment, SNS setup, and backup/restore testing. | Successfully deployed AWS Backup infrastructure and tested restore automation. | [AWS Backup Lab](https://000013.awsstudygroup.com/) | Completed AWS Backup lab. |
+| 08/05/2026 | Researched AWS Storage Gateway workshop and S3 Static Website with CloudFront; completed Module 03. | Understood Storage Gateway architecture and hosted a static website with S3/CloudFront. | [Storage Gateway Workshop](https://000024.awsstudygroup.com/vi/3-cleanup/) <br> [S3 Static Website Workshop](https://000057.awsstudygroup.com/) | Completed storage workshop research and Module 03. |
+| 09/05/2026 | Began studying Module 04 theory: Storage on AWS. | Started with storage service overview and S3 fundamentals before continuing deeper in Week 4. | [Module 04-01 - Storage on AWS](https://www.youtube.com/watch?v=hsCfP0IxoaM&list=PLahN4TLWtox2a3vElknwzU_urND8hLn1i&index=103) <br> [Module 04-02 - Amazon S3](https://www.youtube.com/watch?v=_yunukwcAwc&list=PLahN4TLWtox2a3vElknwzU_urND8hLn1i&index=104) | Prepared for Week 4. |
 
 ---
 
@@ -55,7 +55,7 @@ pre: " <b> 1.3. </b> "
 
 ## Lab & Practical Experience
 
-* **Lab 13 – AWS Backup**: Created S3 Bucket, deployed CloudFormation template, configured **Amazon SNS** alerts, and successfully ran an on-demand backup and automated restore via AWS Lambda; monitored logs in CloudWatch.
+* **Lab 13 â€“ AWS Backup**: Created S3 Bucket, deployed CloudFormation template, configured **Amazon SNS** alerts, and successfully ran an on-demand backup and automated restore via AWS Lambda; monitored logs in CloudWatch.
 * **Storage Gateway & S3 Workshop**: Researched Storage Gateway architecture (SMB file share, cache volume); hosted a static website on S3 with public access policy and Versioning enabled; explored **Amazon CloudFront** with Origin Access Control (OAC).
 
 ---
@@ -74,7 +74,7 @@ pre: " <b> 1.3. </b> "
 ## Lessons Learned
 
 * Understanding **Pricing Options** and **Storage Classes** is foundational to Cost Optimization when designing cloud architectures.
-* **Object Lifecycle Management** and **Auto Scaling** are essential operational tools – they remove manual overhead and keep systems adaptive by design.
+* **Object Lifecycle Management** and **Auto Scaling** are essential operational tools â€“ they remove manual overhead and keep systems adaptive by design.
 * When using **CloudFormation**, always review the template and IAM Role flows carefully to avoid silent permission errors during automated provisioning.
 
 ---

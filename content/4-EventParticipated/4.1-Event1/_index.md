@@ -13,8 +13,8 @@ pre: " <b> 4.1. </b> "
 | Detail | Information |
 |---|---|
 | **Event Name** | AWS Study Group – Community Sharing Session |
-| **Date & Time** | May 9th, 2026 |
-| **Location** | Ho Chi Minh City |
+| **Date & Time** | May 9th, 2026, 09:00 - 12:00 |
+| **Location** | 26th Floor, Bitexco Tower, 02 Hai Trieu Street, Saigon Ward, Ho Chi Minh City |
 | **Role** | Attendee |
 
 ---
