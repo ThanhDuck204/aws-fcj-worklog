@@ -18,7 +18,7 @@ Note: The information below is for reference purposes only. Please do not copy i
 |---|---|
 | **Event Name** | AWS First Cloud AI Journey Community Day |
 | **Date & Time** | May 23rd, 2026, 09:00 - 12:00 |
-| **Location** | 36th Floor, Bitexco Financial Tower, 02 Hai Trieu Street, Ho Chi Minh City |
+| **Location** | 36th Floor, Bitexco Financial Tower, 02 Hai Trieu Street, Ho Chi Minh City; attended and followed the content through a livestream screen |
 | **Role** | Attendee |
 
 ---
@@ -120,7 +120,9 @@ Based on my personal notes, the order below follows the sequence I recorded whil
 
 ### Personal Reflection
 
-Attending **AWS First Cloud AI Journey Community Day** was extremely valuable because it gave me a broader view of AI, cloud architecture, hackathon product building, and enterprise-grade multi-agent systems.
+Attending **AWS First Cloud AI Journey Community Day** was a memorable experience for me. Although I was on the 36th floor and followed some parts of the event through a livestream screen, I could still feel the enthusiasm, openness, and practical experience shared by the speakers. The atmosphere encouraged me to keep learning AWS and AI while becoming more active in the technology community.
+
+What I appreciated most was that the sessions were not only theoretical. They connected AI and cloud concepts with real product building, system design thinking, and practical challenges that appear when technology is applied in real environments. While listening and taking notes, I realized that learning cloud is not just about following lab steps, but also about asking better questions, understanding context, and thinking about long-term operations.
 
 The session about **context and memory** helped me realize that effective AI usage is not only about writing a good prompt. It also depends on describing the problem clearly, providing enough data, and evaluating the result carefully.
 
@@ -145,3 +147,9 @@ The most impressive part for me was **Duc Dao's** sharing on LLM non-determinism
 
 ### Event Photos
 ![Proof of attendance at AWS First Cloud AI Journey Community Day](/images/Event/event2.jpg)
+
+![Event 2 attendance space on the 36th floor](/images/Event/event2_1.jpg)
+
+![Following the sharing session through the livestream screen at Event 2](/images/Event/event2_2.jpg)
+
+![Moment from AWS First Cloud AI Journey Community Day](/images/Event/event2_3.jpg)

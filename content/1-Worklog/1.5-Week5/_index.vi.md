@@ -10,7 +10,7 @@ pre: " <b> 1.5. </b> "
 
 * Bắt đầu nghiên cứu Module 05 – Các dịch vụ bảo mật của AWS.
 * Nắm được Shared Responsibility Model, IAM, Cognito, AWS Organizations, Identity Center và KMS.
-* Nghiên cứu Lab 18 ở mức tài liệu do tài khoản Free Tier bị giới hạn, hoàn thành Lab 27 về quản lý tài nguyên bằng Tag và tiếp tục thực hành Lab 22 về tối ưu chi phí EC2 bằng Lambda.
+* Nghiên cứu Lab 18 ở mức tài liệu do tài khoản Free Tier bị giới hạn, thực hành Lab 22 về tối ưu chi phí EC2 bằng Lambda và hoàn thành Lab 27 về quản lý tài nguyên bằng Tag.
 
 ---
 
@@ -20,9 +20,10 @@ pre: " <b> 1.5. </b> "
 |---|---|---|---|---|
 | 18/05/2026 | Tìm hiểu Module 05: Shared Responsibility Model, IAM và Cognito. | Hiểu ranh giới trách nhiệm bảo mật giữa AWS và khách hàng, cách quản lý truy cập bằng IAM và use case xác thực người dùng bằng Cognito. | [Module 05-01 - Shared Responsibility Model](https://www.youtube.com/watch?v=tsobAlSg19g&list=PLahN4TLWtox2a3vElknwzU_urND8hLn1i&index=151) <br> [Module 05-02 - IAM](https://www.youtube.com/watch?v=N_vlJGAqZxo&list=PLahN4TLWtox2a3vElknwzU_urND8hLn1i&index=152) <br> [Module 05-03 - Amazon Cognito](https://www.youtube.com/watch?v=pZ2fgEFK3Vs&list=PLahN4TLWtox2a3vElknwzU_urND8hLn1i&index=153) | Hoàn thành nhóm lý thuyết đầu của Module 05. |
 | 19/05/2026 | Tìm hiểu AWS Organizations, AWS Identity Center, AWS KMS, Security Hub và phần hands-on/additional research. | Nắm cách quản lý nhiều account, phân quyền tập trung, quản lý khóa mã hóa, khái niệm Security Hub và định hướng thực hành của Module 05. | [Module 05-04 - AWS Organizations](https://www.youtube.com/watch?v=5oQY8Rogz9Y&list=PLahN4TLWtox2a3vElknwzU_urND8hLn1i&index=154) <br> [Module 05-05 - AWS Identity Center](https://www.youtube.com/watch?v=NW1xrMkNMjU&list=PLahN4TLWtox2a3vElknwzU_urND8hLn1i&index=155) <br> [Module 05-06 - AWS KMS](https://www.youtube.com/watch?v=GMihNQojhZc&list=PLahN4TLWtox2a3vElknwzU_urND8hLn1i&index=156) <br> [Module 05-07 - AWS Security Hub](https://www.youtube.com/watch?v=clj2E0rNBEs&list=PLahN4TLWtox2a3vElknwzU_urND8hLn1i&index=157) <br> [Module 05-08 - Hands-on and Additional Research](https://www.youtube.com/watch?v=0SdpD2GPYz4&list=PLahN4TLWtox2a3vElknwzU_urND8hLn1i&index=158) | Hoàn thành nhóm lý thuyết thứ hai của Module 05. |
-| 20/05/2026 | Nghiên cứu Lab 18 ở mức tài liệu do giới hạn Free Tier và hoàn thành Lab 27: quản lý tài nguyên bằng Tag. | Hiểu luồng Security Hub và thực hành tổ chức tài nguyên AWS bằng tag, Resource Groups. | [Lab 18 - AWS Security Hub](https://000018.awsstudygroup.com/) <br> [Lab 27 - Resource Tagging](https://000027.awsstudygroup.com/vi/) | Lab 18 chỉ đọc tài liệu; Lab 27 đã hoàn thành. |
-| 21/05/2026 | Nghỉ vì lý do cá nhân. | Không thực hiện công việc kỹ thuật. |  | Nghỉ cá nhân. |
-| 22/05/2026 | Tiếp tục thực hành Lab 22: tối ưu chi phí EC2 bằng Lambda, EventBridge và Slack notification. | Xây dựng và kiểm thử automation start/stop EC2 theo lịch, có thông báo Slack. | [Lab 22 - EC2 Cost Optimization](https://000022.awsstudygroup.com/vi/2-prerequiste/) | Hoàn thành phần thực hành automation EC2. |
+| 20/05/2026 | Nghiên cứu Lab 18 ở mức tài liệu do giới hạn Free Tier. | Hiểu luồng Security Hub, cách tổng hợp finding và kiểm tra trạng thái bảo mật trong AWS Account. | [Lab 18 - AWS Security Hub](https://000018.awsstudygroup.com/) | Lab 18 chỉ đọc tài liệu. |
+| 21/05/2026 | Tiếp tục thực hành Lab 22: tối ưu chi phí EC2 bằng Lambda, EventBridge và Slack notification. | Xây dựng và kiểm thử automation start/stop EC2 theo lịch, có thông báo Slack. | [Lab 22 - EC2 Cost Optimization](https://000022.awsstudygroup.com/vi/2-prerequiste/) | Hoàn thành phần thực hành automation EC2. |
+| 22/05/2026 | Nghỉ vì lý do cá nhân. | Không thực hiện công việc kỹ thuật. |  | Nghỉ cá nhân. |
+| 23/05/2026 | Hoàn thành Lab 27: quản lý tài nguyên bằng Tag. | Thực hành tổ chức tài nguyên AWS bằng tag, Resource Groups và AWS CLI. | [Lab 27 - Resource Tagging](https://000027.awsstudygroup.com/vi/) | Lab 27 đã hoàn thành. |
 
 ---
 
@@ -79,7 +80,7 @@ pre: " <b> 1.5. </b> "
 
 ## Hình ảnh thực hành
 
-> Lab 18 không có hình ảnh thực hành vì tài khoản Free Tier bị giới hạn, nên phần này chỉ ghi nhận hình ảnh của Lab 27 và Lab 22.
+> Lab 18 không có hình ảnh thực hành vì tài khoản Free Tier bị giới hạn, nên phần này chỉ ghi nhận hình ảnh của Lab 22 và Lab 27.
 
 ### Lab 22 – Optimize EC2 Cost with Lambda
 

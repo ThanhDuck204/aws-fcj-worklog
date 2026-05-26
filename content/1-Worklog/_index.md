@@ -21,7 +21,7 @@ Typically, and as a standard, a worklog is carried out over about 3 months (thro
 
 **Week 5:** [](1.5-week5/)
 
-**Week 6:** [](1.6-week6/)
+**Week 6:** [Managing EC2 access with Resource Tags through IAM](1.6-week6/)
 
 **Week 7:** [](1.7-week7/)
 

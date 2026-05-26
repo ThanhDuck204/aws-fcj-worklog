@@ -10,7 +10,7 @@ pre: " <b> 1.5. </b> "
 
 * Begin studying Module 05 – AWS Security Services.
 * Understand the Shared Responsibility Model, IAM, Cognito, AWS Organizations, Identity Center, and KMS.
-* Research Lab 18 at the documentation level due to Free Tier account limits, complete Lab 27 on resource management with tags, then continue Lab 22 on EC2 cost optimization with Lambda.
+* Research Lab 18 at the documentation level due to Free Tier account limits, practice Lab 22 on EC2 cost optimization with Lambda, then complete Lab 27 on resource management with tags.
 
 ---
 
@@ -20,9 +20,10 @@ pre: " <b> 1.5. </b> "
 |---|---|---|---|---|
 | 18/05/2026 | Studied Module 05: Shared Responsibility Model, IAM, and Cognito. | Understood the security responsibility boundary, IAM access management, and Cognito authentication use cases. | [Module 05-01 - Shared Responsibility Model](https://www.youtube.com/watch?v=tsobAlSg19g&list=PLahN4TLWtox2a3vElknwzU_urND8hLn1i&index=151) <br> [Module 05-02 - IAM](https://www.youtube.com/watch?v=N_vlJGAqZxo&list=PLahN4TLWtox2a3vElknwzU_urND8hLn1i&index=152) <br> [Module 05-03 - Amazon Cognito](https://www.youtube.com/watch?v=pZ2fgEFK3Vs&list=PLahN4TLWtox2a3vElknwzU_urND8hLn1i&index=153) | Completed the first Module 05 theory group. |
 | 19/05/2026 | Studied AWS Organizations, AWS Identity Center, AWS KMS, Security Hub, and additional hands-on research. | Understood multi-account management, centralized access, key management, Security Hub concepts, and the Module 05 hands-on direction. | [Module 05-04 - AWS Organizations](https://www.youtube.com/watch?v=5oQY8Rogz9Y&list=PLahN4TLWtox2a3vElknwzU_urND8hLn1i&index=154) <br> [Module 05-05 - AWS Identity Center](https://www.youtube.com/watch?v=NW1xrMkNMjU&list=PLahN4TLWtox2a3vElknwzU_urND8hLn1i&index=155) <br> [Module 05-06 - AWS KMS](https://www.youtube.com/watch?v=GMihNQojhZc&list=PLahN4TLWtox2a3vElknwzU_urND8hLn1i&index=156) <br> [Module 05-07 - AWS Security Hub](https://www.youtube.com/watch?v=clj2E0rNBEs&list=PLahN4TLWtox2a3vElknwzU_urND8hLn1i&index=157) <br> [Module 05-08 - Hands-on and Additional Research](https://www.youtube.com/watch?v=0SdpD2GPYz4&list=PLahN4TLWtox2a3vElknwzU_urND8hLn1i&index=158) | Completed the second Module 05 theory group. |
-| 20/05/2026 | Researched Lab 18 at documentation level due to Free Tier limits and completed Lab 27: managing resources with tags. | Understood Security Hub workflow and practiced organizing AWS resources with tags and Resource Groups. | [Lab 18 - AWS Security Hub](https://000018.awsstudygroup.com/) <br> [Lab 27 - Resource Tagging](https://000027.awsstudygroup.com/) | Lab 18 was documentation-only; Lab 27 was completed. |
-| 21/05/2026 | Off for personal reasons. | No technical work completed. |  | Personal leave. |
-| 22/05/2026 | Continued Lab 22: optimizing EC2 costs with Lambda, EventBridge, and Slack notifications. | Built and tested scheduled EC2 start/stop automation with Lambda and Slack notification. | [Lab 22 - EC2 Cost Optimization](https://000022.awsstudygroup.com/vi/2-prerequiste/) | Completed EC2 automation practice. |
+| 20/05/2026 | Researched Lab 18 at documentation level due to Free Tier limits. | Understood the Security Hub workflow, finding aggregation, and security status checks in an AWS Account. | [Lab 18 - AWS Security Hub](https://000018.awsstudygroup.com/) | Lab 18 was documentation-only. |
+| 21/05/2026 | Continued Lab 22: optimizing EC2 costs with Lambda, EventBridge, and Slack notifications. | Built and tested scheduled EC2 start/stop automation with Lambda and Slack notification. | [Lab 22 - EC2 Cost Optimization](https://000022.awsstudygroup.com/vi/2-prerequiste/) | Completed EC2 automation practice. |
+| 22/05/2026 | Off for personal reasons. | No technical work completed. |  | Personal leave. |
+| 23/05/2026 | Completed Lab 27: managing resources with tags. | Practiced organizing AWS resources with tags, Resource Groups, and AWS CLI. | [Lab 27 - Resource Tagging](https://000027.awsstudygroup.com/) | Lab 27 was completed. |
 
 ---
 
@@ -79,19 +80,7 @@ pre: " <b> 1.5. </b> "
 
 ## Practice Screenshots
 
-> Lab 18 has no practice screenshots because the Free Tier account was limited, so this section only records Lab 27 and Lab 22 screenshots.
-
-### Lab 27 – Resource Management with Tags
-
-![Lab27 Create 2 EC2 with tag](/images/Worklog-week5/Lab27-Create%202%20EC2%20with%20tag.png)
-
-![Lab27 Add or Delete tag with Manage tags](/images/Worklog-week5/Lab27-Add%20or%20Delete%20tag%20with%20Manage%20tags.png)
-
-![Lab27 Filter resources by tag](/images/Worklog-week5/Lab27-Filter%20resouces%20by%20tag.png)
-
-![Lab27 Using tag CLI](/images/Worklog-week5/Lab27-Using%20tag%20CLI.png)
-
-![Lab27 Create Resource Group](/images/Worklog-week5/Lab27-Create%20Resource%20Group.png)
+> Lab 18 has no practice screenshots because the Free Tier account was limited, so this section only records Lab 22 and Lab 27 screenshots.
 
 ### Lab 22 – Optimize EC2 Cost with Lambda
 
@@ -114,3 +103,15 @@ pre: " <b> 1.5. </b> "
 ![Lab22 Create VPC](/images/Worklog-week5/Lab22-Create%20Vpc%20lambda.png)
 
 ![Lab22 Create Slack Workspace](/images/Worklog-week5/Lab22-Create%20workspace%20Slack.png)
+
+### Lab 27 – Resource Management with Tags
+
+![Lab27 Create 2 EC2 with tag](/images/Worklog-week5/Lab27-Create%202%20EC2%20with%20tag.png)
+
+![Lab27 Add or Delete tag with Manage tags](/images/Worklog-week5/Lab27-Add%20or%20Delete%20tag%20with%20Manage%20tags.png)
+
+![Lab27 Filter resources by tag](/images/Worklog-week5/Lab27-Filter%20resouces%20by%20tag.png)
+
+![Lab27 Using tag CLI](/images/Worklog-week5/Lab27-Using%20tag%20CLI.png)
+
+![Lab27 Create Resource Group](/images/Worklog-week5/Lab27-Create%20Resource%20Group.png)
