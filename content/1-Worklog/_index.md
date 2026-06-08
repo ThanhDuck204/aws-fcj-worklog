@@ -19,11 +19,11 @@ Typically, and as a standard, a worklog is carried out over about 3 months (thro
 
 **Week 4:** [AWS Storage, Disaster Recovery, and Management Dashboard Research](1.4-week4/)
 
-**Week 5:** [](1.5-week5/)
+**Week 5:** [AWS Security Services, Cost Optimization, and Resource Tagging](1.5-week5/)
 
 **Week 6:** [Managing EC2 access with Resource Tags through IAM](1.6-week6/)
 
-**Week 7:** [](1.7-week7/)
+**Week 7:** [Project Skeleton & AWS Architecture Design](1.7-week7/)
 
 **Week 8:** [](1.8-week8/)
 
