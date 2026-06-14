@@ -25,7 +25,7 @@ Typically, and as a standard, a worklog is carried out over about 3 months (thro
 
 **Week 7:** [Project Skeleton & AWS Architecture Design](1.7-week7/)
 
-**Week 8:** [](1.8-week8/)
+**Week 8:** [Project Improvements, AWS Cost Estimation, and Kiro Research](1.8-week8/)
 
 **Week 9:** [](1.9-week9/)
 

@@ -1,126 +1,191 @@
 ---
-title: "Blog 1"
-date: 2024-01-01
+title: "Blog 1 - Kiro and the AI-assisted Development Lifecycle"
+date: 2026-06-12
 weight: 1
 chapter: false
 pre: " <b> 3.1. </b> "
 ---
+
 {{% notice warning %}}
 ⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
 {{% /notice %}}
 
-# Getting Started with Healthcare Data Lakes: Using Microservices
+# Kiro - AWS AI Coding Assistant and the AI-assisted Development Lifecycle
 
-Data lakes can help hospitals and healthcare facilities turn data into business insights, maintain business continuity, and protect patient privacy. A **data lake** is a centralized, managed, and secure repository to store all your data, both in its raw and processed forms for analysis. Data lakes allow you to break down data silos and combine different types of analytics to gain insights and make better business decisions.
+Recently, **AI coding assistants** have become a major trend in software development. In the past, developers mainly used AI to suggest code, fix bugs, or explain errors. Today, AI is becoming more involved across the software development lifecycle: requirements analysis, technical design, coding, testing, documentation, and team productivity.
 
-This blog post is part of a larger series on getting started with setting up a healthcare data lake. In my final post of the series, *“Getting Started with Healthcare Data Lakes: Diving into Amazon Cognito”*, I focused on the specifics of using Amazon Cognito and Attribute Based Access Control (ABAC) to authenticate and authorize users in the healthcare data lake solution. In this blog, I detail how the solution evolved at a foundational level, including the design decisions I made and the additional features used. You can access the code samples for the solution in this Git repo for reference.
+Based on AWS and Kiro content, AWS is emphasizing an **AI-assisted development lifecycle**, where tools such as **Kiro** and **Amazon Q Developer** do more than generate code. They help developers work in a more structured and controlled way.
 
----
-
-## Architecture Guidance
-
-The main change since the last presentation of the overall architecture is the decomposition of a single service into a set of smaller services to improve maintainability and flexibility. Integrating a large volume of diverse healthcare data often requires specialized connectors for each format; by keeping them encapsulated separately as microservices, we can add, remove, and modify each connector without affecting the others. The microservices are loosely coupled via publish/subscribe messaging centered in what I call the “pub/sub hub.”
-
-This solution represents what I would consider another reasonable sprint iteration from my last post. The scope is still limited to the ingestion and basic parsing of **HL7v2 messages** formatted in **Encoding Rules 7 (ER7)** through a REST interface.
-
-**The solution architecture is now as follows:**
-
-> *Figure 1. Overall architecture; colored boxes represent distinct services.*
+This article introduces Kiro as a tool that supports the software development process, instead of viewing it only as an AI tool for writing code faster.
 
 ---
 
-While the term *microservices* has some inherent ambiguity, certain traits are common:  
-- Small, autonomous, loosely coupled  
-- Reusable, communicating through well-defined interfaces  
-- Specialized to do one thing well  
-- Often implemented in an **event-driven architecture**
+## What is Kiro?
 
-When determining where to draw boundaries between microservices, consider:  
-- **Intrinsic**: technology used, performance, reliability, scalability  
-- **Extrinsic**: dependent functionality, rate of change, reusability  
-- **Human**: team ownership, managing *cognitive load*
+**Kiro** is an AWS AI IDE/Coding Assistant designed to help developers build software in a more structured way. Its key difference is that it encourages **Spec-Driven Development**, meaning software development based on clear specifications.
 
----
+Instead of typing a short prompt and asking AI to generate code immediately, Kiro can help clarify:
 
-## Technology Choices and Communication Scope
+- What problem does this feature solve?
+- How will users interact with the feature?
+- What are the detailed requirements?
+- How should the technical design be structured?
+- What tasks are needed for implementation?
+- What test cases should be covered?
 
-| Communication scope                       | Technologies / patterns to consider                                                        |
-| ----------------------------------------- | ------------------------------------------------------------------------------------------ |
-| Within a single microservice              | Amazon Simple Queue Service (Amazon SQS), AWS Step Functions                               |
-| Between microservices in a single service | AWS CloudFormation cross-stack references, Amazon Simple Notification Service (Amazon SNS) |
-| Between services                          | Amazon EventBridge, AWS Cloud Map, Amazon API Gateway                                      |
+This is important in real projects. Many projects do not fail because of a lack of code; they fail because requirements are unclear, designs are not aligned, and team members understand the implementation differently.
 
 ---
 
-## The Pub/Sub Hub
+## Spec-Driven Development: Analyze Before Coding
 
-Using a **hub-and-spoke** architecture (or message broker) works well with a small number of tightly related microservices.  
-- Each microservice depends only on the *hub*  
-- Inter-microservice connections are limited to the contents of the published message  
-- Reduces the number of synchronous calls since pub/sub is a one-way asynchronous *push*
+The most notable part of Kiro is its **Spec-Driven Development** approach. With a common AI workflow, a developer may enter a short request such as:
 
-Drawback: **coordination and monitoring** are needed to avoid microservices processing the wrong message.
+> "Build a login feature for me."
 
----
+AI may generate code quickly, but if the initial request is unclear, the output can easily drift away from the real goal. AI may assume business logic, create unnecessary files, or implement something that does not match the existing architecture.
 
-## Core Microservice
+With Kiro, a better workflow is:
 
-Provides foundational data and communication layer, including:  
-- **Amazon S3** bucket for data  
-- **Amazon DynamoDB** for data catalog  
-- **AWS Lambda** to write messages into the data lake and catalog  
-- **Amazon SNS** topic as the *hub*  
-- **Amazon S3** bucket for artifacts such as Lambda code
+1. Describe the idea or feature.
+2. Create detailed requirements.
+3. Create a technical design.
+4. Break the work into tasks.
+5. Review the specification.
+6. Implement the code afterward.
 
-> Only allow indirect write access to the data lake through a Lambda function → ensures consistency.
+For example, before implementing a login feature, Kiro can help analyze:
 
----
+- Users enter email and password.
+- The system validates input data.
+- If credentials are wrong, an error is shown.
+- If credentials are correct, a session or token is created.
+- Private routes only allow authenticated users.
+- Test cases should cover success, failure, and missing input.
 
-## Front Door Microservice
-
-- Provides an API Gateway for external REST interaction  
-- Authentication & authorization based on **OIDC** via **Amazon Cognito**  
-- Self-managed *deduplication* mechanism using DynamoDB instead of SNS FIFO because:  
-  1. SNS deduplication TTL is only 5 minutes  
-  2. SNS FIFO requires SQS FIFO  
-  3. Ability to proactively notify the sender that the message is a duplicate  
+This allows AI to work from a clearer specification instead of a short prompt. It reduces the risk of incorrect implementation and makes team review easier.
 
 ---
 
-## Staging ER7 Microservice
+## Kiro in the AI-assisted Development Lifecycle
 
-- Lambda “trigger” subscribed to the pub/sub hub, filtering messages by attribute  
-- Step Functions Express Workflow to convert ER7 → JSON  
-- Two Lambdas:  
-  1. Fix ER7 formatting (newline, carriage return)  
-  2. Parsing logic  
-- Result or error is pushed back into the pub/sub hub  
+In an **AI-assisted development lifecycle**, AI does not appear only during coding. It can support many stages of software development, from an unclear idea to tested and documented features.
+
+Kiro can support the following stages:
+
+| Stage | How Kiro can help |
+|---|---|
+| Requirements analysis | Turn an initial idea into clearer requirements |
+| Technical design | Suggest frontend, backend, API, database, and processing service structure |
+| Task breakdown | Split a large feature into smaller tasks that are easier to implement and review |
+| Code implementation | Help implement code based on defined tasks |
+| Testing | Suggest test cases and cover success/failure flows |
+| Documentation | Generate README content, API descriptions, and processing flow explanations |
+
+This makes Kiro suitable for structured project development, especially in team projects or systems with multiple related modules.
 
 ---
 
-## New Features in the Solution
+## Example: Applying Kiro to an AI Meeting & Workforce Management Platform
 
-### 1. AWS CloudFormation Cross-Stack References
-Example *outputs* in the core microservice:
-```yaml
-Outputs:
-  Bucket:
-    Value: !Ref Bucket
-    Export:
-      Name: !Sub ${AWS::StackName}-Bucket
-  ArtifactBucket:
-    Value: !Ref ArtifactBucket
-    Export:
-      Name: !Sub ${AWS::StackName}-ArtifactBucket
-  Topic:
-    Value: !Ref Topic
-    Export:
-      Name: !Sub ${AWS::StackName}-Topic
-  Catalog:
-    Value: !Ref Catalog
-    Export:
-      Name: !Sub ${AWS::StackName}-Catalog
-  CatalogArn:
-    Value: !GetAtt Catalog.Arn
-    Export:
-      Name: !Sub ${AWS::StackName}-CatalogArn
+For the **AI Meeting & Workforce Management Platform**, instead of only asking AI to "build a meeting summarization feature," the team can use Kiro to break the requirements into clearer parts:
+
+- Upload an audio file or transcript.
+- Convert audio to text if needed.
+- Summarize the main meeting content.
+- Extract action items from the meeting.
+- Assign responsible people to tasks.
+- Identify deadlines and priorities.
+- Save results for later review.
+- Allow users to edit tasks generated by AI.
+
+After the requirements are clear, Kiro can help break the implementation into tasks:
+
+- Create the file upload UI.
+- Write an API to receive files.
+- Validate file format and size.
+- Save metadata to the database.
+- Call a transcript processing service.
+- Create tasks from meeting content.
+- Display tasks on the dashboard.
+
+This task breakdown makes development easier to control. The team can review each part instead of allowing AI to modify too many files at once.
+
+---
+
+## Benefits for Students and Study Groups
+
+For students or study groups, Kiro does not only help write code faster. It also helps people learn how to build software projects more professionally. Key benefits include:
+
+- Learning to analyze requirements before coding.
+- Learning to design technical solutions step by step.
+- Breaking work into smaller tasks for teamwork.
+- Creating clearer documentation for reports and presentations.
+- Reducing development based on assumptions.
+- Making it easier to onboard new members.
+- Practicing how to review AI-generated results.
+
+In group projects, clear specs and tasks help members move in the same direction and reduce inconsistent implementation.
+
+---
+
+## Limitations and Risks
+
+Although Kiro is useful, it is still a supporting tool, not the final owner of the product. When using Kiro or similar AI coding assistants, several risks should be considered.
+
+### AI can misunderstand requirements
+
+If the initial prompt is unclear, the generated specification can also be wrong. The resulting code may look reasonable but still miss the real goal.
+
+### AI can overbuild
+
+For a small feature, AI may create too many files, abstractions, or unnecessary tests. This can make the project more complex instead of simpler.
+
+### Code still needs review
+
+AI-generated code may contain logic errors, security issues, or patterns that do not fit the current architecture. Developers still need to read, test, and verify the output.
+
+### Cost and resources must be controlled
+
+AI tools may consume credits or usage-based costs. If the team repeatedly asks AI to redo work because the spec is unclear, cost can increase unnecessarily.
+
+### Do not include secrets in prompts
+
+API keys, tokens, passwords, and sensitive data should not be included in prompts. If AI can edit files or run commands, its scope should be limited and all changes should be reviewed carefully.
+
+---
+
+## Suggestions for Using Kiro Effectively
+
+To use Kiro more effectively, the team identified several principles:
+
+- Start with a spec instead of asking AI to code immediately.
+- Always read and adjust requirements before implementation.
+- Split work into small tasks for easier checking.
+- Avoid letting AI modify too many parts of the project at once.
+- Do not include sensitive data in prompts.
+- Run and test the project after each change.
+- Use AI as a programming assistant, not as the final responsible engineer.
+- In team projects, separate spec review and code review when possible.
+
+---
+
+## Conclusion
+
+Kiro is a notable AWS AI Coding Assistant. Its value is not only in helping developers write code, but also in bringing developers back to a more structured process: requirements analysis, design, task breakdown, implementation, testing, and documentation.
+
+For students and study groups, Kiro can be a useful tool for learning how to build software projects more professionally. However, AI is still only a supporting tool. Users must understand the requirements, review the code, control security risks, and take responsibility for the final product.
+
+In the future, developers may not only be people who write code. They will also need to define good requirements, coordinate AI agents, check quality, and design better systems.
+
+---
+
+## References
+
+- [AWS Documentation - Kiro Documentation](https://aws.amazon.com/documentation-overview/kiro/)
+- [Kiro Blog - Introducing Kiro](https://kiro.dev/blog/introducing-kiro/)
+- [Kiro Docs - Specs](https://kiro.dev/docs/specs/)
+- [Kiro Docs - Steering](https://kiro.dev/docs/steering/)
+- [Kiro Docs - Hooks](https://kiro.dev/docs/hooks/)
+- [AWS Architecture Blog](https://aws.amazon.com/blogs/architecture/)
+- [AWS Security Blog](https://aws.amazon.com/blogs/security/)
