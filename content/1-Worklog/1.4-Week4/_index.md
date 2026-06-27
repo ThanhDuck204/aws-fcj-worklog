@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Week 4 Worklog"
 date: 2026-05-11
 weight: 4
@@ -6,57 +6,47 @@ chapter: false
 pre: " <b> 1.4. </b> "
 ---
 
-# Worklog Week 4
-
 ## Week 4 Objectives
 
-- Continue studying Module 04 – Storage on AWS.
-- Learn about Snow Family, Storage Gateway, Disaster Recovery, and AWS Backup.
-- Research AWS Cost Explorer API, Billing API, and IAM API to prepare for AWS Management Dashboard direction.
+* Continue Module 04 about Storage on AWS.
+* Learn Snow Family, Storage Gateway, Disaster Recovery, and AWS Backup.
+* Research Cost Explorer API, Billing API, and IAM API for the AWS Management Dashboard idea.
+* Review Event 1 content about Prompt Engineering, Proptimizer, and BMAD.
 
-## Completed Work
+---
+
+## Work Completed
 
 | Date | Task | Result | Resources | Notes |
 |---|---|---|---|---|
-| 12/05/2026 | Studied Module 04-04: Snow Family, AWS Storage Gateway, Disaster Recovery, and AWS Backup. | Completed research on hybrid storage, data transfer, backup, and disaster recovery strategies. | [Module 04-04 - Snow Family and Storage Gateway](https://www.youtube.com/watch?v=YXn8Q_Hpsu4&list=PLahN4TLWtox2a3vElknwzU_urND8hLn1i&index=106) | Completed on schedule. |
-| 13/05/2026 | Researched AWS Cost Explorer API, Billing API, and AWS management dashboard architecture. | Understood how to get cost data through GetCostAndUsage and distinguish Cost Explorer API from Billing API. | [AWS Cost Management API](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/Welcome.html) | Completed API research. |
-| 14/05/2026 | Researched IAM Management API, permission models, and AWS resource monitoring. | Learned how to list users, groups, and policies through IAM API; built a plan for the user management module. | [IAM API Reference](https://docs.aws.amazon.com/IAM/latest/APIReference/Welcome.html) | Completed IAM research. |
-| 15/05/2026 | Reviewed technologies shared by speakers in Event 1: Proptimizer Extension, BMAD methodology, and AWS cost optimization practices. | Gained deeper understanding of Proptimizer, BMAD, and cost optimization techniques from community sharing. | [Event 1 Report](/4-eventparticipated/4.1-event1/) | Reviewed event content. |
-| 16/05/2026 | Processed event notes and wrote the Event 1 report on Prompt Engineering and BMAD. | Completed the Event 1 report and applied the methodology to my workflow. | [Event 1 Report](/4-eventparticipated/4.1-event1/) | Wrote report after event. |
+| 11/05/2026 | Studied Snow Family, Storage Gateway, Disaster Recovery, and AWS Backup. | Understood how AWS supports large-scale data transfer, hybrid storage, and centralized backup. Recorded RTO/RPO to compare disaster recovery strategies. | [Module 04-04 - Snow Family and Storage Gateway](https://www.youtube.com/watch?v=YXn8Q_Hpsu4&list=PLahN4TLWtox2a3vElknwzU_urND8hLn1i&index=106) | DR needs to be connected to real scenarios. |
+| 12/05/2026 | Researched AWS Cost Explorer API, Billing API, and AWS management dashboard architecture. | Understood how to retrieve cost data with `GetCostAndUsage`, distinguish Cost Explorer API from Billing API, and sketch a backend layer for the dashboard. | [AWS Cost Management API](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/Welcome.html) | Started shaping a cost monitoring dashboard direction. |
+| 13/05/2026 | Researched IAM API and permission model for the dashboard. | Learned how to list users, groups, policies, and roles through IAM API. Noted that read-only permissions should be used if the dashboard is only for observation. | [IAM API Reference](https://docs.aws.amazon.com/IAM/latest/APIReference/Welcome.html) | IAM permission scope needs care. |
+| 14/05/2026 | Reviewed Event 1: Proptimizer Extension, BMAD methodology, and AWS cost optimization. | Learned how structured prompts and BMAD can help break down requirements, plus a few AWS cost optimization practices. | [Event 1 Reflection](/4-eventparticipated/4.1-event1/) | Connected event content to learning and lab workflow. |
+| 15/05/2026 | Wrote the Event 1 reflection and summarized weekly notes. | Completed the reflection and collected key ideas about Prompt Engineering, BMAD, and how to apply them to learning/project work. | [Event 1 Reflection](/4-eventparticipated/4.1-event1/) | Finished the week with a summary. |
 
-## Knowledge Learned
+---
 
-- **Snow Family**: Snowball, Snowball Edge, Snowmobile support large-scale data migration when Internet bandwidth is insufficient
-- **AWS Storage Gateway**: Differentiated File Gateway (NFS/SMB), Volume Gateway (iSCSI Block), Tape Gateway (iSCSI VTL) by protocol and suitable workload
-- **Disaster Recovery**: Understood RTO/RPO, compared strategies: Backup & Restore, Pilot Light, Low Capacity Active-Active, Full Capacity Active-Active
-- **AWS Backup**: Understood how to use Backup Plan, retention policy, backup vault to manage centralized backup for EC2, EBS, RDS, DynamoDB, EFS, Storage Gateway
-- **AWS APIs**: Researched Cost Explorer API (GetCostAndUsage), Billing API, IAM API to build dashboard
-- **Dashboard Architecture**: Planned backend layer connecting to AWS SDK/API, UI to display costs, resource status, and IAM information
-- **Prompt Engineering & BMAD**: Learned to optimize development workflow via Proptimizer Extension and BMAD method
-- **AWS Cost Optimization**: Applied Free Tier, configured AWS Budgets, selected resources based on actual needs
+## Weekly Notes
 
-## Achievements
+This week was not only about learning more AWS services, but also about thinking how AWS API data could be used to build a management dashboard. It connected cloud knowledge with a more product-oriented direction.
 
-- Completed comprehensive research on Storage services, Backup, and Disaster Recovery on AWS
-- Developed prototype architecture for AWS Management Dashboard combining multiple APIs
-- Applied knowledge from community event to improve development process
-- Completed all planned tasks for week 4
+With Cost Explorer and IAM API, I realized that using an API is not only about calling an endpoint. It also requires understanding permissions, returned data limits, time grouping, and how to display data clearly.
 
-## Challenges & Solutions
+---
 
-- **Challenge**: Confusing between different Disaster Recovery strategies
-  **Solution**: Used RTO/RPO as the main criterion to distinguish each model
+## Challenges Encountered
 
-- **Challenge**: Selecting appropriate Storage Gateway type for specific workload
-  **Solution**: Remembered by protocol: NFS/SMB for File Gateway, iSCSI Block for Volume Gateway, iSCSI VTL for Tape Gateway
+* Disaster Recovery strategies were easy to mix up when only remembering their names, so RTO/RPO had to be used for comparison.
+* Cost Explorer API and Billing API have different scopes, so documentation was needed to understand where each type of data comes from.
+* IAM API is directly related to access control, so dashboard design needs to be careful with permissions.
+* Event 1 introduced new ideas such as Proptimizer and BMAD, which needed to be summarized in a way that could apply to my workflow.
 
-- **Challenge**: Determining minimum access level needed for dashboard
-  **Solution**: Compared IAM Actions with AWS documentation, prioritized minimal read-only access
+---
 
-## References
+## Lessons Learned
 
-- AWS Documentation: Snow Family and Storage Gateway
-- AWS Cost Explorer API Reference
-- AWS IAM API Reference
-- Event 1 Report on Prompt Engineering and BMAD
-- AWS Cost Optimization materials from community
+* Disaster Recovery should be evaluated using RTO/RPO instead of only the model name.
+* Cost Explorer API is useful for cost data grouped by day, service, or tag.
+* An AWS management dashboard should start with read-only access to reduce risk.
+* Prompt Engineering and BMAD are useful when requirements need to be broken down before implementation.

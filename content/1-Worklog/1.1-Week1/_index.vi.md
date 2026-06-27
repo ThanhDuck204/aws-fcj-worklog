@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Worklog Tuần 1"
 date: 2026-04-20
 weight: 1
@@ -6,54 +6,47 @@ chapter: false
 pre: " <b> 1.1. </b> "
 ---
 
-# Worklog Tuần 1
-
 ## Mục tiêu tuần 1
 
-- Làm quen với môi trường thực tập và các thành viên trong First Cloud Journey
-- Hiểu được các khái niệm cơ bản về Cloud Computing và AWS
-- Thực hành IAM, bảo mật tài khoản, quản lý chi phí và thiết lập mạng/database cơ bản
+* Làm quen với môi trường thực tập, cách học và cách ghi chép trong First Cloud Journey.
+* Nắm các khái niệm nền tảng về Cloud Computing, AWS Global Infrastructure và Well-Architected Framework.
+* Thực hành các phần cơ bản của AWS như IAM, MFA, VPC, EC2, RDS và AWS Budgets.
+* Tạo thói quen dọn dẹp tài nguyên sau khi lab để tránh phát sinh chi phí.
 
-## Công việc đã hoàn thành
+---
+
+## Công việc đã thực hiện
 
 | Ngày | Công việc | Kết quả | Tài liệu | Ghi chú |
 |---|---|---|---|---|
-| 2 | - Tìm hiểu Cloud Computing, AWS Global Infrastructure<br>- Học Well-Architected Framework | Nắm vững khái niệm Cloud vs On-Premise<br>Hiểu 6 trụ cột Well-Architected Framework | [Cloud Journey](https://cloudjourney.awsstudygroup.com/)<br>[AWS Well-Architected Framework](https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html) | Hoàn thành mục tiêu khai báo |
-| 3 | - Khám phá AWS Management Console, CLI, SDK<br>- Học cách tạo AWS Support case | Thao tác thành công với các công cụ AWS cơ bản<br>D biết quy trình mở trường hợp hỗ trợ | [Cloud Journey](https://cloudjourney.awsstudygroup.com/)<br>[AWS Support Case Tutorial](https://www.youtube.com/watch?v=95quNuhvMT0) | Hoàn thành làm quen với công cụ AWS |
-| 4 | - Thiết lập bảo mật tài khoản AWS (MFA, IAM User/Group)<br>- Xử lý lỗi xác thực | Hoàn thành cấu trúc IAM cơ bản<br>Có thể tự xử lý vấn đề xác thực thường gặp | [AWS Account Security Tutorial](https://www.youtube.com/watch?v=1dG5xutGbr4)<br>[IAM User and Group Tutorial](https://www.youtube.com/watch?v=b9pK1oG534Q)<br>[MFA Setup Tutorial](https://www.youtube.com/watch?v=69iKhwI7k2Y) | Hoàn thành lab bảo mật tài khoản |
-| 5 | - Thực hành lab tổng hợp (VPC, SG, EC2, RDS)<br>- Sử dụng AWS Budgets | Hoàn thành 5 lab encontrados<br>Thiết lập cảnh báo chi tiêu thành công | [Cloud Journey](https://cloudjourney.awsstudygroup.com/)<br>[AWS Budgets Lab](https://000007.awsstudygroup.com/vi/3-usage-budget/) | Hoàn thành lab tích hợp mạng & database |
-| 6 | - Thực hành Database (kết nối, truy vấn)<br>- Dùng công cụ Kiro<br>- Học lý thuyết Module 02 | Kết nối và truy vấn database thành công<br>Tự động dọn dẹp tài nguyên<br>Bắt đầu học Module 02 | [Cloud Journey](https://cloudjourney.awsstudygroup.com/)<br>[Module 02 Theory](https://www.youtube.com/watch?v=uAQCm4sm_1c) | Chuyển sang học lý thuyếtModule 02 |
+| 20/04/2026 | Làm quen chương trình, đọc tổng quan về Cloud Computing và AWS. | Hiểu sự khác nhau giữa Cloud và On-Premise, cách AWS tổ chức Region, Availability Zone và Edge Location. Bắt đầu ghi chú theo từng module để dễ xem lại. | [Cloud Journey](https://cloudjourney.awsstudygroup.com/) | Ngày đầu chủ yếu để bắt nhịp. |
+| 21/04/2026 | Học Well-Architected Framework và các công cụ AWS cơ bản. | Nắm 6 trụ cột của Well-Architected Framework. Làm quen với AWS Management Console, CLI, SDK và cách mở support case khi cần hỗ trợ. | [AWS Well-Architected Framework](https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html) <br> [AWS Support Case Tutorial](https://www.youtube.com/watch?v=95quNuhvMT0) | Bắt đầu hiểu cách AWS nhìn một hệ thống tốt. |
+| 22/04/2026 | Thiết lập bảo mật tài khoản AWS với MFA, IAM User và IAM Group. | Bật MFA cho tài khoản, tạo IAM user/group và thử xử lý một số lỗi xác thực cơ bản. Phần này giúp mình hiểu rõ hơn vì sao không nên dùng root account cho công việc hằng ngày. | [AWS Account Security Tutorial](https://www.youtube.com/watch?v=1dG5xutGbr4) <br> [IAM User and Group Tutorial](https://www.youtube.com/watch?v=b9pK1oG534Q) <br> [MFA Setup Tutorial](https://www.youtube.com/watch?v=69iKhwI7k2Y) | Hoàn thành phần bảo mật tài khoản. |
+| 23/04/2026 | Thực hành lab tổng hợp với VPC, Security Group, EC2, RDS và AWS Budgets. | Tạo được hạ tầng cơ bản gồm mạng, máy chủ và database. Thiết lập cảnh báo chi tiêu bằng AWS Budgets để theo dõi chi phí trong quá trình học. | [AWS Budgets Lab](https://000007.awsstudygroup.com/vi/3-usage-budget/) | Phần lab giúp nối lý thuyết với thao tác thực tế. |
+| 24/04/2026 | Thực hành kết nối database, dùng Kiro để hỗ trợ dọn tài nguyên và bắt đầu Module 02. | Kết nối và truy vấn database thành công. Sau lab, kiểm tra lại tài nguyên đã tạo để hạn chế bỏ sót EC2/RDS đang chạy. | [Cloud Journey](https://cloudjourney.awsstudygroup.com/) <br> [Module 02 Theory](https://www.youtube.com/watch?v=uAQCm4sm_1c) | Chuyển dần sang phần Networking. |
 
-## Kiến thức đã học
+---
 
-- **Cloud Computing & AWS**: Lợi thế on-demand, pay-as-you-go; cấu trúc Regions, AZs, Edge Locations
-- **Well-Architected Framework**: 6 trụ cột: Operational Excellence, Security, Reliability, Performance Efficiency, Cost Optimization, Sustainability
-- **IAM & Bảo mật**: MFA cho Root account, tạo IAM User/Group, áp dụng Least Privilege
-- **Quản lý chi phí**: AWS Budgets để thiết lập cảnh báo chi tiêu
-- **Networking**: VPC, Public/Private Subnets, Internet Gateway, NAT Gateway, Route Table
-- **Network Security**: Security Groups (Stateful, instance-level) vs Network ACLs (Stateless, subnet-level)
-- **Database**: RDS provisioning và kết nối từ EC2 an toàn
-- **Công cụ**: Kiro để tự động dọn dẹp tài nguyên AWS
+## Ghi chú trong tuần
 
-## Thành tựu
+Tuần đầu tiên là giai đoạn làm quen nên mình tập trung vào nền tảng nhiều hơn là đi sâu một dịch vụ cụ thể. Phần quan trọng nhất là hiểu cách AWS tổ chức tài nguyên và vì sao IAM/MFA phải được làm ngay từ đầu.
 
-- Hoàn thành tất cả lab tiêu chuẩn tuần 1 (VPC, SG, EC2, RDS, IAM, Budgets)
-- Thiết lập thành công môi trường thực tập AWS cơ bản
-- Đạt được hiểu biết vững về nền tảng Cloud Computing và AWS
-- Chuẩn bị tốt để chuyển sang Module 02
+Các bài lab về VPC, EC2 và RDS giúp mình thấy rõ hơn luồng triển khai một ứng dụng đơn giản trên cloud. Trước đó các khái niệm như subnet, route table hay security group còn khá rời rạc; sau khi tự cấu hình thì dễ hình dung hơn nhiều.
 
-## Khó khăn & Giải pháp
+---
 
-- **Khó khăn**: Giao diện AWS Console quá banyak dịch vụ, tìm menu mất thời gian
-  **Giải pháp**: Sử dụng thanh Global Search và ghim các dịch vụ thường dùng
+## Khó khăn gặp phải
 
-- **Khó khăn**: Lo ngại bị tính phí ngoài ý tưởng vì quên tắt tài nguyên
-  **Giải pháp**: Cấu hình AWS Budgets từ ngày đầu + dùng Kiro quét tài nguyên "mồ côi" trước logout
+* AWS Console có nhiều dịch vụ và menu nên lúc đầu mất thời gian tìm đúng chỗ cần cấu hình.
+* Một số khái niệm mạng như subnet, route table và security group dễ nhầm khi chỉ học lý thuyết.
+* Khi làm lab có cảm giác lo bị phát sinh chi phí nếu quên tắt EC2, RDS hoặc các tài nguyên liên quan.
+* Cần tự tạo thói quen ghi chú và cleanup sau mỗi buổi học, vì nếu để dồn lại sẽ khó nhớ tài nguyên nào đã tạo.
 
-## Tài liệu tham khảo
+---
 
-- AWS Well-Architected Framework documentation
-- AWS Study Group learning materials
-- YouTube tutorials về IAM, VPC, EC2, RDS
-- AWS Budgets documentation
-- AWS CLI & SDK getting started guides
+## Kiến thức rút ra
+
+* AWS Console có rất nhiều dịch vụ, nên cần biết dùng search và ghi lại các dịch vụ hay dùng.
+* IAM và MFA là phần nền tảng, không nên để đến cuối mới cấu hình.
+* AWS Budgets nên được tạo sớm để tránh quên tài nguyên đang chạy.
+* Khi làm lab, bước cleanup quan trọng ngang với bước tạo tài nguyên.

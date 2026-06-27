@@ -1,6 +1,6 @@
-﻿---
+---
 title: "Week 1 Worklog"
-date: 2024-01-01
+date: 2026-04-20
 weight: 1
 chapter: false
 pre: " <b> 1.1. </b> "
@@ -8,74 +8,45 @@ pre: " <b> 1.1. </b> "
 
 ## Week 1 Objectives
 
-* Get acquainted with the internship environment and First Cloud Journey.
-* Understand core Cloud Computing and AWS concepts.
-* Practice IAM, account security, cost management, and basic networking/database setup.
+* Get familiar with the internship environment, learning flow, and note-taking style in First Cloud Journey.
+* Understand the foundations of Cloud Computing, AWS Global Infrastructure, and the Well-Architected Framework.
+* Practice basic AWS services such as IAM, MFA, VPC, EC2, RDS, and AWS Budgets.
+* Build the habit of cleaning up resources after labs to avoid unexpected costs.
 
 ---
 
-## Tasks Carried Out
+## Work Completed
 
 | Date | Task | Result | Resources | Notes |
 |---|---|---|---|---|
-| 20/04/2026 | Studied Cloud Computing, AWS Global Infrastructure, and the Well-Architected Framework. | Understood cloud fundamentals, AWS Regions, AZs, Edge Locations, and the 6 Well-Architected pillars. | [Cloud Journey](https://cloudjourney.awsstudygroup.com/) <br> [AWS Well-Architected Framework](https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html) | Completed foundational theory. |
-| 21/04/2026 | Explored the AWS Management Console, CLI, SDK, and AWS Support case creation. | Practiced basic AWS tools and learned the support case workflow. | [Cloud Journey](https://cloudjourney.awsstudygroup.com/) <br> [AWS Support Case Tutorial](https://www.youtube.com/watch?v=95quNuhvMT0) | Built familiarity with AWS operations. |
-| 22/04/2026 | Configured AWS account security with MFA, IAM User/Group, and authentication troubleshooting. | Completed a basic IAM structure and understood common authentication issues. | [AWS Account Security Tutorial](https://www.youtube.com/watch?v=1dG5xutGbr4) <br> [IAM User and Group Tutorial](https://www.youtube.com/watch?v=b9pK1oG534Q) <br> [MFA Setup Tutorial](https://www.youtube.com/watch?v=69iKhwI7k2Y) | Completed account security practice. |
-| 23/04/2026 | Completed comprehensive labs covering VPC, Security Groups, EC2, RDS, and AWS Budgets. | Finished the integrated networking/database labs and configured spending alerts. | [Cloud Journey](https://cloudjourney.awsstudygroup.com/) <br> [AWS Budgets Lab](https://000007.awsstudygroup.com/vi/3-usage-budget/) | Completed integrated AWS lab work. |
-| 24/04/2026 | Practiced database connectivity and queries, used Kiro, and started Module 02 theory. | Connected to the database successfully, cleaned up resources, and began networking theory. | [Cloud Journey](https://cloudjourney.awsstudygroup.com/) <br> [Module 02 Theory](https://www.youtube.com/watch?v=uAQCm4sm_1c) | Transitioned into Module 02. |
+| 20/04/2026 | Got familiar with the program and studied Cloud Computing and AWS basics. | Understood the difference between Cloud and On-Premise, and how AWS organizes Regions, Availability Zones, and Edge Locations. Started taking notes by module for easier review. | [Cloud Journey](https://cloudjourney.awsstudygroup.com/) | Mainly focused on getting started. |
+| 21/04/2026 | Studied the Well-Architected Framework and basic AWS tools. | Learned the 6 pillars of the Well-Architected Framework. Explored AWS Management Console, CLI, SDK, and the support case workflow. | [AWS Well-Architected Framework](https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html) <br> [AWS Support Case Tutorial](https://www.youtube.com/watch?v=95quNuhvMT0) | Started understanding how AWS evaluates a well-designed system. |
+| 22/04/2026 | Configured AWS account security with MFA, IAM User, and IAM Group. | Enabled MFA, created IAM users/groups, and tested a few basic authentication issues. This made it clearer why the root account should not be used for daily work. | [AWS Account Security Tutorial](https://www.youtube.com/watch?v=1dG5xutGbr4) <br> [IAM User and Group Tutorial](https://www.youtube.com/watch?v=b9pK1oG534Q) <br> [MFA Setup Tutorial](https://www.youtube.com/watch?v=69iKhwI7k2Y) | Completed account security setup. |
+| 23/04/2026 | Practiced an integrated lab with VPC, Security Group, EC2, RDS, and AWS Budgets. | Created a basic cloud environment with networking, compute, and database resources. Set up AWS Budgets alerts to monitor learning-related costs. | [AWS Budgets Lab](https://000007.awsstudygroup.com/vi/3-usage-budget/) | The lab helped connect theory with real AWS operations. |
+| 24/04/2026 | Practiced database connection, used Kiro for resource cleanup, and started Module 02. | Connected to and queried the database successfully. Reviewed created resources after the lab to avoid leaving EC2/RDS resources running. | [Cloud Journey](https://cloudjourney.awsstudygroup.com/) <br> [Module 02 Theory](https://www.youtube.com/watch?v=uAQCm4sm_1c) | Moved into the Networking module. |
 
 ---
 
-## Knowledge & Skills Gained
+## Weekly Notes
 
-### 1. Cloud Computing & AWS Foundations
+The first week was mostly about building a foundation rather than going deep into one specific service. The most important parts were understanding how AWS organizes resources and why IAM/MFA should be configured from the beginning.
 
-* **Studied Core Concepts**: Understood the advantages of Cloud (on-demand, pay-as-you-go) over On-Premise, and the structure of AWS Global Infrastructure (Regions, AZs, Edge Locations).
-* **Researched Well-Architected Framework**: Familiarized with the 6 design pillars for building scalable, fault-tolerant, and cost-efficient systems on AWS.
-
-### 2. Account Security & IAM
-
-* **Practiced IAM Setup**: Enabled MFA on the Root account, created IAM Users/Groups, and applied least-privilege permissions to eliminate Root account usage in daily operations.
-* **Configured Cost Controls**: Set up spending alerts via **AWS Budgets** and learned to open Support Cases for authentication issues.
-
-### 3. Networking & Database Overview
-
-* **Studied VPC Architecture**: Learned the fundamentals of Public/Private Subnets, Internet Gateways, NAT Gateways, and Route Tables.
-* **Differentiated Security Layers**: Distinguished Security Groups (Stateful, instance-level) from Network ACLs (Stateless, subnet-level).
-* **Explored RDS**: Provisioned a managed relational database and connected it to an EC2 instance from the application layer.
+The VPC, EC2, and RDS labs also helped make the deployment flow of a simple cloud application clearer. Concepts like subnet, route table, and security group were easier to understand after configuring them directly.
 
 ---
 
-## Lab & Practical Experience
+## Challenges Encountered
 
-* **Security Lab**: Successfully configured IAM User/Group structure, enabled Virtual MFA for the Root account, and set up AWS Budgets alerts.
-* **Network & Database Lab**: Deployed a VPC with Public/Private Subnets, provisioned EC2 and RDS instances, completed all 5 foundational labs, and used Kiro for automated resource cleanup.
-
----
-
-## Difficulties Encountered & Solutions
-
-* **AWS Console Navigation**: The large number of services made locating specific menus time-consuming at first.
-  * *Solution*: Adopted the Global Search bar and pinned frequently used services to the console header.
-* **Unintended Cost Risks**: Concern about unexpected charges from forgotten EC2/RDS resources running past Free Tier.
-  * *Solution*: Configured AWS Budgets on day one and used Kiro to scan for orphaned resources before logging out each session.
+* AWS Console has many services and menus, so finding the right place to configure things took time at first.
+* Networking concepts such as subnet, route table, and security group were easy to mix up when only studying theory.
+* There was concern about unexpected costs if EC2, RDS, or related resources were left running.
+* I needed to build a cleanup and note-taking habit after each session because it becomes hard to remember created resources later.
 
 ---
 
 ## Lessons Learned
 
-* Never use the Root account for daily operations â€” MFA and scoped IAM Users are non-negotiable security baselines on AWS.
-* AWS charges are usage-based; relying on memory to shut down instances is risky. AWS Budgets and consistent cleanup routines are essential.
-* VPC is the foundation for every AWS deployment â€” understanding Subnets, Security Groups, and Route Tables is prerequisite knowledge for all other services.
-
----
-
-## Lab Screenshots
-
-![Setup](/images/Worklog-weak1/setup-virtual-mfa-device.png)
-
-![Create](/images/Worklog-weak1/create-admin-group-and-admin-user.png)
-
-![Done Budget](/images/Worklog-weak1/done-all-lab-budget.png)
-
-![Done All](/images/Worklog-weak1/done-all-5-labs-get-100-credit-aws.png)
+* AWS Console is easier to use when using search and pinning frequently used services.
+* IAM and MFA are foundational and should not be postponed.
+* AWS Budgets should be created early to avoid forgotten running resources.
+* In AWS labs, cleanup is just as important as creating resources.

@@ -1,6 +1,6 @@
-﻿---
+---
 title: "Week 3 Worklog"
-date: 2026-05-05
+date: 2026-05-04
 weight: 3
 chapter: false
 pre: " <b> 1.3. </b> "
@@ -8,81 +8,45 @@ pre: " <b> 1.3. </b> "
 
 ## Week 3 Objectives
 
-* Begin studying Module 03 â€“ Compute on AWS.
-* Understand core Amazon EC2 concepts: Instance Types, AMI, Key Pair, and pricing models.
-* Learn EC2 scaling, managed storage (EFS, FSx), and start Module 04 â€“ Storage.
+* Start Module 03 about Compute on AWS.
+* Understand EC2 concepts such as instance type, AMI, key pair, user data, metadata, and Auto Scaling.
+* Practice AWS Backup, Storage Gateway, and S3 static website hosting.
+* Prepare the foundation for Module 04 about Storage.
 
 ---
 
-## Tasks Carried Out
+## Work Completed
 
 | Date | Task | Result | Resources | Notes |
 |---|---|---|---|---|
-| 05/05/2026 | Studied Module 03 theory: Amazon EC2, Instance Types, AMI, and Key Pair. | Understood EC2 architecture and how to choose instance types and AMIs. |  | Completed EC2 fundamentals. |
-| 06/05/2026 | Studied EC2 User Data, EC2 Meta Data, and EC2 Auto Scaling. | Learned server bootstrap automation and basic scaling concepts. |  | Completed EC2 tooling section. |
-| 07/05/2026 | Completed Lab 13: AWS Backup infrastructure deployment, SNS setup, and backup/restore testing. | Successfully deployed AWS Backup infrastructure and tested restore automation. | [AWS Backup Lab](https://000013.awsstudygroup.com/) | Completed AWS Backup lab. |
-| 08/05/2026 | Researched AWS Storage Gateway workshop and S3 Static Website with CloudFront; completed Module 03. | Understood Storage Gateway architecture and hosted a static website with S3/CloudFront. | [Storage Gateway Workshop](https://000024.awsstudygroup.com/vi/3-cleanup/) <br> [S3 Static Website Workshop](https://000057.awsstudygroup.com/) | Completed storage workshop research and Module 03. |
-| 09/05/2026 | Began studying Module 04 theory: Storage on AWS. | Started with storage service overview and S3 fundamentals before continuing deeper in Week 4. | [Module 04-01 - Storage on AWS](https://www.youtube.com/watch?v=hsCfP0IxoaM&list=PLahN4TLWtox2a3vElknwzU_urND8hLn1i&index=103) <br> [Module 04-02 - Amazon S3](https://www.youtube.com/watch?v=_yunukwcAwc&list=PLahN4TLWtox2a3vElknwzU_urND8hLn1i&index=104) | Prepared for Week 4. |
+| 04/05/2026 | Studied EC2 theory: instance type, AMI, key pair, and pricing model. | Understood how to choose an instance based on CPU/RAM/network, how AMI affects the OS and initial configuration, and compared On-Demand, Reserved, Savings Plans, and Spot. | [Cloud Journey](https://cloudjourney.awsstudygroup.com/) | Core foundation for Compute. |
+| 05/05/2026 | Studied EC2 User Data, EC2 Metadata, and EC2 Auto Scaling. | Learned how user data can bootstrap a server at launch. Understood metadata endpoint and the idea of scaling out/in based on demand. | [Cloud Journey](https://cloudjourney.awsstudygroup.com/) | These concepts are useful for automation. |
+| 06/05/2026 | Completed Lab 13 about AWS Backup, SNS, and restore testing. | Deployed AWS Backup infrastructure, configured SNS notifications, and tested restore flow through Lambda. | [AWS Backup Lab](https://000013.awsstudygroup.com/) | Backup only matters when restore is tested. |
+| 07/05/2026 | Studied Storage Gateway, S3 Static Website, and CloudFront. | Understood how Storage Gateway supports hybrid storage. Practiced hosting a static website on S3 with versioning and CloudFront/OAC for safer access. | [Storage Gateway Workshop](https://000024.awsstudygroup.com/vi/3-cleanup/) <br> [S3 Static Website Workshop](https://000057.awsstudygroup.com/) | Completed Module 03. |
+| 08/05/2026 | Started Module 04 about Storage. | Watched the AWS storage overview and reviewed key Amazon S3 concepts before studying deeper storage topics next week. | [Module 04-01 - Storage on AWS](https://www.youtube.com/watch?v=hsCfP0IxoaM&list=PLahN4TLWtox2a3vElknwzU_urND8hLn1i&index=103) <br> [Module 04-02 - Amazon S3](https://www.youtube.com/watch?v=_yunukwcAwc&list=PLahN4TLWtox2a3vElknwzU_urND8hLn1i&index=104) | Prepared for Week 4. |
 
 ---
 
-## Knowledge & Skills Gained
+## Weekly Notes
 
-### 1. Amazon EC2 (Compute)
+This week made the difference between compute and storage on AWS clearer. EC2 was easy to approach because it feels similar to a traditional server, but user data, metadata, and Auto Scaling show how cloud operations differ from manual server management.
 
-* **Understood EC2 Architecture**: Grasped flexible resource allocation and fast provisioning via **EC2 Instance Types** (CPU, RAM, Network) and **AMI** (OS, permissions, block device mapping).
-* **Practiced Access Security**: Managed **Key Pairs** for SSH (Linux) and RDP password decryption (Windows).
-* **Analyzed Pricing Models**: Compared **EC2 Pricing Options** (On-demand, Reserved, Savings Plans, Spot) to select cost-appropriate strategies per workload.
-
-### 2. EC2 Tooling & Scaling
-
-* **Studied Storage Types**: Distinguished **Instance Store** (high-speed NVMe, ephemeral) from persistent EBS storage.
-* **Researched Automation**: Used **EC2 User Data** (launch scripts) and **EC2 Meta Data** to auto-bootstrap server environments.
-* **Understood Auto Scaling**: Learned automated scale-out/in policies to maintain High Availability under varying loads.
-
-### 3. Extended Compute & Storage
-
-* **Studied File Systems**: Compared **Amazon EFS** (Linux-only) with **Amazon FSx** (Windows/Linux) for simultaneous multi-EC2 mounting.
-* **Researched Application Migration**: Understood how **AWS MGN** replicates on-premise servers to AWS for Disaster Recovery.
-
-### 4. Amazon S3 (Storage)
-
-* **Understood Object Storage**: Mastered WORM model, 5TB object size limit, multipart upload, and **S3 Access Points** for granular permissions.
-* **Analyzed S3 Storage Classes**: Learned cost optimization across Standard, IA, Intelligent Tiering, and Glacier/Deep Archive.
-* **Researched Lifecycle Automation**: Understood **Object Lifecycle Management** for automatic tier transitions and **Cross-Region Replication (CRR)** for disaster recovery.
+AWS Backup was also practical. I realized that backup is only useful when the restore process is clear and tested, not just when a backup plan is enabled.
 
 ---
 
-## Lab & Practical Experience
+## Challenges Encountered
 
-* **Lab 13 â€“ AWS Backup**: Created S3 Bucket, deployed CloudFormation template, configured **Amazon SNS** alerts, and successfully ran an on-demand backup and automated restore via AWS Lambda; monitored logs in CloudWatch.
-* **Storage Gateway & S3 Workshop**: Researched Storage Gateway architecture (SMB file share, cache volume); hosted a static website on S3 with public access policy and Versioning enabled; explored **Amazon CloudFront** with Origin Access Control (OAC).
-
----
-
-## Difficulties Encountered & Solutions
-
-* **Free Tier Limitations on Storage Gateway**: Could not fully provision a Gateway instance within Free Tier limits.
-  * *Solution*: Focused on theoretical analysis and walkthrough documentation (SMB configuration, cache volumes) via official AWS workshops.
-* **S3 Static Website Access Policies**: Confused between account-level `Block public access` and granular `Bucket Policy` settings.
-  * *Solution*: Researched documentation and successfully configured `s3:GetObject` for `Principal: "*"` alongside disabling public access blocks.
-* **IAM Complexity in AWS Backup**: Automated restore via Lambda required highly specific IAM Role permissions, frequently causing "Access Denied" errors.
-  * *Solution*: Audited the CloudFormation template and traced execution via CloudWatch Logs to understand how IAM Roles were dynamically assigned.
+* EC2 has many instance types and pricing models, so the choice needs to be based on workload rather than price alone.
+* User Data and Metadata were a bit abstract at first because they relate to automation during instance launch.
+* The AWS Backup lab required several IAM permissions and resources, so each step needed careful reading before running.
+* Storage Gateway could not be fully practiced in the learning account, so I focused on documentation and architecture notes.
 
 ---
 
 ## Lessons Learned
 
-* Understanding **Pricing Options** and **Storage Classes** is foundational to Cost Optimization when designing cloud architectures.
-* **Object Lifecycle Management** and **Auto Scaling** are essential operational tools â€“ they remove manual overhead and keep systems adaptive by design.
-* When using **CloudFormation**, always review the template and IAM Role flows carefully to avoid silent permission errors during automated provisioning.
-
----
-
-## Lab Screenshots
-
-![Create Backup Plan](/images/Worklog-week3/create%20backup%20plan%20(%20lab13).png)
-
-![Create S3 Bucket 01](/images/Worklog-week3/create%20s3%20bucket%2001%20(lab13).png)
-
-![Create S3 Bucket 02](/images/Worklog-week3/create%20s3%20bucket%2002%20(lab13).png)
+* Instance type selection should follow workload needs, not only the lowest cost.
+* User Data is useful for automatically configuring servers at launch.
+* AWS Backup should include restore testing to ensure data can actually be recovered.
+* S3 static website and CloudFront show how storage can directly participate in application architecture.

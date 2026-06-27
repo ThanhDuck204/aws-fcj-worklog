@@ -8,94 +8,46 @@ pre: " <b> 1.8. </b> "
 
 ## Week 8 Objectives
 
-* Continue working with the team at the company to review the AI Meeting Workforce Platform progress.
-* Receive improvement feedback from team members and adjust the project direction.
-* Discuss the architecture diagram, main processing flow, and how AWS services work together.
-* Estimate potential AWS costs for the MVP phase.
-* Explore additional technologies, algorithms, and optimization techniques to make the project more stable.
-* Research AWS blog content related to Kiro and prepare a blog post for the group.
-* Continue project implementation based on the feedback and improvements agreed by the team.
+* Work with the team to review the progress of the AI Meeting Workforce Platform.
+* Adjust the architecture based on feedback, especially transcript, task, and user data flows.
+* Estimate AWS costs for the MVP phase.
+* Explore optimization ideas for AI processing, data validation, and caching.
+* Prepare a short Kiro blog outline for sharing in the group.
 
 ---
 
-## Completed Work
+## Work Completed
 
 | Date | Task | Result | Resources | Notes |
 |---|---|---|---|---|
-| 08/06/2026 | Went to the company to discuss and work with the team on the project; continued receiving improvement feedback. | Reviewed the current progress of the AI Meeting Workforce Platform with the team, identified stable parts and areas that still need improvement. Collected feedback about user flows, module organization, meeting data processing, and preparation for future AWS integration. | None | Focused on teamwork and aligning the next improvement direction. |
-| 08/06/2026 | Discussed the architecture diagram and estimated AWS service costs. | Reviewed the architecture diagram with the team and clarified the roles of services such as S3, Lambda, API Gateway, DynamoDB, Cognito, CloudFront, and CloudWatch. Started estimating cost categories including transcript/audio storage on S3, Lambda invocations, API Gateway requests, DynamoDB reads/writes, CloudFront data transfer, and CloudWatch logs/monitoring. | [AWS Pricing Calculator](https://calculator.aws/#/) <br> [AWS Architecture Center](https://aws.amazon.com/architecture/) | This step helped avoid choosing an architecture that would be too costly for the MVP scope. |
-| 09/06/2026 | Continued improving the project and researching additional technologies and algorithms. | Explored improvement directions such as transcript processing optimization, splitting the AI processing pipeline into clearer steps, improving task extraction from meeting content, and standardizing output data. Also evaluated techniques that could make the system more stable, including retry logic, queue-based processing, result caching, and validation before writing to the database. | None | Focused on solutions that fit the project instead of adding unnecessary complexity. |
-| 10/06/2026 | Discussed with the team and researched AWS blog content about Kiro to prepare a blog post. | Read and summarized information about Kiro with the team, focusing on how Kiro supports software development workflows, requirement clarification, spec creation, and structured implementation. Started selecting key ideas for the blog post to be shared in the group. | [AWS Blog](https://aws.amazon.com/blogs/) | Focused on understanding Kiro and turning the content into a readable blog post. |
-| 11/06/2026 | Continued discussion and completed the outline for the Kiro blog post. | Agreed on the blog outline: introduction to Kiro, the problems Kiro solves, how Kiro supports developers, differences compared with using a regular AI assistant, and how Kiro could be applied to the team project. Prepared the content with a concise and practical writing style. | [AWS Blog](https://aws.amazon.com/blogs/) | Combined document reading with team discussion so the blog would include practical perspective, not only a summary. |
-| 12/06/2026 | Continued working on the project. | Continued developing the AI Meeting Workforce Platform based on the feedback received during the week. Prioritized completing missing parts, checking the main processing flow, and preparing for the next integration or improvement steps. | None | Focused on project progress and keeping the structure aligned with the team. |
+| 08/06/2026 | Worked with the team at the company, reviewed project progress, and collected feedback. | Reviewed what was built last week, including layout, mock data, role-based routing, and meeting processing flow. Noted items to improve: module organization, AI output data, and AWS integration preparation. | None | Finalized improvement items for the week. |
+| 09/06/2026 | Reviewed the architecture diagram and estimated AWS costs. | Clarified the roles of S3, Lambda, API Gateway, DynamoDB, Cognito, CloudFront, and CloudWatch. Recorded cost factors such as transcript/audio storage, Lambda/API Gateway calls, CloudWatch logs, and DynamoDB requests. | [AWS Pricing Calculator](https://calculator.aws/#/) <br> [AWS Architecture Center](https://aws.amazon.com/architecture/) | Prioritized an MVP-sized architecture. |
+| 10/06/2026 | Explored project optimization ideas. | Reviewed possible improvements such as transcript preprocessing, splitting the AI pipeline into clearer steps, standardizing output data, adding retry logic, and considering dashboard caching. | None | Started with simple solutions before making the system too complex. |
+| 11/06/2026 | Researched Kiro and prepared a blog outline. | Agreed on the main points: what Kiro is, how spec-driven development reduces ambiguity, and how it could apply to the team project. The outline was written to be short and readable. | [AWS Blog](https://aws.amazon.com/blogs/) | The blog should focus on practical experience, not only documentation summary. |
+| 12/06/2026 | Continued project development based on the week's feedback. | Rechecked the main flow of the AI Meeting Workforce Platform, adjusted missing parts, and prepared for the next integration/improvement step. Also recorded a few architecture decisions for team reference. | None | Focused on keeping the project structure clear. |
 
 ---
 
-## Architecture Discussion & AWS Cost Estimation
+## Weekly Notes
 
-This week, the team continued reviewing the overall architecture of the **AI Meeting Workforce Platform** to ensure the selected AWS services fit the MVP scope:
+This week the team reviewed the project more carefully instead of only adding new code. The architecture was reviewed from two angles: how the system runs and where AWS costs may appear.
 
-| Component | Planned AWS Service | Cost Factors |
-|---|---|---|
-| Transcript/audio storage | Amazon S3 | Storage size, upload/download requests, lifecycle policy |
-| Backend/AI processing | AWS Lambda | Invocation count, execution duration, memory allocation |
-| API | Amazon API Gateway | Frontend request volume |
-| Database | Amazon DynamoDB | Read/write capacity, query patterns, secondary indexes |
-| Authentication | Amazon Cognito | Monthly active users, user pool usage |
-| CDN | Amazon CloudFront | Data transfer, request count |
-| Monitoring | Amazon CloudWatch | Log volume, metrics, alarms |
-
-**Observation:** For the MVP phase, a serverless approach is still suitable because costs can scale with actual usage. However, the team needs to control logs, API/Lambda invocation counts, file sizes, and DynamoDB read/write patterns to avoid unnecessary cost growth.
+The important point for me was not to add too many AWS services to the MVP just because they are interesting. At the current scale, the architecture needs to be clear enough for future development while staying simple enough for the team to implement and debug.
 
 ---
 
-## Technologies and Algorithms Considered
+## Challenges Encountered
 
-* **Transcript preprocessing**: Clean meeting transcripts before passing them into AI summarization/task extraction.
-* **Task extraction pipeline**: Split processing into steps such as detecting action items, assignees, priorities, and deadlines.
-* **Retry logic**: Retry failed API calls or Lambda processing tasks.
-* **Queue-based processing**: Consider queues for long transcript processing to avoid timeout issues.
-* **Caching**: Cache dashboard data or common query results to reduce database reads.
-* **Validation layer**: Standardize data before writing to DynamoDB to reduce data errors during development.
-
----
-
-## Kiro Research and Blog Preparation
-
-The team researched AWS content related to **Kiro** to prepare a blog post for the group. The planned content includes:
-
-* What Kiro is and how it supports developers.
-* Why spec-driven development helps reduce ambiguity in projects.
-* How Kiro can help write requirements, split tasks, create plans, and generate code.
-* Differences between Kiro and using a regular AI assistant for isolated questions.
-* How Kiro could be applied to the AI Meeting Workforce Platform project.
-
----
-
-## Knowledge & Skills Gained
-
-* Better understanding of how to review an architecture diagram from a practical implementation perspective.
-* Learned to evaluate AWS architecture from both technical and operational cost perspectives.
-* Gained more experience estimating major cost categories in a serverless system.
-* Explored techniques for system stability such as retry, queueing, caching, and validation.
-* Practiced reading technical blogs, summarizing key points, and turning them into shareable content.
-* Improved teamwork skills through feedback collection and project direction alignment.
-
----
-
-## Challenges & Solutions
-
-* **AWS cost estimation had many variables**: Cost depends on requests, file size, Lambda runtime, and database read/write patterns. Solution: estimate each service separately, then combine the results with AWS Pricing Calculator.
-* **The architecture diagram needed to balance completeness and readability**: Adding too many services could make it hard to understand. Solution: keep only MVP-required components in the main diagram and note future services separately.
-* **Choosing suitable technologies for the project**: Many technologies and algorithms could be applied, but not all are necessary. Solution: prioritize simple approaches that directly solve project problems.
-* **Writing a Kiro blog post that is easy for the group to understand**: Technical materials include many new concepts. Solution: write concisely with practical examples and connect the content to the current project.
+* AWS cost estimation was still not exact because it depends on request volume, file size, and how users actually use the system.
+* The architecture diagram needed enough detail for implementation but should not include too many components that make it hard to follow.
+* Transcript processing and task extraction need clear steps; putting everything into one flow would make debugging harder.
+* The Kiro blog needed to be short and easy to understand instead of only summarizing technical documentation.
 
 ---
 
 ## Lessons Learned
 
-* When designing AWS architecture, technical flow and operational cost should be considered together.
-* Serverless is suitable for MVPs, but logs, API calls, and data storage still need to be controlled.
-* Team feedback helps reveal unclear parts of the architecture and processing flow early.
-* Researching new technologies should start from real project problems instead of trends.
-* Writing a technical blog is a useful way to verify understanding and share knowledge with others.
+* AWS architecture design should consider both technical flow and operational cost.
+* Serverless fits the MVP, but logs, requests, and stored data still need to be controlled.
+* Team feedback helps reveal unclear architecture parts early.
+* Recording design decisions helps reduce confusion during later development.

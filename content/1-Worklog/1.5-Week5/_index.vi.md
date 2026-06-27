@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Worklog Tuần 5"
 date: 2026-05-18
 weight: 5
@@ -8,9 +8,11 @@ pre: " <b> 1.5. </b> "
 
 ## Mục tiêu tuần 5
 
-* Bắt đầu nghiên cứu Module 05 – Các dịch vụ bảo mật của AWS.
-* Nắm được Shared Responsibility Model, IAM, Cognito, AWS Organizations, Identity Center và KMS.
-* Nghiên cứu Lab 18 ở mức tài liệu do tài khoản Free Tier bị giới hạn, thực hành Lab 22 về tối ưu chi phí EC2 bằng Lambda và hoàn thành Lab 27 về quản lý tài nguyên bằng Tag.
+* Bắt đầu Module 05 về các dịch vụ bảo mật trên AWS.
+* Hiểu Shared Responsibility Model, IAM, Cognito, Organizations, Identity Center, KMS và Security Hub.
+* Nghiên cứu Lab 18 ở mức tài liệu do giới hạn Free Tier.
+* Thực hành Lab 22 về tự động bật/tắt EC2 để tối ưu chi phí.
+* Hoàn thành Lab 27 về quản lý tài nguyên bằng tag.
 
 ---
 
@@ -18,69 +20,42 @@ pre: " <b> 1.5. </b> "
 
 | Ngày | Công việc | Kết quả | Tài liệu | Ghi chú |
 |---|---|---|---|---|
-| 18/05/2026 | Tìm hiểu Module 05: Shared Responsibility Model, IAM và Cognito. | Hiểu ranh giới trách nhiệm bảo mật giữa AWS và khách hàng, cách quản lý truy cập bằng IAM và use case xác thực người dùng bằng Cognito. | [Module 05-01 - Shared Responsibility Model](https://www.youtube.com/watch?v=tsobAlSg19g&list=PLahN4TLWtox2a3vElknwzU_urND8hLn1i&index=151) <br> [Module 05-02 - IAM](https://www.youtube.com/watch?v=N_vlJGAqZxo&list=PLahN4TLWtox2a3vElknwzU_urND8hLn1i&index=152) <br> [Module 05-03 - Amazon Cognito](https://www.youtube.com/watch?v=pZ2fgEFK3Vs&list=PLahN4TLWtox2a3vElknwzU_urND8hLn1i&index=153) | Hoàn thành nhóm lý thuyết đầu của Module 05. |
-| 19/05/2026 | Tìm hiểu AWS Organizations, AWS Identity Center, AWS KMS, Security Hub và phần hands-on/additional research. | Nắm cách quản lý nhiều account, phân quyền tập trung, quản lý khóa mã hóa, khái niệm Security Hub và định hướng thực hành của Module 05. | [Module 05-04 - AWS Organizations](https://www.youtube.com/watch?v=5oQY8Rogz9Y&list=PLahN4TLWtox2a3vElknwzU_urND8hLn1i&index=154) <br> [Module 05-05 - AWS Identity Center](https://www.youtube.com/watch?v=NW1xrMkNMjU&list=PLahN4TLWtox2a3vElknwzU_urND8hLn1i&index=155) <br> [Module 05-06 - AWS KMS](https://www.youtube.com/watch?v=GMihNQojhZc&list=PLahN4TLWtox2a3vElknwzU_urND8hLn1i&index=156) <br> [Module 05-07 - AWS Security Hub](https://www.youtube.com/watch?v=clj2E0rNBEs&list=PLahN4TLWtox2a3vElknwzU_urND8hLn1i&index=157) <br> [Module 05-08 - Hands-on and Additional Research](https://www.youtube.com/watch?v=0SdpD2GPYz4&list=PLahN4TLWtox2a3vElknwzU_urND8hLn1i&index=158) | Hoàn thành nhóm lý thuyết thứ hai của Module 05. |
-| 20/05/2026 | Nghiên cứu Lab 18 ở mức tài liệu do giới hạn Free Tier. | Hiểu luồng Security Hub, cách tổng hợp finding và kiểm tra trạng thái bảo mật trong AWS Account. | [Lab 18 - AWS Security Hub](https://000018.awsstudygroup.com/) | Lab 18 chỉ đọc tài liệu. |
-| 21/05/2026 | Tiếp tục thực hành Lab 22: tối ưu chi phí EC2 bằng Lambda, EventBridge và Slack notification. | Xây dựng và kiểm thử automation start/stop EC2 theo lịch, có thông báo Slack. | [Lab 22 - EC2 Cost Optimization](https://000022.awsstudygroup.com/vi/2-prerequiste/) | Hoàn thành phần thực hành automation EC2. |
-| 22/05/2026 | Nghỉ vì lý do cá nhân. | Không có hoạt động học tập. |  | Nghỉ cá nhân. |
-| 23/05/2026 | Hoàn thành Lab 27: quản lý tài nguyên bằng Tag. | Thực hành tổ chức tài nguyên AWS bằng tag, Resource Groups và AWS CLI. | [Lab 27 - Resource Tagging](https://000027.awsstudygroup.com/vi/) | Lab 27 đã hoàn thành. |
+| 18/05/2026 | Học Shared Responsibility Model, IAM và Cognito. | Hiểu ranh giới trách nhiệm giữa AWS và người dùng. Ôn lại IAM User, Group, Policy, Role và xem Cognito như một hướng xác thực cho ứng dụng. | [Module 05-01](https://www.youtube.com/watch?v=tsobAlSg19g&list=PLahN4TLWtox2a3vElknwzU_urND8hLn1i&index=151) <br> [Module 05-02](https://www.youtube.com/watch?v=N_vlJGAqZxo&list=PLahN4TLWtox2a3vElknwzU_urND8hLn1i&index=152) <br> [Module 05-03](https://www.youtube.com/watch?v=pZ2fgEFK3Vs&list=PLahN4TLWtox2a3vElknwzU_urND8hLn1i&index=153) | Hoàn thành phần đầu của Module 05. |
+| 19/05/2026 | Học Organizations, Identity Center, KMS, Security Hub và phần hands-on overview. | Nắm cách quản lý nhiều account, phân quyền tập trung và mã hóa bằng KMS. Security Hub được ghi nhận ở mức tổng quan vì cần cân nhắc chi phí khi bật trực tiếp. | [Module 05-04](https://www.youtube.com/watch?v=5oQY8Rogz9Y&list=PLahN4TLWtox2a3vElknwzU_urND8hLn1i&index=154) <br> [Module 05-05](https://www.youtube.com/watch?v=NW1xrMkNMjU&list=PLahN4TLWtox2a3vElknwzU_urND8hLn1i&index=155) <br> [Module 05-06](https://www.youtube.com/watch?v=GMihNQojhZc&list=PLahN4TLWtox2a3vElknwzU_urND8hLn1i&index=156) <br> [Module 05-07](https://www.youtube.com/watch?v=clj2E0rNBEs&list=PLahN4TLWtox2a3vElknwzU_urND8hLn1i&index=157) | Ghi chú kỹ phần quyền và mã hóa. |
+| 20/05/2026 | Nghiên cứu Lab 18 về AWS Security Hub. | Đọc luồng lab, hiểu cách Security Hub tổng hợp finding, theo dõi security score và hỗ trợ kiểm tra trạng thái bảo mật trong account. | [Lab 18 - AWS Security Hub](https://000018.awsstudygroup.com/) | Chỉ đọc tài liệu, không bật trực tiếp để tránh phát sinh chi phí. |
+| 21/05/2026 | Thực hành Lab 22: tối ưu chi phí EC2 bằng Lambda, EventBridge và Slack. | Tạo EC2 test, gắn tag để Lambda lọc đúng instance, viết automation start/stop theo lịch và kiểm tra thông báo qua Slack. | [Lab 22 - EC2 Cost Optimization](https://000022.awsstudygroup.com/vi/2-prerequiste/) | Hoàn thành phần automation chính. |
+| 22/05/2026 | Nghỉ cá nhân. | Không có hoạt động học tập trong ngày. |  | Nghỉ. |
+| 23/05/2026 | Hoàn thành Lab 27 về quản lý tài nguyên bằng tag. | Thực hành gắn tag cho EC2/EBS, lọc tài nguyên theo metadata và tạo Resource Group dựa trên tag. | [Lab 27 - Resource Tagging](https://000027.awsstudygroup.com/vi/) | Tagging rất hữu ích cho quản lý và automation. |
 
 ---
 
-## Kiến thức & kỹ năng đạt được
+## Ghi chú trong tuần
 
-### 1. Module 05 – AWS Security Services
+Tuần này xoay quanh bảo mật và vận hành tài nguyên. Mình nhận ra IAM không chỉ là tạo user hoặc gán quyền, mà là nền tảng để các dịch vụ AWS phối hợp với nhau an toàn hơn.
 
-* **Shared Responsibility Model**: Hiểu ranh giới trách nhiệm giữa AWS và khách hàng; AWS bảo vệ hạ tầng cloud, còn khách hàng chịu trách nhiệm cấu hình bảo mật tài nguyên, dữ liệu, IAM và ứng dụng.
-* **IAM**: Nắm vai trò của IAM User, Group, Policy và Role; hiểu nguyên tắc Least Privilege, Explicit Deny và cách service role giúp dịch vụ AWS truy cập tài nguyên mà không cần hardcode credential.
-* **Cognito & Organizations**: Tìm hiểu Cognito cho xác thực người dùng ứng dụng và AWS Organizations để quản lý nhiều account, OU, consolidated billing và Service Control Policies.
-* **Identity Center & KMS**: Hiểu cách quản lý truy cập tập trung bằng Permission Set và cách KMS quản lý key để mã hóa dữ liệu at rest.
-
-### 2. Lab 18 – AWS Security Hub
-
-* Nghiên cứu luồng hoạt động của Lab 18 trong Module 05; chưa triển khai trực tiếp do giới hạn của tài khoản Free Tier nên chỉ dừng ở mức đọc hiểu và ghi nhận quy trình.
-* Nắm cách Security Hub tổng hợp finding, theo dõi security score và hỗ trợ kiểm tra trạng thái tuân thủ trong AWS Account.
-
-### 3. Lab 22 – Optimize EC2 Cost with Lambda
-
-* Chuẩn bị hạ tầng gồm VPC, Security Group, EC2 instance test và workspace Slack nhận thông báo.
-* Gắn tag `environment_auto=true` cho EC2 để Lambda lọc đúng instance cần tự động start/stop.
-* Tạo IAM Role `dc-common-lambda-role` cho Lambda với quyền thao tác EC2 và ghi log CloudWatch.
-* Kiểm thử Lambda auto stop thành công với `statusCode: 200` và nhận thông báo qua Slack.
-* Tạo EventBridge rules `dc-common-lambda-auto-start` và `dc-common-lambda-auto-stop` để chạy tự động theo lịch.
-
-### 4. Lab 27 – Quản lý tài nguyên bằng Tag
-
-* Hoàn thành Lab 27 trong Module 05, tập trung vào cách dùng tag để tổ chức, nhận diện và quản lý tài nguyên AWS.
-* Tạo 2 EC2 instance có gắn tag phục vụ kiểm thử, gồm các thông tin như `Name`, `Service`, `Owner`, `Environment` và `Operating System`.
-* Thực hành thêm, chỉnh sửa và xóa tag bằng chức năng **Manage tags** trên EC2 Console.
-* Lọc EC2 instance theo tag, ví dụ `Owner=NTDuc`, để kiểm tra khả năng tìm kiếm tài nguyên theo metadata.
-* Sử dụng AWS CLI để tạo EBS volume kèm tag, giúp hiểu cách áp dụng tagging ngoài giao diện Console.
-* Tạo Resource Group `MarketingBU` dựa trên tag `BusinessUnit=Marketing` để gom nhóm các tài nguyên liên quan.
+Lab 22 khá thực tế vì bài toán bật/tắt EC2 theo lịch có thể áp dụng ngay để giảm chi phí học tập. Lab 27 cũng giúp mình thấy tag không chỉ để đặt tên tài nguyên, mà còn dùng được cho lọc, quản lý, phân quyền và automation.
 
 ---
 
-## Khó khăn gặp phải & Cách khắc phục
+## Khó khăn gặp phải
 
-* **Phân biệt trách nhiệm bảo mật giữa AWS và khách hàng**: Đối chiếu lại Shared Responsibility Model theo từng loại dịch vụ để tránh nhầm lẫn.
-* **Giới hạn Free Tier khi tìm hiểu Lab 18**: Tập trung đọc hiểu tài liệu, ghi nhận luồng cấu hình và các bước kiểm tra thay vì bật Security Hub trực tiếp.
-* **Kiểm soát tài nguyên trong Lab 22**: Dùng tag để giới hạn phạm vi automation và kiểm tra kết quả qua Lambda test event, EC2 state và Slack notification.
-* **Quản lý nhiều tài nguyên trong Lab 27**: Chuẩn hóa key/value của tag để dễ lọc tài nguyên, tránh nhập sai tên tag khi tạo EC2, EBS volume và Resource Group.
+* Shared Responsibility Model dễ nhầm ở các dịch vụ managed service, vì trách nhiệm của AWS và người dùng thay đổi theo từng loại dịch vụ.
+* Lab 18 không thực hành trực tiếp được do giới hạn Free Tier, nên chỉ có thể đọc luồng và ghi chú lại.
+* Lab 22 cần phối hợp nhiều phần như EC2 tag, IAM Role, Lambda, EventBridge và Slack nên phải kiểm tra từng bước khi debug.
+* Khi làm Lab 27, nếu đặt tag không thống nhất thì lọc tài nguyên và tạo Resource Group rất dễ sai.
 
 ---
 
-## Bài học rút ra
+## Kiến thức rút ra
 
-* IAM là nền tảng quan trọng khi thiết kế bảo mật trên AWS; cần ưu tiên Least Privilege và hạn chế dùng root account.
-* Lambda kết hợp EventBridge phù hợp cho các tác vụ vận hành định kỳ như tự động start/stop EC2 để tiết kiệm chi phí.
-* Tagging giúp automation chạy đúng tài nguyên và giảm rủi ro ảnh hưởng nhầm instance khác.
-* Tagging và Resource Groups giúp quản lý tài nguyên AWS có tổ chức hơn, đặc biệt khi cần lọc theo owner, môi trường, dự án hoặc business unit.
+* Shared Responsibility Model giúp biết phần nào AWS quản lý và phần nào mình phải tự cấu hình.
+* Lambda kết hợp EventBridge phù hợp cho các tác vụ vận hành định kỳ.
+* Tagging nên được chuẩn hóa từ đầu để dễ quản lý tài nguyên về sau.
+* Security Hub hữu ích, nhưng cần cân nhắc chi phí và phạm vi trước khi bật trong tài khoản học tập.
 
 ---
 
 ## Hình ảnh thực hành
-
-> Lab 18 không có hình ảnh thực hành vì tài khoản Free Tier bị giới hạn, nên phần này chỉ ghi nhận hình ảnh của Lab 22 và Lab 27.
 
 ### Lab 22 – Optimize EC2 Cost with Lambda
 
