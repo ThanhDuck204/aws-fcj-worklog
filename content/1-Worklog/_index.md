@@ -27,10 +27,10 @@ Typically, and as a standard, a worklog is carried out over about 3 months (thro
 
 **Week 8:** [Project Improvements, AWS Cost Estimation, and Kiro Research](1.8-week8/)
 
-**Week 9:** [](1.9-week9/)
+**Week 9:** [Project Development, Code Review & Module 6 Completion](1.9-week9/)
 
-**Week 10:** [](1.10-week10/)
+**Week 10:** [AWS Services Integration & Project Development](1.10-week10/)
 
-**Week 11:** [](1.11-week11/)
+**Week 11:** [AWS Service Connection, Blog Writing & Free Tier Architecture Adjustment](1.11-week11/)
 
 **Week 12:** [](1.12-week12/)

@@ -1,126 +1,108 @@
 ---
-title: "Blog 2"
-date: 2024-01-01
+title: "Blog 2 - Running Traditional Web Applications on AWS Nitro Enclaves"
+date: 2026-07-02
 weight: 1
 chapter: false
 pre: " <b> 3.2. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
-{{% /notice %}}
 
-# Getting Started with Healthcare Data Lakes: Using Microservices
 
-Data lakes can help hospitals and healthcare facilities turn data into business insights, maintain business continuity, and protect patient privacy. A **data lake** is a centralized, managed, and secure repository to store all your data, both in its raw and processed forms for analysis. Data lakes allow you to break down data silos and combine different types of analytics to gain insights and make better business decisions.
+# Running Traditional Web Applications on AWS Nitro Enclaves Without Modifying Source Code
 
-This blog post is part of a larger series on getting started with setting up a healthcare data lake. In my final post of the series, *“Getting Started with Healthcare Data Lakes: Diving into Amazon Cognito”*, I focused on the specifics of using Amazon Cognito and Attribute Based Access Control (ABAC) to authenticate and authorize users in the healthcare data lake solution. In this blog, I detail how the solution evolved at a foundational level, including the design decisions I made and the additional features used. You can access the code samples for the solution in this Git repo for reference.
+While researching AWS Nitro Enclaves, I came across an interesting AWS article about bringing traditional web applications into an Enclave environment with almost no source code changes.
+
+Since the original article was published on AWS China, I read, translated, and summarized the key points during my research. If there are any inaccuracies or omissions, I welcome your feedback.
 
 ---
 
-## Architecture Guidance
+## What is Nitro Enclaves?
 
-The main change since the last presentation of the overall architecture is the decomposition of a single service into a set of smaller services to improve maintainability and flexibility. Integrating a large volume of diverse healthcare data often requires specialized connectors for each format; by keeping them encapsulated separately as microservices, we can add, remove, and modify each connector without affecting the others. The microservices are loosely coupled via publish/subscribe messaging centered in what I call the “pub/sub hub.”
+Nitro Enclaves is an isolated computing environment created from an EC2 Instance through the AWS Nitro Hypervisor.
 
-This solution represents what I would consider another reasonable sprint iteration from my last post. The scope is still limited to the ingestion and basic parsing of **HL7v2 messages** formatted in **Encoding Rules 7 (ER7)** through a REST interface.
+The main purpose of this service is to process highly sensitive data such as:
+- Encryption Keys
+- Financial data
+- Medical data
+- Personally identifiable information (PII)
+- Tasks requiring high security
 
-**The solution architecture is now as follows:**
+What makes Nitro Enclaves special is its almost complete isolation:
+- No IP address
+- No Internet connectivity
+- No direct SSH access
+- No persistent storage
 
-> *Figure 1. Overall architecture; colored boxes represent distinct services.*
+All communication with the Enclave must go through VSOCK and the Parent EC2 Instance.
 
----
-
-While the term *microservices* has some inherent ambiguity, certain traits are common:  
-- Small, autonomous, loosely coupled  
-- Reusable, communicating through well-defined interfaces  
-- Specialized to do one thing well  
-- Often implemented in an **event-driven architecture**
-
-When determining where to draw boundaries between microservices, consider:  
-- **Intrinsic**: technology used, performance, reliability, scalability  
-- **Extrinsic**: dependent functionality, rate of change, reusability  
-- **Human**: team ownership, managing *cognitive load*
+This is what gives Nitro Enclaves its high level of security, but it also makes migrating existing applications into an Enclave more challenging.
 
 ---
 
-## Technology Choices and Communication Scope
+## Challenges When Migrating Web Applications
 
-| Communication scope                       | Technologies / patterns to consider                                                        |
-| ----------------------------------------- | ------------------------------------------------------------------------------------------ |
-| Within a single microservice              | Amazon Simple Queue Service (Amazon SQS), AWS Step Functions                               |
-| Between microservices in a single service | AWS CloudFormation cross-stack references, Amazon Simple Notification Service (Amazon SNS) |
-| Between services                          | Amazon EventBridge, AWS Cloud Map, Amazon API Gateway                                      |
+Most web applications today operate based on TCP/IP through HTTP or HTTPS.
 
----
+However, Nitro Enclaves does not support traditional network communication — it only uses VSOCK.
 
-## The Pub/Sub Hub
+If deployed directly, developers would need to modify significant portions of the source code to convert all communication from TCP/IP to VSOCK.
 
-Using a **hub-and-spoke** architecture (or message broker) works well with a small number of tightly related microservices.  
-- Each microservice depends only on the *hub*  
-- Inter-microservice connections are limited to the contents of the published message  
-- Reduces the number of synchronous calls since pub/sub is a one-way asynchronous *push*
-
-Drawback: **coordination and monitoring** are needed to avoid microservices processing the wrong message.
+For systems that are already running stably or for legacy applications, this is both time-consuming and risky, as it can easily affect the application's existing logic.
 
 ---
 
-## Core Microservice
+## AWS Proposed Solution
 
-Provides foundational data and communication layer, including:  
-- **Amazon S3** bucket for data  
-- **Amazon DynamoDB** for data catalog  
-- **AWS Lambda** to write messages into the data lake and catalog  
-- **Amazon SNS** topic as the *hub*  
-- **Amazon S3** bucket for artifacts such as Lambda code
+What I found interesting is that AWS proposes using SOCAT as a proxy layer to translate between HTTP and VSOCK.
 
-> Only allow indirect write access to the data lake through a Lambda function → ensures consistency.
+The model consists of two proxies:
 
----
+- **Proxy on Parent EC2:** receives HTTP connections from outside, converts them to VSOCK, and forwards them into the Enclave.
+- **Proxy inside the Enclave:** receives VSOCK, converts it back to HTTP for the application to process.
 
-## Front Door Microservice
+The reverse direction works the same way.
 
-- Provides an API Gateway for external REST interaction  
-- Authentication & authorization based on **OIDC** via **Amazon Cognito**  
-- Self-managed *deduplication* mechanism using DynamoDB instead of SNS FIFO because:  
-  1. SNS deduplication TTL is only 5 minutes  
-  2. SNS FIFO requires SQS FIFO  
-  3. Ability to proactively notify the sender that the message is a duplicate  
+If an application inside the Enclave needs to connect to the outside, the proxy converts traffic from HTTP to VSOCK so the Parent EC2 can handle network access on behalf of the Enclave.
+
+With this approach, the application can still operate almost as if it were running on a regular Linux server, with little to no modification to its processing logic.
 
 ---
 
-## Staging ER7 Microservice
+## Deployment Process
 
-- Lambda “trigger” subscribed to the pub/sub hub, filtering messages by attribute  
-- Step Functions Express Workflow to convert ER7 → JSON  
-- Two Lambdas:  
-  1. Fix ER7 formatting (newline, carriage return)  
-  2. Parsing logic  
-- Result or error is pushed back into the pub/sub hub  
+According to the AWS article, the deployment process can be summarized as follows:
+
+1. Install Nitro Enclaves CLI and Developer Tools.
+2. Build the application as a Docker Image.
+3. Convert the Docker Image to EIF format (Enclave Image File).
+4. Launch the Enclave using Nitro CLI.
+5. Deploy two SOCAT proxies on the Parent EC2 and inside the Enclave.
+6. Access the application through the Parent Instance; all traffic is forwarded into the Enclave via VSOCK.
 
 ---
 
-## New Features in the Solution
+## What I Found Interesting
 
-### 1. AWS CloudFormation Cross-Stack References
-Example *outputs* in the core microservice:
-```yaml
-Outputs:
-  Bucket:
-    Value: !Ref Bucket
-    Export:
-      Name: !Sub ${AWS::StackName}-Bucket
-  ArtifactBucket:
-    Value: !Ref ArtifactBucket
-    Export:
-      Name: !Sub ${AWS::StackName}-ArtifactBucket
-  Topic:
-    Value: !Ref Topic
-    Export:
-      Name: !Sub ${AWS::StackName}-Topic
-  Catalog:
-    Value: !Ref Catalog
-    Export:
-      Name: !Sub ${AWS::StackName}-Catalog
-  CatalogArn:
-    Value: !GetAtt Catalog.Arn
-    Export:
-      Name: !Sub ${AWS::StackName}-CatalogArn
+What I appreciate most about this approach is that AWS does not require developers to rewrite their entire application just because of a different communication mechanism.
+
+Instead, adding a proxy layer allows leveraging existing applications, significantly reducing the cost and time needed to move a system into a more secure environment.
+
+This is also a great example of combining open-source tools like SOCAT with AWS services to solve compatibility challenges while maintaining the isolation and security of Nitro Enclaves.
+
+Of course, there are some considerations with this model, such as proxy performance, traffic monitoring, and overall architecture design to fit each system. Therefore, before applying this to a production environment, it should be carefully evaluated based on the specific needs of each project.
+
+---
+
+## Summary
+
+In my opinion, Nitro Enclaves is a very interesting AWS service for those researching security or building systems that process sensitive data.
+
+This article also demonstrates a practical approach: instead of modifying the entire application to adapt to Enclaves, we can use a protocol conversion layer to significantly reduce migration effort while still maintaining the security level that Nitro Enclaves provides.
+
+This is my first time researching and synthesizing content on this topic. If there are any shortcomings in my translation or research, I welcome your feedback to help me improve.
+
+---
+
+## References
+
+- Original Facebook Group Post: [AWS Study Group VN - Nitro Enclaves Article](https://www.facebook.com/groups/awsstudygroupfcj/?multi_permalinks=2198943464203947&notif_id=1782875552662961&notif_t=feedback_reaction_generic&ref=notif)
+- Reference Material (AWS China Blog): [Running Traditional Web Application Migration Practices in AWS Nitro Enclaves](https://aws.amazon.com/cn/blogs/china/running-traditional-web-application-migration-practices-in-aws-nitro-enclaves/)

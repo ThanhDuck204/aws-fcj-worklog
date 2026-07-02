@@ -1,127 +1,108 @@
 ---
-title: "Blog 2"
-date: 2024-01-01
+title: "Blog 2 - Ứng dụng Web truyền thống trên AWS Nitro Enclaves"
+date: 2026-07-02
 weight: 1
 chapter: false
 pre: " <b> 3.2. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
 
-# Bắt đầu với healthcare data lakes: Sử dụng microservices
+# Tìm hiểu cách chạy ứng dụng Web truyền thống trên AWS Nitro Enclaves mà không cần sửa mã nguồn
 
-Các data lake có thể giúp các bệnh viện và cơ sở y tế chuyển dữ liệu thành những thông tin chi tiết về doanh nghiệp và duy trì hoạt động kinh doanh liên tục, đồng thời bảo vệ quyền riêng tư của bệnh nhân. **Data lake** là một kho lưu trữ tập trung, được quản lý và bảo mật để lưu trữ tất cả dữ liệu của bạn, cả ở dạng ban đầu và đã xử lý để phân tích. data lake cho phép bạn chia nhỏ các kho chứa dữ liệu và kết hợp các loại phân tích khác nhau để có được thông tin chi tiết và đưa ra các quyết định kinh doanh tốt hơn.
+Trong quá trình tìm hiểu về AWS Nitro Enclaves, tôi có đọc được một bài viết khá thú vị từ AWS chia sẻ về cách đưa các ứng dụng Web truyền thống vào môi trường Enclave mà gần như không cần chỉnh sửa mã nguồn của ứng dụng.
 
-Bài đăng trên blog này là một phần của loạt bài lớn hơn về việc bắt đầu cài đặt data lake dành cho lĩnh vực y tế. Trong bài đăng blog cuối cùng của tôi trong loạt bài, *“Bắt đầu với data lake dành cho lĩnh vực y tế: Đào sâu vào Amazon Cognito”*, tôi tập trung vào các chi tiết cụ thể của việc sử dụng Amazon Cognito và Attribute Based Access Control (ABAC) để xác thực và ủy quyền người dùng trong giải pháp data lake y tế. Trong blog này, tôi trình bày chi tiết cách giải pháp đã phát triển ở cấp độ cơ bản, bao gồm các quyết định thiết kế mà tôi đã đưa ra và các tính năng bổ sung được sử dụng. Bạn có thể truy cập các code samples cho giải pháp tại Git repo này để tham khảo.
+Do tài liệu gốc được đăng trên AWS China nên trong quá trình tìm hiểu tôi vừa đọc, vừa dịch và tổng hợp lại những ý chính. Nếu có điểm nào chưa chính xác hoặc còn thiếu sót thì rất mong anh em góp ý thêm.
 
 ---
 
-## Hướng dẫn kiến trúc
+## Nitro Enclaves là gì?
 
-Thay đổi chính kể từ lần trình bày cuối cùng của kiến trúc tổng thể là việc tách dịch vụ đơn lẻ thành một tập hợp các dịch vụ nhỏ để cải thiện khả năng bảo trì và tính linh hoạt. Việc tích hợp một lượng lớn dữ liệu y tế khác nhau thường yêu cầu các trình kết nối chuyên biệt cho từng định dạng; bằng cách giữ chúng được đóng gói riêng biệt với microservices, chúng ta có thể thêm, xóa và sửa đổi từng trình kết nối mà không ảnh hưởng đến những kết nối khác. Các microservices được kết nối rời thông qua tin nhắn publish/subscribe tập trung trong cái mà tôi gọi là “pub/sub hub”.
+Nitro Enclaves là một môi trường tính toán biệt lập được tạo ra từ EC2 Instance thông qua AWS Nitro Hypervisor.
 
-Giải pháp này đại diện cho những gì tôi sẽ coi là một lần lặp nước rút hợp lý khác từ last post của tôi. Phạm vi vẫn được giới hạn trong việc nhập và phân tích cú pháp đơn giản của các **HL7v2 messages** được định dạng theo **Quy tắc mã hóa 7 (ER7)** thông qua giao diện REST.
+Mục tiêu chính của dịch vụ này là xử lý các dữ liệu có độ nhạy cảm cao như:
+- Khóa mã hóa (Encryption Keys)
+- Dữ liệu tài chính
+- Dữ liệu y tế
+- Thông tin định danh người dùng
+- Các tác vụ cần mức độ bảo mật cao
 
-**Kiến trúc giải pháp bây giờ như sau:**
+Điểm đặc biệt của Nitro Enclaves là môi trường này được cô lập gần như hoàn toàn:
+- Không có địa chỉ IP
+- Không có kết nối Internet
+- Không thể SSH trực tiếp
+- Không có bộ nhớ lưu trữ lâu dài (Persistent Storage)
 
-> *Hình 1. Kiến trúc tổng thể; những ô màu thể hiện những dịch vụ riêng biệt.*
+Mọi giao tiếp với Enclave đều phải thông qua VSOCK và Parent EC2 Instance.
 
----
-
-Mặc dù thuật ngữ *microservices* có một số sự mơ hồ cố hữu, một số đặc điểm là chung:  
-- Chúng nhỏ, tự chủ, kết hợp rời rạc  
-- Có thể tái sử dụng, giao tiếp thông qua giao diện được xác định rõ  
-- Chuyên biệt để giải quyết một việc  
-- Thường được triển khai trong **event-driven architecture**
-
-Khi xác định vị trí tạo ranh giới giữa các microservices, cần cân nhắc:  
-- **Nội tại**: công nghệ được sử dụng, hiệu suất, độ tin cậy, khả năng mở rộng  
-- **Bên ngoài**: chức năng phụ thuộc, tần suất thay đổi, khả năng tái sử dụng  
-- **Con người**: quyền sở hữu nhóm, quản lý *cognitive load*
+Đây cũng chính là điểm tạo nên mức độ bảo mật cao của Nitro Enclaves, nhưng đồng thời cũng khiến việc đưa các ứng dụng hiện có vào Enclave trở nên khó khăn hơn.
 
 ---
 
-## Lựa chọn công nghệ và phạm vi giao tiếp
+## Khó khăn khi di chuyển ứng dụng Web
 
-| Phạm vi giao tiếp                        | Các công nghệ / mô hình cần xem xét                                                        |
-| ---------------------------------------- | ------------------------------------------------------------------------------------------ |
-| Trong một microservice                   | Amazon Simple Queue Service (Amazon SQS), AWS Step Functions                               |
-| Giữa các microservices trong một dịch vụ | AWS CloudFormation cross-stack references, Amazon Simple Notification Service (Amazon SNS) |
-| Giữa các dịch vụ                         | Amazon EventBridge, AWS Cloud Map, Amazon API Gateway                                      |
+Hầu hết các ứng dụng Web hiện nay đều hoạt động dựa trên giao thức TCP/IP thông qua HTTP hoặc HTTPS.
 
----
+Trong khi đó, Nitro Enclaves lại không hỗ trợ giao tiếp mạng theo cách thông thường mà chỉ sử dụng VSOCK.
 
-## The pub/sub hub
+Nếu triển khai trực tiếp, lập trình viên sẽ phải sửa khá nhiều phần mã nguồn để chuyển toàn bộ cơ chế giao tiếp từ TCP/IP sang VSOCK.
 
-Việc sử dụng kiến trúc **hub-and-spoke** (hay message broker) hoạt động tốt với một số lượng nhỏ các microservices liên quan chặt chẽ.  
-- Mỗi microservice chỉ phụ thuộc vào *hub*  
-- Kết nối giữa các microservice chỉ giới hạn ở nội dung của message được xuất  
-- Giảm số lượng synchronous calls vì pub/sub là *push* không đồng bộ một chiều
-
-Nhược điểm: cần **phối hợp và giám sát** để tránh microservice xử lý nhầm message.
+Với các hệ thống đã vận hành ổn định hoặc các ứng dụng lâu năm, đây là công việc vừa tốn thời gian vừa tiềm ẩn nhiều rủi ro vì rất dễ ảnh hưởng đến logic sẵn có của ứng dụng.
 
 ---
 
-## Core microservice
+## Giải pháp AWS đề xuất
 
-Cung cấp dữ liệu nền tảng và lớp truyền thông, gồm:  
-- **Amazon S3** bucket cho dữ liệu  
-- **Amazon DynamoDB** cho danh mục dữ liệu  
-- **AWS Lambda** để ghi message vào data lake và danh mục  
-- **Amazon SNS** topic làm *hub*  
-- **Amazon S3** bucket cho artifacts như mã Lambda
+Điểm tôi thấy khá hay trong bài viết là AWS đề xuất sử dụng SOCAT như một lớp proxy trung gian để chuyển đổi giữa HTTP và VSOCK.
 
-> Chỉ cho phép truy cập ghi gián tiếp vào data lake qua hàm Lambda → đảm bảo nhất quán.
+Mô hình sẽ gồm hai proxy:
 
----
+- **Proxy chạy trên Parent EC2:** nhận các kết nối HTTP từ bên ngoài rồi chuyển thành VSOCK để gửi vào Enclave.
+- **Proxy chạy trong Enclave:** nhận VSOCK rồi chuyển ngược lại thành HTTP để ứng dụng xử lý.
 
-## Front door microservice
+Ở chiều ngược lại cũng tương tự.
 
-- Cung cấp API Gateway để tương tác REST bên ngoài  
-- Xác thực & ủy quyền dựa trên **OIDC** thông qua **Amazon Cognito**  
-- Cơ chế *deduplication* tự quản lý bằng DynamoDB thay vì SNS FIFO vì:
-  1. SNS deduplication TTL chỉ 5 phút
-  2. SNS FIFO yêu cầu SQS FIFO
-  3. Chủ động báo cho sender biết message là bản sao
+Nếu ứng dụng bên trong Enclave cần kết nối ra ngoài, proxy sẽ chuyển lưu lượng từ HTTP sang VSOCK để Parent EC2 thay mặt Enclave thực hiện việc truy cập mạng.
+
+Nhờ cách làm này, ứng dụng vẫn có thể hoạt động gần giống như đang chạy trên một máy chủ Linux thông thường mà gần như không cần chỉnh sửa logic xử lý.
 
 ---
 
-## Staging ER7 microservice
+## Quy trình triển khai
 
-- Lambda “trigger” đăng ký với pub/sub hub, lọc message theo attribute  
-- Step Functions Express Workflow để chuyển ER7 → JSON  
-- Hai Lambda:
-  1. Sửa format ER7 (newline, carriage return)
-  2. Parsing logic  
-- Kết quả hoặc lỗi được đẩy lại vào pub/sub hub
+Theo bài viết của AWS, quy trình triển khai có thể tóm tắt như sau:
+
+1. Cài đặt Nitro Enclaves CLI và Developer Tools.
+2. Build ứng dụng thành Docker Image.
+3. Chuyển Docker Image sang định dạng EIF (Enclave Image File).
+4. Khởi chạy Enclave bằng Nitro CLI.
+5. Triển khai hai proxy SOCAT ở Parent EC2 và Enclave.
+6. Truy cập ứng dụng thông qua Parent Instance, mọi lưu lượng sẽ được chuyển tiếp vào Enclave thông qua VSOCK.
 
 ---
 
-## Tính năng mới trong giải pháp
+## Điều tôi thấy thú vị
 
-### 1. AWS CloudFormation cross-stack references
-Ví dụ *outputs* trong core microservice:
-```yaml
-Outputs:
-  Bucket:
-    Value: !Ref Bucket
-    Export:
-      Name: !Sub ${AWS::StackName}-Bucket
-  ArtifactBucket:
-    Value: !Ref ArtifactBucket
-    Export:
-      Name: !Sub ${AWS::StackName}-ArtifactBucket
-  Topic:
-    Value: !Ref Topic
-    Export:
-      Name: !Sub ${AWS::StackName}-Topic
-  Catalog:
-    Value: !Ref Catalog
-    Export:
-      Name: !Sub ${AWS::StackName}-Catalog
-  CatalogArn:
-    Value: !GetAtt Catalog.Arn
-    Export:
-      Name: !Sub ${AWS::StackName}-CatalogArn
+Điểm tôi đánh giá cao ở cách triển khai này là AWS không yêu cầu lập trình viên phải viết lại toàn bộ ứng dụng chỉ vì khác cơ chế giao tiếp.
+
+Thay vào đó, việc bổ sung thêm một lớp proxy giúp tận dụng được các ứng dụng hiện có, giảm đáng kể chi phí và thời gian khi muốn đưa hệ thống vào môi trường bảo mật cao hơn.
+
+Đây cũng là một ví dụ khá hay về việc kết hợp các công cụ mã nguồn mở như SOCAT với các dịch vụ của AWS để giải quyết bài toán tương thích mà vẫn đảm bảo tính cô lập và bảo mật của Nitro Enclaves.
+
+Tất nhiên, mô hình này cũng có một số điểm cần lưu ý như hiệu năng của lớp proxy, việc giám sát lưu lượng hay cách thiết kế kiến trúc tổng thể để phù hợp với từng hệ thống. Vì vậy, trước khi áp dụng vào môi trường thực tế vẫn cần đánh giá kỹ theo nhu cầu của từng dự án.
+
+---
+
+## Tổng kết
+
+Theo tôi, Nitro Enclaves là một dịch vụ khá thú vị của AWS nếu anh em đang tìm hiểu về bảo mật hoặc xây dựng các hệ thống xử lý dữ liệu nhạy cảm.
+
+Bài viết này cũng cho thấy một hướng tiếp cận thực tế: thay vì chỉnh sửa toàn bộ ứng dụng để thích nghi với Enclave, có thể tận dụng lớp chuyển đổi giao thức để giảm đáng kể công sức di chuyển mà vẫn giữ được mức độ bảo mật mà Nitro Enclaves mang lại.
+
+Đây là lần đầu tôi tìm hiểu và tổng hợp về chủ đề này. Nếu trong quá trình dịch hoặc nghiên cứu còn thiếu sót, rất mong anh em góp ý để tôi hoàn thiện hơn.
+
+---
+
+## Tài liệu tham khảo
+
+- Bài viết gốc trên Facebook Group: [AWS Study Group VN - Bài viết về Nitro Enclaves](https://www.facebook.com/groups/awsstudygroupfcj/?multi_permalinks=2198943464203947&notif_id=1782875552662961&notif_t=feedback_reaction_generic&ref=notif)
+- Tài liệu tham khảo (AWS China Blog): [Running Traditional Web Application Migration Practices in AWS Nitro Enclaves](https://aws.amazon.com/cn/blogs/china/running-traditional-web-application-migration-practices-in-aws-nitro-enclaves/)

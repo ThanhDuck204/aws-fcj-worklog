@@ -21,7 +21,7 @@ pre: " <b> 4. </b> "
 > * Outcomes or value gained (lessons learned, new skills, contribution to the team/project)
 > * This listing helps demonstrate your actual participation as well as the soft skills and experience you have gained from each event.
 
-During my internship, I participated in two events. Each one was a memorable experience that provided new, interesting, and useful knowledge, along with gifts and wonderful moments.
+During my internship, I participated in four events. Each one was a memorable experience that provided new, interesting, and useful knowledge, along with gifts and wonderful moments.
 
 ### [Event 1](4.1-Event1/)  
 &emsp;**Event Name:** AWS Study Group - Community Sharing Session  
@@ -42,3 +42,25 @@ During my internship, I participated in two events. Each one was a memorable exp
 &emsp;**Location:** 36th Floor, Bitexco Tower, 02 Hai Trieu Street, Saigon Ward, Ho Chi Minh City  
 
 &emsp;**Role:** Attendee  
+
+---
+
+### [Event 3](4.3-Event3/)  
+&emsp;**Event Name:** AWS Certification Quiz Competition  
+
+&emsp;**Date & Time:** 20/06/2026  
+
+&emsp;**Format:** Team competition (8 teams)  
+
+&emsp;**Role:** Participant / Observer  
+
+---
+
+### [Event 4](4.4-Event4/)  
+&emsp;**Event Name:** FCAJ Community Day - AI Agents & DevOps Workshop  
+
+&emsp;**Date & Time:** 27/06/2026  
+
+&emsp;**Location:** AWS Vietnam Office  
+
+&emsp;**Role:** Attendee

@@ -22,24 +22,40 @@ pre: " <b> 4. </b> "
 > * Việc liệt kê này giúp thể hiện rõ sự tham gia thực tế của bạn, cũng như các kỹ năng mềm và kinh nghiệm bạn đã tích lũy qua từng sự kiện.
 
 
-Trong quá trình thực tập, em đã tham gia 2 events, với mỗi event là một trải nghiệm đáng nhớ với những kiến thức mới, hay và bổ ích, cùng với đó là nhứng món quà và những khoảnh khắc rất tuyệt vời.
+Trong qua trinh thuc tap, em da tham gia 4 events, voi moi event la mot trai nghiem dang nho voi nhung kien thuc moi, hay va bo ich, cung voi do la nhung mon qua va nhung khoanh khac rat tuyet voi.
 
 ### [Event 1](4.1-Event1/)
-&emsp;**Tên sự kiện:** AWS Study Group – Buổi Chia Sẻ Cộng Đồng
+&emsp;**Ten su kien:** AWS Study Group – Buoi Chia Se Cong Dong
 
-&emsp;**Thời gian:** 09:00 - 12:00 ngày 09/05/2026
+&emsp;**Thoi gian:** 09:00 - 12:00 ngay 09/05/2026
 
-&emsp;**Địa điểm:** Tầng 26, Bitexco Financial Tower, 2 Hải Triều, Bến Nghé, Quận 1, TP. Hồ Chí Minh
+&emsp;**Dia diem:** Tang 26, Bitexco Financial Tower, 2 Hai Trieu, Ben Nghe, Quan 1, TP. Ho Chi Minh
 
-&emsp;**Vai trò trong sự kiện:** Người tham dự 
-
-
+&emsp;**Vai tro trong su kien:** Nguoi tham du 
 
 ### [Event 2](4.2-Event2/)
-&emsp;**Tên sự kiện:** AWS First Cloud AI Journey Community Day
+&emsp;**Ten su kien:** AWS First Cloud AI Journey Community Day
 
-&emsp;**Thời gian:** 09:00 - 12:00 ngày 23/05/2026
+&emsp;**Thoi gian:** 09:00 - 12:00 ngay 23/05/2026
 
-&emsp;**Địa điểm:** Tầng 36, Bitexco Financial Tower, 2 Hải Triều, Bến Nghé, Quận 1, TP. Hồ Chí Minh
+&emsp;**Dia diem:** Tang 36, Bitexco Financial Tower, 2 Hai Trieu, Ben Nghe, Quan 1, TP. Ho Chi Minh
 
-&emsp;**Vai trò trong sự kiện:** Người tham dự 
+&emsp;**Vai tro trong su kien:** Nguoi tham du 
+
+### [Event 3](4.3-Event3/)
+&emsp;**Ten su kien:** Cuoc thi AWS Certification Quiz
+
+&emsp;**Thoi gian:** 20/06/2026
+
+&emsp;**Hinh thuc:** Thi dau doi (8 doi)
+
+&emsp;**Vai tro trong su kien:** Nguoi tham gia / Quan sat
+
+### [Event 4](4.4-Event4/)
+&emsp;**Ten su kien:** FCAJ Community Day - AI Agents & DevOps Workshop
+
+&emsp;**Thoi gian:** 27/06/2026
+
+&emsp;**Dia diem:** Van phong AWS Vietnam
+
+&emsp;**Vai tro trong su kien:** Nguoi tham du

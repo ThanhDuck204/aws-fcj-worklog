@@ -6,10 +6,6 @@ chapter: false
 pre: " <b> 3.1. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
-{{% /notice %}}
-
 # Kiro - AWS AI Coding Assistant and the AI-assisted Development Lifecycle
 
 Recently, **AI coding assistants** have become a major trend in software development. In the past, developers mainly used AI to suggest code, fix bugs, or explain errors. Today, AI is becoming more involved across the software development lifecycle: requirements analysis, technical design, coding, testing, documentation, and team productivity.

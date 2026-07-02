@@ -6,10 +6,6 @@ chapter: false
 pre: " <b> 3.1. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
-
 # Kiro - AI Coding Assistant của AWS và xu hướng AI-assisted Development Lifecycle
 
 Trong thời gian gần đây, **AI Coding Assistant** đang trở thành một xu hướng nổi bật trong phát triển phần mềm. Nếu trước đây lập trình viên thường dùng AI để gợi ý code, sửa lỗi hoặc giải thích thông báo lỗi, thì hiện nay AI đang tham gia sâu hơn vào toàn bộ vòng đời phát triển phần mềm: từ phân tích yêu cầu, thiết kế kỹ thuật, viết code, tạo test cho đến hỗ trợ tài liệu và nâng cao năng suất làm việc nhóm.
