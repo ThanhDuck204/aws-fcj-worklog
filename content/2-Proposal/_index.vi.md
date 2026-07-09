@@ -6,100 +6,122 @@ chapter: false
 pre: " <b> 2. </b> "
 ---
 
-Tại phần này, bạn cần tóm tắt các nội dung trong workshop mà bạn **dự tính** sẽ làm.
+# AI Meeting Assistant Platform
+## Giải pháp AWS Serverless + VPC lai cho họp Chat & Voice có ghi âm và tự động giao việc
 
-# IoT Weather Platform for Lab Research  
-## Giải pháp AWS Serverless hợp nhất cho giám sát thời tiết thời gian thực  
+### 1. Tóm tắt điều hành
+AI Meeting Assistant Platform là một nền tảng web (giao diện Next.js Dashboard) cho phép người dùng tổ chức các phiên **Chat & Voice** có ghi âm và tự động biến mỗi phiên họp thành công việc cụ thể. Âm thanh và bản ghi được tải lên Amazon S3, kích hoạt một pipeline hướng sự kiện: một Speech Processing Lambda chuyển giọng nói thành văn bản thông qua một AI API bên ngoài, và một Task Lambda tách và giao việc thu được, lưu vào DynamoDB, rồi thông báo cho nhóm. Hệ thống được triển khai tại vùng AWS **ap-southeast-1 (Singapore)**, kết hợp tầng serverless/managed cho các API nghiệp vụ và pipeline AI với tầng VPC + EC2 (Auto Scaling, 2 Availability Zone) cho phần Chat & Voice thời gian thực. Thiết kế hướng đến tính sẵn sàng cao, bảo mật nhiều lớp, tối ưu chi phí lưu trữ và giám sát tập trung, phục vụ quy mô ban đầu khoảng 100 người dùng hoạt động hàng tháng (MAU).
 
-### 1. Tóm tắt điều hành  
-IoT Weather Platform được thiết kế dành cho nhóm *ITea Lab* tại TP. Hồ Chí Minh nhằm nâng cao khả năng thu thập và phân tích dữ liệu thời tiết. Nền tảng hỗ trợ tối đa 5 trạm thời tiết, có khả năng mở rộng lên 10–15 trạm, sử dụng thiết bị biên Raspberry Pi kết hợp cảm biến ESP32 để truyền dữ liệu qua MQTT. Nền tảng tận dụng các dịch vụ AWS Serverless để cung cấp giám sát thời gian thực, phân tích dự đoán và tiết kiệm chi phí, với quyền truy cập giới hạn cho 5 thành viên phòng lab thông qua Amazon Cognito.  
+### 2. Tuyên bố vấn đề
+*Vấn đề hiện tại*
+Ghi chú họp và công việc phát sinh sau họp thường được xử lý thủ công: phải nghe lại bản ghi, gỡ băng, quyết định ai làm gì, rồi nhắc nhở để công việc thực sự được giao. Cách làm này chậm, thiếu nhất quán và dễ bỏ sót. Các công cụ họp có sẵn thì hoặc tốn kém, khó tùy biến, hoặc không gắn kết việc gỡ băng — tách việc — giao việc trong cùng một luồng, và ít công cụ phù hợp với một nhóm nhỏ.
 
-### 2. Tuyên bố vấn đề  
-*Vấn đề hiện tại*  
-Các trạm thời tiết hiện tại yêu cầu thu thập dữ liệu thủ công, khó quản lý khi có nhiều trạm. Không có hệ thống tập trung cho dữ liệu hoặc phân tích thời gian thực, và các nền tảng bên thứ ba thường tốn kém và quá phức tạp.  
+*Giải pháp*
+Nền tảng tiếp nhận toàn bộ lưu lượng qua Amazon CloudFront (được AWS WAF bảo vệ) và định tuyến các lời gọi API qua Amazon API Gateway; API Gateway kiểm tra JWT do Amazon Cognito cấp trước khi gọi logic nghiệp vụ trên API Lambda với dữ liệu trong Amazon DynamoDB. Phần Chat & Voice thời gian thực chạy trên Amazon EC2 trong VPC trải 2 Availability Zone, phía trước là Application Load Balancer và được Auto Scaling group quản lý; các phiên chat được ghi vào một bảng DynamoDB riêng thông qua VPC Interface Endpoint để lưu lượng không ra khỏi mạng AWS. Khi âm thanh/bản ghi của phiên họp được tải lên Amazon S3, sự kiện S3 kích hoạt Amazon EventBridge, từ đó khởi chạy workflow AWS Step Functions. Trong workflow, một Speech Processing Lambda gọi AI API bên ngoài để chuyển giọng nói thành văn bản, và một Task Lambda gọi AI API bên ngoài để tách và giao việc, rồi lưu các công việc vào DynamoDB. Amazon SNS thông báo cho người dùng, các đối tượng cũ được chuyển sang S3 Glacier theo chính sách vòng đời, và Amazon CloudWatch giám sát toàn hệ thống. Các tính năng chính gồm: họp có ghi âm, tự động gỡ băng, và tự động tách & giao việc.
 
-*Giải pháp*  
-Nền tảng sử dụng AWS IoT Core để tiếp nhận dữ liệu MQTT, AWS Lambda và API Gateway để xử lý, Amazon S3 để lưu trữ (bao gồm data lake), và AWS Glue Crawlers cùng các tác vụ ETL để trích xuất, chuyển đổi, tải dữ liệu từ S3 data lake sang một S3 bucket khác để phân tích. AWS Amplify với Next.js cung cấp giao diện web, và Amazon Cognito đảm bảo quyền truy cập an toàn. Tương tự như Thingsboard và CoreIoT, người dùng có thể đăng ký thiết bị mới và quản lý kết nối, nhưng nền tảng này hoạt động ở quy mô nhỏ hơn và phục vụ mục đích sử dụng nội bộ. Các tính năng chính bao gồm bảng điều khiển thời gian thực, phân tích xu hướng và chi phí vận hành thấp.  
+*Lợi ích và hoàn vốn đầu tư (ROI)*
+Nền tảng loại bỏ vòng lặp thủ công "nghe — gỡ băng — tách việc — giao việc — nhắc việc", biến mỗi phiên họp có ghi âm thành danh sách công việc được theo dõi một cách tự động. Nhóm có một nơi duy nhất để họp và quản lý công việc phát sinh, cải thiện tính nhất quán và khả năng truy vết, đồng thời tạo kho lưu trữ âm thanh và bản ghi họp có thể tra cứu về sau. Thiết kế lai giúp chi phí dễ dự đoán: hạ tầng AWS ở mức **152,47 USD/tháng** (1.829,64 USD cho 12 tháng), phần gọi mô hình AI thêm khoảng **37,33 USD/tháng** ở kịch bản trung bình (khuyến nghị), tổng cộng khoảng **189,80 USD/tháng** (~2.277,54 USD/năm). Thời gian hoàn vốn phụ thuộc vào số giờ xử lý họp thủ công mà nhóm tiết kiệm được mỗi tháng.
 
-*Lợi ích và hoàn vốn đầu tư (ROI)*  
-Giải pháp tạo nền tảng cơ bản để các thành viên phòng lab phát triển một nền tảng IoT lớn hơn, đồng thời cung cấp nguồn dữ liệu cho những người nghiên cứu AI phục vụ huấn luyện mô hình hoặc phân tích. Nền tảng giảm bớt báo cáo thủ công cho từng trạm thông qua hệ thống tập trung, đơn giản hóa quản lý và bảo trì, đồng thời cải thiện độ tin cậy dữ liệu. Chi phí hàng tháng ước tính 0,66 USD (theo AWS Pricing Calculator), tổng cộng 7,92 USD cho 12 tháng. Tất cả thiết bị IoT đã được trang bị từ hệ thống trạm thời tiết hiện tại, không phát sinh chi phí phát triển thêm. Thời gian hoàn vốn 6–12 tháng nhờ tiết kiệm đáng kể thời gian thao tác thủ công.  
+### 3. Kiến trúc giải pháp
+Nền tảng được tổ chức thành các nhóm dịch vụ: Edge, Managed (ngoài VPC), VPC (Chat & Voice thời gian thực), AI Processing Pipeline (Step Functions, ngoài VPC) và Monitoring. Luồng end-to-end đi theo các bước được đánh số trên sơ đồ: người dùng đăng nhập qua Cognito và tải dashboard qua CloudFront (WAF lọc, tài nguyên tĩnh từ S3); lời gọi API đi qua API Gateway tới API Lambda và DynamoDB; âm thanh/bản ghi được tải lên S3, kích hoạt pipeline EventBridge → Step Functions → Speech Processing Lambda / Task Lambda → AI bên ngoài, công việc được lưu vào DynamoDB; và phần Chat & Voice thời gian thực được định tuyến qua Internet Gateway tới ALB và các EC2 (Auto Scaling trên 2 AZ), với phiên chat được lưu vào một bảng DynamoDB riêng qua VPC Interface Endpoint. CloudWatch và SNS đảm nhận giám sát và cảnh báo.
 
-### 3. Kiến trúc giải pháp  
-Nền tảng áp dụng kiến trúc AWS Serverless để quản lý dữ liệu từ 5 trạm dựa trên Raspberry Pi, có thể mở rộng lên 15 trạm. Dữ liệu được tiếp nhận qua AWS IoT Core, lưu trữ trong S3 data lake và xử lý bởi AWS Glue Crawlers và ETL jobs để chuyển đổi và tải vào một S3 bucket khác cho mục đích phân tích. Lambda và API Gateway xử lý bổ sung, trong khi Amplify với Next.js cung cấp bảng điều khiển được bảo mật bởi Cognito.  
+![AI Meeting Assistant Architecture](Architecture_1.png)
 
-![IoT Weather Station Architecture](/images/2-Proposal/edge_architecture.jpeg)
+*Dịch vụ AWS sử dụng*
+- *Amazon CloudFront*: CDN phân phối dashboard Next.js và cache nội dung tĩnh.
+- *AWS WAF*: Lọc request độc hại (SQLi, XSS, bot) ở biên.
+- *Amazon S3*: Tài nguyên tĩnh của web, âm thanh/bản ghi tải lên, và lưu trữ lạnh Glacier.
+- *Amazon API Gateway*: Cổng vào duy nhất cho mọi request API.
+- *Amazon Cognito*: Xác thực người dùng và cấp/kiểm tra JWT (~100 MAU).
+- *AWS Lambda*: API Lambda cho logic nghiệp vụ, cùng Speech Processing Lambda (STT) và Task Lambda (tách/giao việc) — 3 hàm.
+- *Amazon DynamoDB*: Dữ liệu nghiệp vụ (API Data), phiên chat (Save Chats) và công việc đã tách (Task) — 3 bảng.
+- *Application Load Balancer*: Cân bằng tải Chat & Voice trên 2 AZ.
+- *Amazon EC2 + Auto Scaling*: Server Chat & Voice thời gian thực trên 2 AZ, tự phục hồi theo tải.
+- *Amazon VPC (Internet Gateway, NAT Gateway, Interface Endpoint)*: Mạng nội bộ, kiểm soát chiều ra (mỗi AZ một NAT Gateway) và truy cập DynamoDB riêng tư.
+- *Amazon EventBridge*: Kích hoạt pipeline AI khi có sự kiện "object created" trên S3.
+- *AWS Step Functions*: Điều phối workflow Speech Processing và Task.
+- *External AI API*: Speech-to-Text và tách công việc (ví dụ Gemini / OpenAI / Claude).
+- *Amazon SNS*: Thông báo (email) và cảnh báo giám sát.
+- *Amazon CloudWatch*: Tập trung logs, metrics và alarms.
 
-![IoT Weather Platform Architecture](/images/2-Proposal/platform_architecture.jpeg)
+*Thiết kế thành phần*
+- *Edge*: CloudFront + WAF xử lý HTTPS đầu vào và phục vụ tài nguyên tĩnh từ S3.
+- *Xác thực*: Cognito cấp JWT (bước 1); API Gateway kiểm tra token (bước 6) trước khi gọi Lambda.
+- *API nghiệp vụ*: API Lambda đọc/ghi bảng DynamoDB API Data (bước 7–8).
+- *Tải lên*: Âm thanh/bản ghi được tải lên S3 (bước 9).
+- *Pipeline AI*: Sự kiện object-created trên S3 → EventBridge → Step Functions (bước 10–11); Speech Processing Lambda thực hiện Speech-to-Text qua AI API bên ngoài (bước 12); Task Lambda tách & giao việc qua AI API bên ngoài (bước 13) và lưu công việc vào DynamoDB (bước 15).
+- *Chat & Voice thời gian thực*: Chat request đi CloudFront → Internet Gateway → ALB → EC2 (Auto Scaling, bước 17–19); phiên chat được lưu vào bảng DynamoDB riêng qua Interface Endpoint (bước 20–21).
+- *Vòng đời lưu trữ*: Đối tượng chuyển sang S3 Glacier theo chính sách 30/120 ngày (bước 16).
+- *Giám sát*: CloudWatch thu thập logs/metrics/alarms và gửi cảnh báo qua SNS (email).
 
-*Dịch vụ AWS sử dụng*  
-- *AWS IoT Core*: Tiếp nhận dữ liệu MQTT từ 5 trạm, mở rộng lên 15.  
-- *AWS Lambda*: Xử lý dữ liệu và kích hoạt Glue jobs (2 hàm).  
-- *Amazon API Gateway*: Giao tiếp với ứng dụng web.  
-- *Amazon S3*: Lưu trữ dữ liệu thô (data lake) và dữ liệu đã xử lý (2 bucket).  
-- *AWS Glue*: Crawlers lập chỉ mục dữ liệu, ETL jobs chuyển đổi và tải dữ liệu.  
-- *AWS Amplify*: Lưu trữ giao diện web Next.js.  
-- *Amazon Cognito*: Quản lý quyền truy cập cho người dùng phòng lab.  
+### 4. Triển khai kỹ thuật
+*Các giai đoạn triển khai*
+Dự án được triển khai theo 4 giai đoạn:
+1. *Nghiên cứu và vẽ kiến trúc*: Nghiên cứu thiết kế lai serverless + VPC và pipeline AI, hoàn thành sơ đồ kiến trúc (giai đoạn lên kế hoạch).
+2. *Tính toán chi phí và kiểm tra tính khả thi*: Dùng AWS Pricing Calculator và ước tính chi phí AI (theo token); kiểm chứng tính khả thi với mục tiêu ~100 MAU (Tháng 1).
+3. *Điều chỉnh kiến trúc để tối ưu chi phí/giải pháp*: Tinh chỉnh thiết kế — ví dụ bố trí NAT/endpoint, vòng đời S3, batching và caching cho lời gọi AI — để đảm bảo hiệu quả chi phí (Tháng 2).
+4. *Phát triển, kiểm thử, triển khai*: Xây dựng ứng dụng Next.js, dịch vụ Chat & Voice trên EC2 và các dịch vụ AWS bằng CDK/SDK, sau đó kiểm thử và đưa vào vận hành (Tháng 2–3).
 
-*Thiết kế thành phần*  
-- *Thiết bị biên*: Raspberry Pi thu thập và lọc dữ liệu cảm biến, gửi tới IoT Core.  
-- *Tiếp nhận dữ liệu*: AWS IoT Core nhận tin nhắn MQTT từ thiết bị biên.  
-- *Lưu trữ dữ liệu*: Dữ liệu thô lưu trong S3 data lake; dữ liệu đã xử lý lưu ở một S3 bucket khác.  
-- *Xử lý dữ liệu*: AWS Glue Crawlers lập chỉ mục dữ liệu; ETL jobs chuyển đổi để phân tích.  
-- *Giao diện web*: AWS Amplify lưu trữ ứng dụng Next.js cho bảng điều khiển và phân tích thời gian thực.  
-- *Quản lý người dùng*: Amazon Cognito giới hạn 5 tài khoản hoạt động.  
+*Yêu cầu kỹ thuật*
+- *Frontend & API*: Kiến thức thực tế về Next.js (host qua CloudFront/S3), API Gateway, Cognito (JWT) và Lambda + DynamoDB cho logic nghiệp vụ.
+- *Tầng thời gian thực*: EC2 trong VPC trải 2 AZ, Application Load Balancer, Auto Scaling group, NAT Gateway cho chiều ra được kiểm soát và VPC Interface Endpoint để truy cập DynamoDB riêng tư.
+- *Pipeline AI*: Thông báo sự kiện S3, EventBridge, Step Functions, một Speech Processing Lambda (STT) và một Task Lambda (tách/giao việc) gọi AI API bên ngoài, cùng SNS cho thông báo.
+- *Tích hợp*: Dùng AWS CDK/SDK để khởi tạo và kết nối dịch vụ, và chính sách vòng đời S3 để kiểm soát chi phí.
 
-### 4. Triển khai kỹ thuật  
-*Các giai đoạn triển khai*  
-Dự án gồm 2 phần — thiết lập trạm thời tiết biên và xây dựng nền tảng thời tiết — mỗi phần trải qua 4 giai đoạn:  
-1. *Nghiên cứu và vẽ kiến trúc*: Nghiên cứu Raspberry Pi với cảm biến ESP32 và thiết kế kiến trúc AWS Serverless (1 tháng trước kỳ thực tập).  
-2. *Tính toán chi phí và kiểm tra tính khả thi*: Sử dụng AWS Pricing Calculator để ước tính và điều chỉnh (Tháng 1).  
-3. *Điều chỉnh kiến trúc để tối ưu chi phí/giải pháp*: Tinh chỉnh (ví dụ tối ưu Lambda với Next.js) để đảm bảo hiệu quả (Tháng 2).  
-4. *Phát triển, kiểm thử, triển khai*: Lập trình Raspberry Pi, AWS services với CDK/SDK và ứng dụng Next.js, sau đó kiểm thử và đưa vào vận hành (Tháng 2–3).  
+### 5. Lộ trình & Mốc triển khai
+- *Lên kế hoạch (Tháng 0)*: Nghiên cứu thiết kế, vẽ kiến trúc và chốt danh sách dịch vụ.
+- *Triển khai (Tháng 1–3)*:
+    - Tháng 1: Thiết lập tài khoản/vùng (ap-southeast-1), tìm hiểu dịch vụ và xác nhận ước tính chi phí.
+    - Tháng 2: Xây dựng và điều chỉnh kiến trúc (VPC/EC2, API serverless, pipeline AI).
+    - Tháng 3: Triển khai, kiểm thử end-to-end và đưa vào sử dụng.
+- *Sau triển khai*: Vận hành, giám sát và tinh chỉnh liên tục.
 
-*Yêu cầu kỹ thuật*  
-- *Trạm thời tiết biên*: Cảm biến (nhiệt độ, độ ẩm, lượng mưa, tốc độ gió), vi điều khiển ESP32, Raspberry Pi làm thiết bị biên. Raspberry Pi chạy Raspbian, sử dụng Docker để lọc dữ liệu và gửi 1 MB/ngày/trạm qua MQTT qua Wi-Fi.  
-- *Nền tảng thời tiết*: Kiến thức thực tế về AWS Amplify (lưu trữ Next.js), Lambda (giảm thiểu do Next.js xử lý), AWS Glue (ETL), S3 (2 bucket), IoT Core (gateway và rules), và Cognito (5 người dùng). Sử dụng AWS CDK/SDK để lập trình (ví dụ IoT Core rules tới S3). Next.js giúp giảm tải Lambda cho ứng dụng web fullstack.  
+### 6. Ước tính ngân sách
+Có thể xem chi phí trên [AWS Pricing Calculator](https://calculator.aws/) hoặc tải [tệp ước tính ngân sách](../attachments/Cost.pdf). Chi phí gọi mô hình AI được trình bày chi tiết trong bản ước tính Gemini 2.5 Flash kèm theo.
 
-### 5. Lộ trình & Mốc triển khai  
-- *Trước thực tập (Tháng 0)*: 1 tháng lên kế hoạch và đánh giá trạm cũ.  
-- *Thực tập (Tháng 1–3)*:  
-    - Tháng 1: Học AWS và nâng cấp phần cứng.  
-    - Tháng 2: Thiết kế và điều chỉnh kiến trúc.  
-    - Tháng 3: Triển khai, kiểm thử, đưa vào sử dụng.  
-- *Sau triển khai*: Nghiên cứu thêm trong vòng 1 năm.  
+*Chi phí hạ tầng (AWS, ap-southeast-1)*
+- Amazon EC2 (t3.medium, 1 instance, 30 GB EBS): 41,82 USD/tháng.
+- Amazon VPC (NAT Gateway + IPv4 public): 49,67 USD/tháng.
+- Elastic Load Balancing (1 ALB): 19,20 USD/tháng.
+- Amazon CloudWatch (logs, metrics, alarms, 1 dashboard): 19,05 USD/tháng.
+- AWS WAF (1 Web ACL, 5 rule + 1 managed group): 11,60 USD/tháng.
+- Amazon DynamoDB (API Data + Task + Save Chats): 4,76 USD/tháng.
+- Amazon CloudFront (~20 GB ra, 1 triệu request): 3,66 USD/tháng.
+- Amazon API Gateway: 1,25 USD/tháng.
+- Amazon S3 (Frontend + Audio + Glacier): 1,28 USD/tháng.
+- Amazon SNS: 0,18 USD/tháng.
+- AWS Lambda (3 hàm), Amazon Cognito (100 MAU), AWS Step Functions: 0,00 USD/tháng.
 
-### 6. Ước tính ngân sách  
-Có thể xem chi phí trên [AWS Pricing Calculator](https://calculator.aws/#/estimate?id=621f38b12a1ef026842ba2ddfe46ff936ed4ab01)  
-Hoặc tải [tệp ước tính ngân sách](../attachments/budget_estimation.pdf).  
+*Tổng phụ (AWS)*: **152,47 USD/tháng, 1.829,64 USD/12 tháng.**
 
-*Chi phí hạ tầng*  
-- AWS Lambda: 0,00 USD/tháng (1.000 request, 512 MB lưu trữ).  
-- S3 Standard: 0,15 USD/tháng (6 GB, 2.100 request, 1 GB quét).  
-- Truyền dữ liệu: 0,02 USD/tháng (1 GB vào, 1 GB ra).  
-- AWS Amplify: 0,35 USD/tháng (256 MB, request 500 ms).  
-- Amazon API Gateway: 0,01 USD/tháng (2.000 request).  
-- AWS Glue ETL Jobs: 0,02 USD/tháng (2 DPU).  
-- AWS Glue Crawlers: 0,07 USD/tháng (1 crawler).  
-- MQTT (IoT Core): 0,08 USD/tháng (5 thiết bị, 45.000 tin nhắn).  
+*Chi phí mô hình AI (Gemini 2.5 Flash, ước tính)*
+Bao gồm các lời gọi AI API bên ngoài trong pipeline (Speech-to-Text và tách công việc):
+- Mức thấp: ~15,53 USD/tháng.
+- Mức trung bình (mốc khuyến nghị): ~37,33 USD/tháng.
+- Mức cao: ~96,53 USD/tháng.
 
-*Tổng*: 0,7 USD/tháng, 8,40 USD/12 tháng  
-- *Phần cứng*: 265 USD một lần (Raspberry Pi 5 và cảm biến).  
+*Tổng cộng (kịch bản trung bình khuyến nghị)*
+- Hàng tháng: ~189,80 USD (AWS 152,47 + AI 37,33).
+- 12 tháng: ~2.277,54 USD.
 
-### 7. Đánh giá rủi ro  
-*Ma trận rủi ro*  
-- Mất mạng: Ảnh hưởng trung bình, xác suất trung bình.  
-- Hỏng cảm biến: Ảnh hưởng cao, xác suất thấp.  
-- Vượt ngân sách: Ảnh hưởng trung bình, xác suất thấp.  
+### 7. Đánh giá rủi ro
+*Ma trận rủi ro*
+- Lỗi AZ hoặc EC2 (gián đoạn Chat & Voice): Ảnh hưởng cao, xác suất thấp.
+- Vượt chi phí AI (output dài / audio nặng): Ảnh hưởng trung bình, xác suất trung bình.
+- Sự cố bảo mật (lưu lượng độc hại, lạm dụng thông tin đăng nhập): Ảnh hưởng cao, xác suất thấp.
+- AI API bên ngoài gián đoạn: Ảnh hưởng trung bình, xác suất thấp.
 
-*Chiến lược giảm thiểu*  
-- Mạng: Lưu trữ cục bộ trên Raspberry Pi với Docker.  
-- Cảm biến: Kiểm tra định kỳ, dự phòng linh kiện.  
-- Chi phí: Cảnh báo ngân sách AWS, tối ưu dịch vụ.  
+*Chiến lược giảm thiểu*
+- Sẵn sàng: VPC đa AZ, ALB + Auto Scaling với EC2 tự phục hồi, và mỗi AZ một NAT Gateway.
+- Chi phí AI: Giới hạn max output token, dùng batch API và context caching, cân nhắc Flash-Lite cho tác vụ đơn giản.
+- Bảo mật: WAF ở biên, phân quyền Cognito/JWT, EC2 nằm trong private subnet, và VPC Endpoint để lưu lượng DynamoDB không ra Internet.
+- Phụ thuộc: Retry/backoff và xử lý dead-letter trong Step Functions cho các lời gọi AI bên ngoài.
 
-*Kế hoạch dự phòng*  
-- Quay lại thu thập thủ công nếu AWS gặp sự cố.  
-- Sử dụng CloudFormation để khôi phục cấu hình liên quan đến chi phí.  
+*Kế hoạch dự phòng*
+- Quay lại ghi chú thủ công nếu pipeline AI gặp sự cố, xử lý lại các file tải lên sau.
+- Dùng vòng đời S3 và cảnh báo ngân sách CloudWatch để kiểm soát lưu trữ và chi phí.
+- Chạy lại (re-drive) các execution Step Functions để xử lý lại các file âm thanh/bản ghi bị lỗi.
 
-### 8. Kết quả kỳ vọng  
-*Cải tiến kỹ thuật*: Dữ liệu và phân tích thời gian thực thay thế quy trình thủ công. Có thể mở rộng tới 10–15 trạm.  
-*Giá trị dài hạn*: Nền tảng dữ liệu 1 năm cho nghiên cứu AI, có thể tái sử dụng cho các dự án tương lai.
+### 8. Kết quả kỳ vọng
+*Cải tiến kỹ thuật*: Các phiên họp có ghi âm được gỡ băng và biến thành công việc được giao một cách tự động, thay thế quy trình thủ công. Tầng thời gian thực luôn sẵn sàng trên 2 AZ, và pipeline serverless co giãn theo mức sử dụng.
+*Giá trị dài hạn*: Kho lưu trữ âm thanh, bản ghi và công việc đã tách có thể tra cứu, cùng một mẫu kiến trúc lai (serverless + VPC) có thể tái sử dụng và phát triển cùng nhóm.
