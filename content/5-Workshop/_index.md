@@ -5,15 +5,12 @@ weight: 5
 chapter: false
 pre: " <b> 5. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
-{{% /notice %}}
 
 # Build an AI Meeting Workforce Platform on AWS
 
 #### Overview
 
-In this workshop, I build **AI Meeting Workforce Platform** — a web platform for managing meetings and follow-up work. Users can sign in, create or view meeting sessions, upload transcripts/audio, and let the system use AI to summarize the meeting, extract action items, and store assigned tasks in role-based dashboards for Admin, Manager, and Employee users.
+In this workshop, we build **AI Meeting Workforce Platform** — a web platform for managing meetings and follow-up work. Users can sign in, create or view meeting sessions, upload transcripts/audio, and let the system use AI to summarize the meeting, extract action items, and store assigned tasks in role-based dashboards for Admin, Manager, and Employee users.
 
 The architecture is designed with an **AWS managed/serverless-first approach**, which fits the MVP scope of the project:
 
@@ -25,7 +22,7 @@ The architecture is designed with an **AWS managed/serverless-first approach**, 
 + **AI processing:** EventBridge, Step Functions, and Lambda orchestrate the workflow after new meeting data is uploaded; Lambda calls an external AI service to summarize and extract tasks.
 + **Monitoring:** CloudWatch is used to review logs, track errors, and verify deployment/runtime behavior.
 
-Some components in the architecture diagram, such as VPC, ALB, EC2 Auto Scaling, NAT Gateway, VPC Endpoint, WAF, or SNS, are described as **production extension/design items**. In the report and screenshots, I separate the **MVP components that were implemented** from the **future production architecture** so the workshop stays aligned with the actual project.
+Some components in the architecture diagram, such as VPC, ALB, EC2 Auto Scaling, NAT Gateway, VPC Endpoint, WAF, or SNS, are described as **production extension/design items**. In the report and screenshots, we separate the **MVP components that were implemented** from the **future production architecture** so the workshop stays aligned with the actual project.
 
 #### Content
 
