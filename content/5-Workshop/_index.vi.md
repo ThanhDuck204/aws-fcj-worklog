@@ -1,33 +1,40 @@
-﻿---
+---
 title: "Workshop"
-date: 2024-01-01
+date: 2026-01-01
 weight: 5
 chapter: false
 pre: " <b> 5. </b> "
 ---
-
 {{% notice warning %}}
-âš ï¸ **LÆ°u Ã½:** CÃ¡c thÃ´ng tin dÆ°á»›i Ä‘Ã¢y chá»‰ nháº±m má»¥c Ä‘Ã­ch tham kháº£o, vui lÃ²ng **khÃ´ng sao chÃ©p nguyÃªn vÄƒn** cho bÃ i bÃ¡o cÃ¡o cá»§a báº¡n ká»ƒ cáº£ warning nÃ y.
+⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
 {{% /notice %}}
 
+# Xây dựng nền tảng AI Meeting Workforce trên AWS
 
-# Äáº£m báº£o truy cáº­p Hybrid an toÃ n Ä‘áº¿n S3 báº±ng cÃ¡ch sá»­ dá»¥ng VPC endpoint
+#### Tổng quan
 
-#### Tá»•ng quan
+Trong workshop này, em xây dựng **AI Meeting Workforce Platform** — một nền tảng web hỗ trợ quản lý cuộc họp và công việc sau cuộc họp. Người dùng có thể đăng nhập, tạo hoặc xem phiên họp, upload transcript/audio, sau đó hệ thống dùng AI để tóm tắt nội dung, trích xuất action items và lưu các task vào dashboard theo vai trò như Admin, Manager và Employee.
 
-**AWS PrivateLink** cung cáº¥p káº¿t ná»‘i riÃªng tÆ° Ä‘áº¿n cÃ¡c dá»‹ch vá»¥ aws tá»« VPCs hoáº·c trung tÃ¢m dá»¯ liá»‡u (on-premise) mÃ  khÃ´ng lÃ m lá»™ lÆ°u lÆ°á»£ng truy cáº­p ra ngoÃ i public internet.
+Kiến trúc được thiết kế theo hướng **AWS managed/serverless trước**, phù hợp với phạm vi MVP của dự án:
 
-Trong bÃ i lab nÃ y, chÃºng ta sáº½ há»c cÃ¡ch táº¡o, cáº¥u hÃ¬nh, vÃ  kiá»ƒm tra VPC endpoints Ä‘á»ƒ cho phÃ©p workload cá»§a báº¡n tiáº¿p cáº­n cÃ¡c dá»‹ch vá»¥ AWS mÃ  khÃ´ng cáº§n Ä‘i qua Internet cÃ´ng cá»™ng.
++ **Frontend:** giao diện Next.js được build thành static files, lưu trên Amazon S3 và phân phối qua Amazon CloudFront.
++ **Authentication:** Amazon Cognito quản lý đăng ký, đăng nhập và phát JWT cho người dùng.
++ **Business API:** Amazon API Gateway nhận request từ dashboard, kiểm tra token và gọi AWS Lambda để xử lý nghiệp vụ.
++ **Database:** Amazon DynamoDB lưu dữ liệu người dùng, cuộc họp, task, notification và trạng thái xử lý.
++ **Meeting storage:** Amazon S3 lưu transcript/audio hoặc bundle dữ liệu của cuộc họp.
++ **AI processing:** EventBridge, Step Functions và Lambda điều phối luồng xử lý sau khi có dữ liệu cuộc họp mới; Lambda gọi AI bên ngoài để tóm tắt và trích xuất task.
++ **Monitoring:** CloudWatch dùng để xem log, theo dõi lỗi và kiểm tra quá trình deploy/thực thi.
 
-ChÃºng ta sáº½ táº¡o hai loáº¡i endpoints Ä‘á»ƒ truy cáº­p Ä‘áº¿n Amazon S3: gateway vpc endpoint vÃ  interface vpc endpoint. Hai loáº¡i vpc endpoints nÃ y mang Ä‘áº¿n nhiá»u lá»£i Ã­ch tÃ¹y thuá»™c vÃ o viá»‡c báº¡n truy cáº­p Ä‘áº¿n S3 tá»« mÃ´i trÆ°á»ng cloud hay tá»« trung tÃ¢m dá»¯ liá»‡u (on-premise).
-+ **Gateway** - Táº¡o gateway endpoint Ä‘á»ƒ gá»­i lÆ°u lÆ°á»£ng Ä‘áº¿n Amazon S3 hoáº·c DynamoDB using private IP addresses. Báº¡n Ä‘iá»u hÆ°á»›ng lÆ°u lÆ°á»£ng tá»« VPC cá»§a báº¡n Ä‘áº¿n gateway endpoint báº±ng cÃ¡c báº£ng Ä‘á»‹nh tuyáº¿n (route tables)
-+ **Interface** - Táº¡o interface endpoint Ä‘á»ƒ gá»­i lÆ°u lÆ°á»£ng Ä‘áº¿n cÃ¡c dá»‹ch vá»¥ Ä‘iá»ƒm cuá»‘i (endpoints) sá»­ dá»¥ng Network Load Balancer Ä‘á»ƒ phÃ¢n phá»‘i lÆ°u lÆ°á»£ng. LÆ°u lÆ°á»£ng dÃ nh cho dá»‹ch vá»¥ Ä‘iá»ƒm cuá»‘i Ä‘Æ°á»£c resolved báº±ng DNS.
+Một số thành phần trong sơ đồ kiến trúc như VPC, ALB, EC2 Auto Scaling, NAT Gateway, VPC Endpoint, WAF hoặc SNS được trình bày như **hướng mở rộng/thiết kế production**. Khi viết báo cáo và chụp ảnh minh chứng, em tách rõ phần **đã triển khai trong MVP** và phần **định hướng mở rộng** để nội dung khớp với dự án thực tế.
 
-#### Ná»™i dung
+#### Nội dung
 
-1. [Tá»•ng quan vá» workshop](5.1-Workshop-overview/)
-2. [Chuáº©n bá»‹](5.2-Prerequiste/)
-3. [Truy cáº­p Ä‘áº¿n S3 tá»« VPC](5.3-S3-vpc/)
-4. [Truy cáº­p Ä‘áº¿n S3 tá»« TTDL On-premises](5.4-S3-onprem/)
-5. [VPC Endpoint Policies (lÃ m thÃªm)](5.5-Policy/)
-6. [Dá»n dáº¹p tÃ i nguyÃªn](5.6-Cleanup/)
+1. [Tổng quan workshop](5.1-Workshop-overview/)
+2. [Chuẩn bị](5.2-Prerequisite/)
+3. [Dịch vụ Managed (Cognito, DynamoDB, API)](5.3-Managed-Services/)
+4. [VPC — Chat & Voice (thiết kế mở rộng)](5.4-VPC-Chat-Voice/)
+5. [Pipeline xử lý AI (S3, EventBridge, Step Functions, Lambda)](5.5-AI-Pipeline/)
+6. [Edge & Frontend (S3, CloudFront, WAF)](5.6-Edge-Frontend/)
+7. [Giám sát & Tối ưu chi phí](5.7-Monitoring-Cost/)
+8. [Kiểm thử end-to-end](5.8-Test/)
+9. [Dọn dẹp tài nguyên](5.9-Cleanup/)

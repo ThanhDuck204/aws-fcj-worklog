@@ -1,126 +1,89 @@
 ---
-title: "Blog 3"
-date: 2024-01-01
+title: "Blog 3 - AWS Pricing Calculator"
+date: 2026-07-09
 weight: 1
 chapter: false
 pre: " <b> 3.3. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
-{{% /notice %}}
 
-# Getting Started with Healthcare Data Lakes: Using Microservices
 
-Data lakes can help hospitals and healthcare facilities turn data into business insights, maintain business continuity, and protect patient privacy. A **data lake** is a centralized, managed, and secure repository to store all your data, both in its raw and processed forms for analysis. Data lakes allow you to break down data silos and combine different types of analytics to gain insights and make better business decisions.
+# AWS Pricing Calculator — Estimate Costs Before Deploying
 
-This blog post is part of a larger series on getting started with setting up a healthcare data lake. In my final post of the series, *“Getting Started with Healthcare Data Lakes: Diving into Amazon Cognito”*, I focused on the specifics of using Amazon Cognito and Attribute Based Access Control (ABAC) to authenticate and authorize users in the healthcare data lake solution. In this blog, I detail how the solution evolved at a foundational level, including the design decisions I made and the additional features used. You can access the code samples for the solution in this Git repo for reference.
+Hello AWS Study Group VN!
 
----
+During my AWS learning journey, I noticed a very common question: *"How much will deploying a service cost per month?"*
 
-## Architecture Guidance
+Instead of creating real resources and waiting for the end-of-month bill, AWS provides a free tool that helps us estimate costs before deploying — that is **AWS Pricing Calculator**.
 
-The main change since the last presentation of the overall architecture is the decomposition of a single service into a set of smaller services to improve maintainability and flexibility. Integrating a large volume of diverse healthcare data often requires specialized connectors for each format; by keeping them encapsulated separately as microservices, we can add, remove, and modify each connector without affecting the others. The microservices are loosely coupled via publish/subscribe messaging centered in what I call the “pub/sub hub.”
-
-This solution represents what I would consider another reasonable sprint iteration from my last post. The scope is still limited to the ingestion and basic parsing of **HL7v2 messages** formatted in **Encoding Rules 7 (ER7)** through a REST interface.
-
-**The solution architecture is now as follows:**
-
-> *Figure 1. Overall architecture; colored boxes represent distinct services.*
+In this article, I'll share how to use AWS Pricing Calculator to estimate the cost of a basic EC2 instance.
 
 ---
 
-While the term *microservices* has some inherent ambiguity, certain traits are common:  
-- Small, autonomous, loosely coupled  
-- Reusable, communicating through well-defined interfaces  
-- Specialized to do one thing well  
-- Often implemented in an **event-driven architecture**
+## What is AWS Pricing Calculator?
 
-When determining where to draw boundaries between microservices, consider:  
-- **Intrinsic**: technology used, performance, reliability, scalability  
-- **Extrinsic**: dependent functionality, rate of change, reusability  
-- **Human**: team ownership, managing *cognitive load*
+AWS Pricing Calculator is a tool that lets you create estimates for new workloads or modify existing workloads to estimate costs.
+
+> *Figure 1. AWS Pricing Calculator Interface*
+
+{{< figure src="/images/blog/blog3.1.jpg" title="Figure 1. AWS Pricing Calculator main interface" >}}
 
 ---
 
-## Technology Choices and Communication Scope
+## Why Use AWS Pricing Calculator?
 
-| Communication scope                       | Technologies / patterns to consider                                                        |
-| ----------------------------------------- | ------------------------------------------------------------------------------------------ |
-| Within a single microservice              | Amazon Simple Queue Service (Amazon SQS), AWS Step Functions                               |
-| Between microservices in a single service | AWS CloudFormation cross-stack references, Amazon Simple Notification Service (Amazon SNS) |
-| Between services                          | Amazon EventBridge, AWS Cloud Map, Amazon API Gateway                                      |
+In my opinion, this tool is useful for:
 
----
-
-## The Pub/Sub Hub
-
-Using a **hub-and-spoke** architecture (or message broker) works well with a small number of tightly related microservices.  
-- Each microservice depends only on the *hub*  
-- Inter-microservice connections are limited to the contents of the published message  
-- Reduces the number of synchronous calls since pub/sub is a one-way asynchronous *push*
-
-Drawback: **coordination and monitoring** are needed to avoid microservices processing the wrong message.
+- **Estimating costs** before deploying a system.
+- **Budget planning** for your project.
+- **Sharing estimates** with clients or team members.
 
 ---
 
-## Core Microservice
+## How to Use AWS Pricing Calculator
 
-Provides foundational data and communication layer, including:  
-- **Amazon S3** bucket for data  
-- **Amazon DynamoDB** for data catalog  
-- **AWS Lambda** to write messages into the data lake and catalog  
-- **Amazon SNS** topic as the *hub*  
-- **Amazon S3** bucket for artifacts such as Lambda code
+The process can be summarized as follows:
 
-> Only allow indirect write access to the data lake through a Lambda function → ensures consistency.
+1. **Create an Estimate** — Start a new estimate.
+2. **Select the service** you want to calculate costs for (EC2, S3, RDS,...).
 
----
+> *Figure 2. Selecting AWS services for estimation*
 
-## Front Door Microservice
+{{< figure src="/images/blog/blog3.2.jpg" title="Figure 2. Selecting AWS services to estimate costs" >}}
 
-- Provides an API Gateway for external REST interaction  
-- Authentication & authorization based on **OIDC** via **Amazon Cognito**  
-- Self-managed *deduplication* mechanism using DynamoDB instead of SNS FIFO because:  
-  1. SNS deduplication TTL is only 5 minutes  
-  2. SNS FIFO requires SQS FIFO  
-  3. Ability to proactively notify the sender that the message is a duplicate  
+3. **Enter configuration parameters** — instance type, storage capacity, region,...
+4. The **Estimate** will be displayed on the **My Estimate** page with monthly cost breakdown.
+
+> *Figure 3. Cost estimation results*
+
+{{< figure src="/images/blog/blog3.3.jpg" title="Figure 3. Estimate details displayed on My Estimate page" >}}
 
 ---
 
-## Staging ER7 Microservice
+## Important Notes
 
-- Lambda “trigger” subscribed to the pub/sub hub, filtering messages by attribute  
-- Step Functions Express Workflow to convert ER7 → JSON  
-- Two Lambdas:  
-  1. Fix ER7 formatting (newline, carriage return)  
-  2. Parsing logic  
-- Result or error is pushed back into the pub/sub hub  
+AWS Pricing Calculator **only provides estimated costs** based on the parameters you enter.
+
+Actual costs may vary depending on:
+- Actual usage levels.
+- Network traffic incurred.
+- Additional services used.
+- Price changes by Region.
+
+Therefore, Pricing Calculator results should be considered as **a cost planning tool** rather than an absolute figure.
 
 ---
 
-## New Features in the Solution
+## Summary
 
-### 1. AWS CloudFormation Cross-Stack References
-Example *outputs* in the core microservice:
-```yaml
-Outputs:
-  Bucket:
-    Value: !Ref Bucket
-    Export:
-      Name: !Sub ${AWS::StackName}-Bucket
-  ArtifactBucket:
-    Value: !Ref ArtifactBucket
-    Export:
-      Name: !Sub ${AWS::StackName}-ArtifactBucket
-  Topic:
-    Value: !Ref Topic
-    Export:
-      Name: !Sub ${AWS::StackName}-Topic
-  Catalog:
-    Value: !Ref Catalog
-    Export:
-      Name: !Sub ${AWS::StackName}-Catalog
-  CatalogArn:
-    Value: !GetAtt Catalog.Arn
-    Export:
-      Name: !Sub ${AWS::StackName}-CatalogArn
+In my opinion, AWS Pricing Calculator is a valuable tool for anyone learning or working with AWS.
+
+Instead of deploying resources and checking the cost later, we can proactively estimate budgets, compare options, and make informed decisions right from the system design phase.
+
+If you've used AWS Pricing Calculator before or have experience with AWS cost optimization, feel free to share in the comments!
+
+---
+
+## References
+
+- [Facebook Group Post](https://www.facebook.com/share/p/18MB3hwy2g/)
+- [AWS Pricing Calculator](https://aws.amazon.com/vi/aws-cost-management/aws-pricing-calculator/)

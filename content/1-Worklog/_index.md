@@ -33,4 +33,4 @@ Typically, and as a standard, a worklog is carried out over about 3 months (thro
 
 **Week 11:** [AWS Service Connection, Blog Writing & Free Tier Architecture Adjustment](1.11-week11/)
 
-**Week 12:** [](1.12-week12/)
+**Week 12:** [Project Deployment, Bug Fixing & Workshop Submission](1.12-week12/)
