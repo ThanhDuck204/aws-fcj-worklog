@@ -1,7 +1,7 @@
 ---
 title: "Blog 3 - AWS Pricing Calculator"
 date: 2026-07-09
-weight: 1
+weight: 3
 chapter: false
 pre: " <b> 3.3. </b> "
 ---
@@ -83,7 +83,11 @@ If you've used AWS Pricing Calculator before or have experience with AWS cost op
 
 ---
 
+## Evidence Link
+
+This article was posted on the AWS Study Group VN Facebook group as evidence of the blog writing and translation activities:
+- [Facebook Post - AWS Pricing Calculator](https://www.facebook.com/share/p/18MB3hwy2g/)
+
 ## References
 
-- [Facebook Group Post](https://www.facebook.com/share/p/18MB3hwy2g/)
 - [AWS Pricing Calculator](https://aws.amazon.com/vi/aws-cost-management/aws-pricing-calculator/)

@@ -31,6 +31,8 @@ Instead of typing a short prompt and asking AI to generate code immediately, Kir
 
 This is important in real projects. Many projects do not fail because of a lack of code; they fail because requirements are unclear, designs are not aligned, and team members understand the implementation differently.
 
+{{< figure src="/images/blog/blog1.1.jpg" title="Figure 1. Kiro - AWS AI Coding Assistant interface overview" >}}
+
 ---
 
 ## Spec-Driven Development: Analyze Before Coding
@@ -61,6 +63,8 @@ For example, before implementing a login feature, Kiro can help analyze:
 
 This allows AI to work from a clearer specification instead of a short prompt. It reduces the risk of incorrect implementation and makes team review easier.
 
+{{< figure src="/images/blog/blog1.2.jpg" title="Figure 2. Spec-Driven Development workflow with Kiro" >}}
+
 ---
 
 ## Kiro in the AI-assisted Development Lifecycle
@@ -79,6 +83,8 @@ Kiro can support the following stages:
 | Documentation | Generate README content, API descriptions, and processing flow explanations |
 
 This makes Kiro suitable for structured project development, especially in team projects or systems with multiple related modules.
+
+{{< figure src="/images/blog/blog1.3.jpg" title="Figure 3. AI-assisted Development Lifecycle stages supported by Kiro" >}}
 
 ---
 
@@ -175,6 +181,11 @@ For students and study groups, Kiro can be a useful tool for learning how to bui
 In the future, developers may not only be people who write code. They will also need to define good requirements, coordinate AI agents, check quality, and design better systems.
 
 ---
+
+## Evidence Link
+
+This article was posted on the AWS Study Group VN Facebook group as evidence of the blog writing and translation activities:
+- [Facebook Post - Kiro and the AI-assisted Development Lifecycle](https://www.facebook.com/groups/awsstudygroupfcj/?multi_permalinks=2180891552675805&notif_id=1781111192588227&notif_t=group_activity&ref=notif)
 
 ## References
 

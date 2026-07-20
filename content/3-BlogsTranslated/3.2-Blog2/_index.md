@@ -1,7 +1,7 @@
 ---
 title: "Blog 2 - Running Traditional Web Applications on AWS Nitro Enclaves"
 date: 2026-07-02
-weight: 1
+weight: 2
 chapter: false
 pre: " <b> 3.2. </b> "
 ---
@@ -36,6 +36,8 @@ All communication with the Enclave must go through VSOCK and the Parent EC2 Inst
 
 This is what gives Nitro Enclaves its high level of security, but it also makes migrating existing applications into an Enclave more challenging.
 
+{{< figure src="/images/blog/blog2.1.jpg" title="Figure 1. AWS Nitro Enclaves architecture overview" >}}
+
 ---
 
 ## Challenges When Migrating Web Applications
@@ -64,6 +66,8 @@ The reverse direction works the same way.
 If an application inside the Enclave needs to connect to the outside, the proxy converts traffic from HTTP to VSOCK so the Parent EC2 can handle network access on behalf of the Enclave.
 
 With this approach, the application can still operate almost as if it were running on a regular Linux server, with little to no modification to its processing logic.
+
+{{< figure src="/images/blog/blog2.2.jpg" title="Figure 2. SOCAT proxy architecture for Nitro Enclaves communication" >}}
 
 ---
 
@@ -102,7 +106,11 @@ This is my first time researching and synthesizing content on this topic. If the
 
 ---
 
+## Evidence Link
+
+This article was posted on the AWS Study Group VN Facebook group as evidence of the blog writing and translation activities:
+- [Facebook Post - Running Traditional Web Applications on AWS Nitro Enclaves](https://www.facebook.com/groups/awsstudygroupfcj/?multi_permalinks=2198943464203947&notif_id=1782875552662961&notif_t=feedback_reaction_generic&ref=notif)
+
 ## References
 
-- Original Facebook Group Post: [AWS Study Group VN - Nitro Enclaves Article](https://www.facebook.com/groups/awsstudygroupfcj/?multi_permalinks=2198943464203947&notif_id=1782875552662961&notif_t=feedback_reaction_generic&ref=notif)
 - Reference Material (AWS China Blog): [Running Traditional Web Application Migration Practices in AWS Nitro Enclaves](https://aws.amazon.com/cn/blogs/china/running-traditional-web-application-migration-practices-in-aws-nitro-enclaves/)

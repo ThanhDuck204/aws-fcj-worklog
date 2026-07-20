@@ -1,7 +1,7 @@
 ---
 title: "Blog 2 - Ứng dụng Web truyền thống trên AWS Nitro Enclaves"
 date: 2026-07-02
-weight: 1
+weight: 2
 chapter: false
 pre: " <b> 3.2. </b> "
 ---
@@ -36,6 +36,8 @@ Mọi giao tiếp với Enclave đều phải thông qua VSOCK và Parent EC2 In
 
 Đây cũng chính là điểm tạo nên mức độ bảo mật cao của Nitro Enclaves, nhưng đồng thời cũng khiến việc đưa các ứng dụng hiện có vào Enclave trở nên khó khăn hơn.
 
+{{< figure src="/images/blog/blog2.1.jpg" title="Hình 1. Tổng quan kiến trúc AWS Nitro Enclaves" >}}
+
 ---
 
 ## Khó khăn khi di chuyển ứng dụng Web
@@ -64,6 +66,8 @@ Mô hình sẽ gồm hai proxy:
 Nếu ứng dụng bên trong Enclave cần kết nối ra ngoài, proxy sẽ chuyển lưu lượng từ HTTP sang VSOCK để Parent EC2 thay mặt Enclave thực hiện việc truy cập mạng.
 
 Nhờ cách làm này, ứng dụng vẫn có thể hoạt động gần giống như đang chạy trên một máy chủ Linux thông thường mà gần như không cần chỉnh sửa logic xử lý.
+
+{{< figure src="/images/blog/blog2.2.jpg" title="Hình 2. Kiến trúc proxy SOCAT cho giao tiếp Nitro Enclaves" >}}
 
 ---
 
@@ -102,7 +106,11 @@ Bài viết này cũng cho thấy một hướng tiếp cận thực tế: thay 
 
 ---
 
+## Link minh chứng
+
+Bài viết này đã được đăng lên nhóm AWS Study Group VN trên Facebook, là minh chứng cho hoạt động viết blog và dịch thuật của nhóm:
+- [Facebook Post - Ứng dụng Web truyền thống trên AWS Nitro Enclaves](https://www.facebook.com/groups/awsstudygroupfcj/?multi_permalinks=2198943464203947&notif_id=1782875552662961&notif_t=feedback_reaction_generic&ref=notif)
+
 ## Tài liệu tham khảo
 
-- Bài viết gốc trên Facebook Group: [AWS Study Group VN - Bài viết về Nitro Enclaves](https://www.facebook.com/groups/awsstudygroupfcj/?multi_permalinks=2198943464203947&notif_id=1782875552662961&notif_t=feedback_reaction_generic&ref=notif)
-- Tài liệu tham khảo (AWS China Blog): [Running Traditional Web Application Migration Practices in AWS Nitro Enclaves](https://aws.amazon.com/cn/blogs/china/running-traditional-web-application-migration-practices-in-aws-nitro-enclaves/)
+- (AWS China Blog): [Running Traditional Web Application Migration Practices in AWS Nitro Enclaves](https://aws.amazon.com/cn/blogs/china/running-traditional-web-application-migration-practices-in-aws-nitro-enclaves/)

@@ -1,7 +1,7 @@
 ---
 title: "Blog 3 - AWS Pricing Calculator"
 date: 2026-07-09
-weight: 1
+weight: 3
 chapter: false
 pre: " <b> 3.3. </b> "
 ---
@@ -83,7 +83,11 @@ Nếu anh em đã từng sử dụng AWS Pricing Calculator hoặc có kinh nghi
 
 ---
 
+## Link minh chứng
+
+Bài viết này đã được đăng lên nhóm AWS Study Group VN trên Facebook, là minh chứng cho hoạt động viết blog và dịch thuật của nhóm:
+- [Facebook Post - AWS Pricing Calculator](https://www.facebook.com/share/p/18MB3hwy2g/)
+
 ## Tài liệu tham khảo
 
-- [Bài viết trên Facebook Group](https://www.facebook.com/share/p/18MB3hwy2g/)
 - [AWS Pricing Calculator](https://aws.amazon.com/vi/aws-cost-management/aws-pricing-calculator/)

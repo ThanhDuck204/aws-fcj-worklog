@@ -31,6 +31,8 @@ Thay vì nhập một prompt ngắn rồi yêu cầu AI sinh code ngay, Kiro có
 
 Điểm này rất quan trọng trong dự án thực tế. Nhiều dự án không gặp vấn đề vì thiếu code, mà gặp vấn đề vì yêu cầu chưa rõ, thiết kế thiếu thống nhất và các thành viên trong nhóm hiểu khác nhau về cách triển khai.
 
+{{< figure src="/images/blog/blog1.1.jpg" title="Hình 1. Tổng quan giao diện Kiro - AWS AI Coding Assistant" >}}
+
 ---
 
 ## Spec-Driven Development: Không code vội, phân tích trước
@@ -61,6 +63,8 @@ Ví dụ với chức năng đăng nhập, trước khi viết code, Kiro có th
 
 Nhờ vậy, AI không còn làm việc dựa trên một prompt quá ngắn, mà dựa trên đặc tả rõ ràng hơn. Điều này giúp giảm rủi ro code sai yêu cầu và giúp team dễ review hơn.
 
+{{< figure src="/images/blog/blog1.2.jpg" title="Hình 2. Quy trình Spec-Driven Development với Kiro" >}}
+
 ---
 
 ## Kiro trong AI-assisted Development Lifecycle
@@ -79,6 +83,8 @@ Kiro có thể hỗ trợ ở các giai đoạn chính sau:
 | Tài liệu | Tạo README, mô tả API, giải thích luồng xử lý |
 
 Điều này cho thấy Kiro phù hợp hơn với cách làm dự án có quy trình, đặc biệt khi làm việc nhóm hoặc khi dự án có nhiều module liên quan với nhau.
+
+{{< figure src="/images/blog/blog1.3.jpg" title="Hình 3. Các giai đoạn trong AI-assisted Development Lifecycle mà Kiro hỗ trợ" >}}
 
 ---
 
@@ -175,6 +181,11 @@ Với sinh viên và nhóm học tập, Kiro có thể là một công cụ tố
 Trong tương lai, lập trình viên có thể không chỉ là người viết code, mà còn là người biết đặt yêu cầu đúng, điều phối AI agent, kiểm tra chất lượng và thiết kế hệ thống tốt hơn.
 
 ---
+
+## Link minh chứng
+
+Bài viết này đã được đăng lên nhóm AWS Study Group VN trên Facebook, là minh chứng cho hoạt động viết blog và dịch thuật của nhóm:
+- [Facebook Post - Kiro và AI-assisted Development Lifecycle](https://www.facebook.com/groups/awsstudygroupfcj/?multi_permalinks=2180891552675805&notif_id=1781111192588227&notif_t=group_activity&ref=notif)
 
 ## Tài liệu tham khảo
 
