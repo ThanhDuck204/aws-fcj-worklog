@@ -35,3 +35,8 @@ Một số thành phần trong sơ đồ kiến trúc như VPC, ALB, EC2 Auto Sc
 7. [Giám sát & Tối ưu chi phí](5.7-Monitoring-Cost/)
 8. [Kiểm thử end-to-end](5.8-Test/)
 9. [Dọn dẹp tài nguyên](5.9-Cleanup/)
+
+#### Demo
+
+- 🌐 **Web demo:** [https://d1gdsnv8exdah.cloudfront.net/login/](https://d1gdsnv8exdah.cloudfront.net/login/)
+- 🎥 **Video demo:** [Google Drive](https://drive.google.com/drive/folders/1x4Vyloh-aehE30BazEi0He-9aIlA4sjj?usp=sharing)

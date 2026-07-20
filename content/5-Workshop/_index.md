@@ -35,3 +35,8 @@ Some components in the architecture diagram, such as VPC, ALB, EC2 Auto Scaling,
 7. [Monitoring & Cost Optimization](5.7-Monitoring-Cost/)
 8. [End-to-end Test](5.8-Test/)
 9. [Clean up](5.9-Cleanup/)
+
+#### Demo
+
+- 🌐 **Web demo:** [https://d1gdsnv8exdah.cloudfront.net/login/](https://d1gdsnv8exdah.cloudfront.net/login/)
+- 🎥 **Video demo:** [Google Drive](https://drive.google.com/drive/folders/1x4Vyloh-aehE30BazEi0He-9aIlA4sjj?usp=sharing)

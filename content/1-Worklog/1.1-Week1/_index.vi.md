@@ -20,6 +20,7 @@ pre: " <b> 1.1. </b> "
 | Ngày | Công việc | Kết quả | Tài liệu | Ghi chú |
 |---|---|---|---|---|
 | 20/04/2026 | Làm quen chương trình, đọc tổng quan về Cloud Computing và AWS. | Hiểu sự khác nhau giữa Cloud và On-Premise, cách AWS tổ chức Region, Availability Zone và Edge Location. Bắt đầu ghi chú theo từng module để dễ xem lại. | [Cloud Journey](https://cloudjourney.awsstudygroup.com/) | Ngày đầu chủ yếu để bắt nhịp. |
+| 17/04/2026 | Tham gia chương trình meeting kickoff đầu tiên của chương trình thực tập. | Được giới thiệu về lộ trình thực tập, các mục tiêu và yêu cầu trong suốt chương trình. Làm quen với người hướng dẫn và các thực tập sinh khác. Nắm được định hướng và kế hoạch thực tập trong thời gian tới. | | Kickoff |
 | 21/04/2026 | Học Well-Architected Framework và các công cụ AWS cơ bản. | Nắm 6 trụ cột của Well-Architected Framework. Làm quen với AWS Management Console, CLI, SDK và cách mở support case khi cần hỗ trợ. | [AWS Well-Architected Framework](https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html) <br> [AWS Support Case Tutorial](https://www.youtube.com/watch?v=95quNuhvMT0) | Bắt đầu hiểu cách AWS nhìn một hệ thống tốt. |
 | 22/04/2026 | Thiết lập bảo mật tài khoản AWS với MFA, IAM User và IAM Group. | Bật MFA cho tài khoản, tạo IAM user/group và thử xử lý một số lỗi xác thực cơ bản. Phần này giúp mình hiểu rõ hơn vì sao không nên dùng root account cho công việc hằng ngày. | [AWS Account Security Tutorial](https://www.youtube.com/watch?v=1dG5xutGbr4) <br> [IAM User and Group Tutorial](https://www.youtube.com/watch?v=b9pK1oG534Q) <br> [MFA Setup Tutorial](https://www.youtube.com/watch?v=69iKhwI7k2Y) | Hoàn thành phần bảo mật tài khoản. |
 | 23/04/2026 | Thực hành lab tổng hợp với VPC, Security Group, EC2, RDS và AWS Budgets. | Tạo được hạ tầng cơ bản gồm mạng, máy chủ và database. Thiết lập cảnh báo chi tiêu bằng AWS Budgets để theo dõi chi phí trong quá trình học. | [AWS Budgets Lab](https://000007.awsstudygroup.com/vi/3-usage-budget/) | Phần lab giúp nối lý thuyết với thao tác thực tế. |
@@ -29,7 +30,9 @@ pre: " <b> 1.1. </b> "
 
 ## Ghi chú trong tuần
 
-Tuần đầu tiên là giai đoạn làm quen nên mình tập trung vào nền tảng nhiều hơn là đi sâu một dịch vụ cụ thể. Phần quan trọng nhất là hiểu cách AWS tổ chức tài nguyên và vì sao IAM/MFA phải được làm ngay từ đầu.
+Tuần này là tuần đầu tiên chính thức của quá trình thực tập. Trước đó, vào ngày 17/04, mình đã tham gia buổi meeting kickoff đầu tiên của chương trình — được giới thiệu về lộ trình, mục tiêu và các yêu cầu trong suốt thời gian thực tập.
+
+Tuần này tập trung vào nền tảng nhiều hơn là đi sâu một dịch vụ cụ thể. Phần quan trọng nhất là hiểu cách AWS tổ chức tài nguyên và vì sao IAM/MFA phải được làm ngay từ đầu.
 
 Các bài lab về VPC, EC2 và RDS giúp mình thấy rõ hơn luồng triển khai một ứng dụng đơn giản trên cloud. Trước đó các khái niệm như subnet, route table hay security group còn khá rời rạc; sau khi tự cấu hình thì dễ hình dung hơn nhiều.
 
@@ -50,3 +53,4 @@ Các bài lab về VPC, EC2 và RDS giúp mình thấy rõ hơn luồng triển 
 * IAM và MFA là phần nền tảng, không nên để đến cuối mới cấu hình.
 * AWS Budgets nên được tạo sớm để tránh quên tài nguyên đang chạy.
 * Khi làm lab, bước cleanup quan trọng ngang với bước tạo tài nguyên.
+* Buổi kickoff giúp hiểu rõ lộ trình và mục tiêu thực tập, định hướng được những gì cần tập trung trong thời gian tới.
