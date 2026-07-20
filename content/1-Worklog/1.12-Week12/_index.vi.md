@@ -9,9 +9,9 @@ pre: " <b> 1.12. </b> "
 ## Mục tiêu tuần 12
 
 * Tiếp tục phát triển và hoàn thiện dự án.
-* Sửa lỗi phát sinh trong quá trình deploy dự án lên AWS.
-* Đảm bảo các chức năng chính hoạt động ổn định trên môi trường deployment.
-* Nộp workshop đúng hạn do thời gian không còn nhiều.
+* Deploy dự án lên AWS và xử lý lỗi phát sinh trong quá trình triển khai.
+* Kiểm tra, test và sửa lỗi workshop để đảm bảo các chức năng hoạt động ổn định.
+* Điều chỉnh cấu hình dịch vụ AWS cho phù hợp với môi trường thực tế.
 
 ---
 

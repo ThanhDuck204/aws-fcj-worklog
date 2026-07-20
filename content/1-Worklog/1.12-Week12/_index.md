@@ -9,9 +9,9 @@ pre: " <b> 1.12. </b> "
 ## Week 12 Objectives
 
 * Continue developing and finalizing the project.
-* Fix bugs encountered during deployment to AWS.
-* Ensure core features work stably in the deployment environment.
-* Submit the workshop on time as there is not much time left.
+* Deploy the project to AWS and resolve errors encountered during deployment.
+* Review, test, and fix workshop bugs to ensure features work stably.
+* Adjust AWS service configurations to suit the real environment.
 
 ---
 
